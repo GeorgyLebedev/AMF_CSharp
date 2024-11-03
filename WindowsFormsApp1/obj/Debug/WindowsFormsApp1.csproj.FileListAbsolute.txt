@@ -8,3 +8,23 @@ D:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsAp
 D:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 D:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+E:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+E:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+E:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+E:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+E:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+E:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+E:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+E:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+E:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+E:\Учеба\5 курс\ДИПЛОМ\ПРОГА\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+E:\repos\AMF\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+E:\repos\AMF\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+E:\repos\AMF\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+E:\repos\AMF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+E:\repos\AMF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+E:\repos\AMF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+E:\repos\AMF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+E:\repos\AMF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+E:\repos\AMF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+E:\repos\AMF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
