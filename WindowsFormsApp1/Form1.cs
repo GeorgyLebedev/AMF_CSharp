@@ -7,8 +7,8 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        byte[] maskSize = new byte[2] { 5, 5 };
-
+        MaskSize maskSize = new MaskSize(5, 5);
+   
         Bitmap image;
         Bitmap processedImage;
 
@@ -100,7 +100,7 @@ namespace WindowsFormsApp1
             Button button = (Button)sender;
             string sizeStr = button.Name.Substring(button.Name.IndexOf("x") + 1);
             byte size = Convert.ToByte(sizeStr);
-            maskSize = new byte[2] { size, size };
+            maskSize =  new MaskSize(size, size);
             groupBox1.Text = "Тип маски:" + size + " X " + size;
             button.Enabled = false;
             button.FlatAppearance.BorderSize = 3;

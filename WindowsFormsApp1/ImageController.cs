@@ -5,9 +5,16 @@ using System.Runtime.InteropServices;
 
 namespace WindowsFormsApp1
 {
-    struct Pixel
+    class Pixel
     {
        public byte r, g, b;
+       public int rgbSum
+       {
+            get
+            {
+                return  r + g + b;
+            }
+       }
     }
     class ImageController
     {
@@ -58,6 +65,12 @@ namespace WindowsFormsApp1
             px.g = pixels[4 * i + 1];
             px.b = pixels[4 * i + 2];
             return px;
+        }
+
+        public int getPixelMiddleValue(int x, int y)
+        {
+            int i = y * width + x;
+            return (pixels[4 * i] + pixels[4 * i + 1] + pixels[4 * i + 2])/3;
         }
 
         public void SetPixel(int x, int y, Pixel pixel)
