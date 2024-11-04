@@ -11,9 +11,9 @@ namespace WindowsFormsApp1
         //Класс для управления пикселями изображения
         private ImageController imgController;
         //Массив локальных координат маски
-        private List<Point> maskCoords;
+        private Point[] maskCoords;
         //Массив пикселей маски
-        private List<Pixel> maskPixels;
+        private Pixel[] maskPixels;
         //Текущая позиция - координаты текущего пикселя в изображении
         private Point currentPosition;
         //Размер маски
@@ -26,6 +26,8 @@ namespace WindowsFormsApp1
         private Dictionary<int,List<Pixel>> rowPixels = new Dictionary<int, List<Pixel>>();
         //Массив пикселей под замену в строке
         private List<Pixel> columnPixels = new List<Pixel>();
+        // Длина массивов, связанных с маской
+        private int arrayLength;
 
         public MedianFilter(Bitmap imgData, byte limit, byte[] size, int minLineLength)
         {
@@ -39,14 +41,20 @@ namespace WindowsFormsApp1
 
         private void init()
         {
+            arrayLength = calcArrayLength(maskSize);
             maskCoords = createMask(maskSize);
             updateMask();
         }
-
-        private List<Point> createMask(byte[] size)
+        private int calcArrayLength(byte [] value)
         {
-            List<Point> maskCoords = new List<Point>();
-            Point centerPoint = new Point(size[0]/2, size[1]/2); 
+            return value[0] * 2 + value[1] - 2;
+        }
+
+        private Point[] createMask(byte[] size)
+        {
+            Point[] maskCoords = new Point[arrayLength];
+            Point centerPoint = new Point(size[0]/2, size[1]/2);
+            int index = 0;
             for (int x = 0; x < size[0]; x++)
             {
                 for(int y = 0; y < size[1]; y++)
@@ -55,7 +63,8 @@ namespace WindowsFormsApp1
                     {
                         //Заполняем все точки в первой строке или стоблце, а таже центральные
                         Point maskPoint = new Point(x - centerPoint.X, y - centerPoint.Y);
-                        maskCoords.Add(maskPoint);
+                        maskCoords[index]=maskPoint;
+                        index++;
                        // Console.WriteLine(maskPoint);
                     }
                 }
@@ -65,13 +74,15 @@ namespace WindowsFormsApp1
 
         private void updateMask()
         {
-            maskPixels = new List<Pixel>();
+            maskPixels = new Pixel[arrayLength];
+            int index = 0;
             foreach (Point maskPoint in maskCoords)
             {
                 if (imgController.IsExistPixel(currentPosition.X + maskPoint.X, currentPosition.Y + maskPoint.Y))
                 {
                     var pixel = imgController.GetPixel(currentPosition.X + maskPoint.X, currentPosition.Y + maskPoint.Y);
-                    maskPixels.Add(pixel);
+                    maskPixels[index]=pixel;
+                    index++;
                 }
             }
         }
@@ -92,8 +103,8 @@ namespace WindowsFormsApp1
     
         private void fillRowPixels()
         {
-            maskPixels.Sort((a, b) => (b.r + b.g + b.b).CompareTo(a.r + a.g + a.b));
-            Pixel median = maskPixels[(maskPixels.Count - 1) / 2];
+            Array.Sort(maskPixels, (a, b) => (b.r + b.g + b.b).CompareTo(a.r + a.g + a.b));
+            Pixel median = maskPixels[(maskPixels.Length - 1) / 2];
             byte medianBrightness = Convert.ToByte((median.r + median.g + median.b) / 3);
             Pixel currentPixel = imgController.GetPixel(currentPosition.X, currentPosition.Y);
             byte currentBrightness = Convert.ToByte((currentPixel.r + currentPixel.g + currentPixel.b) / 3);
@@ -105,6 +116,7 @@ namespace WindowsFormsApp1
             {
                 if(columnPixels.Count >= sequenceLength)
                 {
+                    // Править объявление и проверки columnPixels 
                     rowPixels.Add(currentPosition.X-columnPixels.Count,columnPixels.ToList());
                 }
                 columnPixels.Clear();
