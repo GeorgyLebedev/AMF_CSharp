@@ -41,11 +41,12 @@ namespace WindowsFormsApp1
         // Длина массивов, связанных с маской
         private int MaskArrayLength;
         // Массив индексов пикселей маски, которые могут обновляться
-        private int [] updateableIndexes;
+        private Point [] updateablePoints;
 
         public MedianFilter(Bitmap imgData, byte limit, MaskSize size, int minLineLength)
         {
-            imgController = new ImageController(imgData);  
+            imgController = new ImageController(imgData); 
+            // FIXME: FilterLimit более не используется
             filterLimit = limit;
             maskSize = size;
             currentPosition = new Point(0, 0);
@@ -56,27 +57,23 @@ namespace WindowsFormsApp1
         private void init()
         {
             MaskArrayLength = maskSize.width * 2 + maskSize.height - 2;
-            maskCoords = createMask(maskSize);
+            maskCoords = createMask();
             fillMask();
+            setUpdateablePoints();
         }
 
 
-        private Point[] createMask(MaskSize size)
+        private Point[] createMask()
         {
+            MaskSize size = maskSize;
             Point[] maskCoords = new Point[MaskArrayLength];
-            updateableIndexes = new int[size.height];
             Point centerPoint = new Point(size.width/2, size.height/2);
             int coordIndex = 0;
-            int index = 0;
-            for (int x = 0; x < size.width; x++)
+            for (int y = 0; y < size.height; y++)
             {
-                for(int y = 0; y < size.height; y++)
+                for (int x = 0; x < size.width; x++)
                 {
-                    if ((x == centerPoint.X && y > 0 && y < size.height - 1) || (x == size.width - 1 && (y==0 || y==size.height-1)))
-                    {
-                        updateableIndexes[index] = coordIndex;
-                        index++;
-                    }
+         
                     if (y == 0 || y == size.width - 1 || x == centerPoint.X)
                     {
                         //Заполняем все точки в первой строке или стоблце, а таже центральные
@@ -88,6 +85,11 @@ namespace WindowsFormsApp1
                 }
             }
             return maskCoords;
+        }
+
+        private void setUpdateablePoints()
+        {
+            updateablePoints = maskCoords.Where(point=>point.X==maskSize.width/2 || point.X==0 && Math.Abs(point.Y)!=maskSize.height/2).ToArray();
         }
 
         private void fillMask()
@@ -108,18 +110,35 @@ namespace WindowsFormsApp1
 
         private void updateMask()
         {
-            if (currentPosition.X > maskSize.width / 2 && currentPosition.Y > maskSize.height / 2 && currentPosition.X < imgController.width - maskSize.width / 2  && currentPosition.Y < imgController.height - maskSize.height / 2)
+            int x = currentPosition.X;
+            int y = currentPosition.Y;
+            int maskWidth = maskSize.width;
+            int maskHeight = maskSize.height;
+            int imgWidth = imgController.width;
+            int imgHeight = imgController.height;
+            if (x > maskWidth / 2 && y > maskHeight / 2 && x < imgWidth - maskWidth / 2  && y < imgHeight - maskHeight / 2)
             {
                 Pixel[] tempArray = new Pixel[MaskArrayLength];
-                Array.Copy(maskPixels, 1, tempArray, 0, maskSize.width - 1);
-                Array.Copy(maskPixels, maskPixels.Length - maskSize.width-1, tempArray, maskSize.width-1, maskSize.width-1);
-                int i = 2*(maskSize.width - 1);
-                foreach (int index in updateableIndexes)
+                Point topRight = updateablePoints[0];
+                Point bottomRight = updateablePoints[updateablePoints.Length - 1];
+                
+                // Заполняем верхнюю строку
+                Array.Copy(maskPixels, 1, tempArray, 0, maskWidth - 1);
+                tempArray[maskWidth - 1] = imgController.GetPixel(x + topRight.X, y + topRight.Y);
+
+                // Заполняем одиночные элементы
+                int i = maskWidth;
+                for(int index =1; index < updateablePoints.Length-1; index++)
                 {
-                    tempArray[i] = imgController.GetPixel(currentPosition.X + maskCoords[index].X, currentPosition.Y + maskCoords[index].Y);
+                    tempArray[i] = imgController.GetPixel(x + updateablePoints[index].X, y + updateablePoints[index].Y);
                     i++;
                 }
-                maskPixels = tempArray;
+
+                // Заполняем нижнюю строку
+                Array.Copy(maskPixels, maskPixels.Length - maskWidth + 1, tempArray, i, maskWidth - 1);
+                tempArray[MaskArrayLength-1] = imgController.GetPixel(x + bottomRight.X, y + bottomRight.Y);
+
+                tempArray.CopyTo(maskPixels, 0);
             }
             else
             {
@@ -146,11 +165,10 @@ namespace WindowsFormsApp1
             Pixel[] sortedPixels = new Pixel[maskPixels.Length];
             maskPixels.CopyTo(sortedPixels,0);
             Array.Sort(sortedPixels, (a, b) => (b.r + b.g + b.b).CompareTo(a.r + a.g + a.b));
-            //insertionSort(maskPixels);
-            Pixel medianPixel = sortedPixels[sortedPixels.Length / 2];
+            Pixel medianPixel = sortedPixels[(sortedPixels.Length + 1) / 2 ];
             byte medianBrightness = (byte)(medianPixel.rgbSum / 3);
             byte currentBrightness = (byte)imgController.getPixelMiddleValue(currentPosition.X, currentPosition.Y);
-            if (Math.Abs(medianBrightness - currentBrightness) >= filterLimit)
+            if (medianBrightness != currentBrightness)
             {
                 columnPixels.Add(medianPixel);
             }
@@ -164,21 +182,6 @@ namespace WindowsFormsApp1
             }
         }
 
-/*        private void insertionSort(Pixel[] array)
-        {
-            for (int i = 1; i < array.Length; i++)
-            {
-                Pixel current = array[i];
-                int j = i - 1;
-                while (j >= 0 && array[j].rgbSum > current.rgbSum)
-                {
-                    array[j + 1] = array[j];
-                    j--;
-                }
-                array[j + 1] = current;
-            }
-        }
-*/
         private void filterRow()
         {
             foreach (var row in rowPixels) {
