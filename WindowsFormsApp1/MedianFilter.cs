@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -16,6 +17,13 @@ namespace WindowsFormsApp1
             this.height = height;
         }
 
+    }
+
+    public class MaskUpdateablePoints
+    {
+        public Point top;
+        public Point[] middle;
+        public Point bottom;
     }
 
     public class MedianFilter
@@ -40,8 +48,8 @@ namespace WindowsFormsApp1
         private List<Pixel> columnPixels = new List<Pixel>();
         // Длина массивов, связанных с маской
         private int MaskArrayLength;
-        // Массив индексов пикселей маски, которые могут обновляться
-        private Point [] updateablePoints;
+        // Массив координат маски, пиксели на которых могут обновляться
+        private MaskUpdateablePoints updateablePoints;
 
         public MedianFilter(Bitmap imgData, byte limit, MaskSize size, int minLineLength)
         {
@@ -51,6 +59,7 @@ namespace WindowsFormsApp1
             maskSize = size;
             currentPosition = new Point(0, 0);
             sequenceLength = minLineLength;
+            updateablePoints = new MaskUpdateablePoints();
             init();
         }
 
@@ -89,7 +98,9 @@ namespace WindowsFormsApp1
 
         private void setUpdateablePoints()
         {
-            updateablePoints = maskCoords.Where(point=>point.X==maskSize.width/2 || point.X==0 && Math.Abs(point.Y)!=maskSize.height/2).ToArray();
+            updateablePoints.top = new Point(maskSize.width / 2, maskSize.height / 2);
+            updateablePoints.bottom = new Point(maskSize.width / 2, -maskSize.height / 2);
+            updateablePoints.middle = maskCoords.Where(point=>point.X==0 && Math.Abs(point.Y)!=maskSize.height/2).ToArray();
         }
 
         private void fillMask()
@@ -118,32 +129,46 @@ namespace WindowsFormsApp1
             int imgHeight = imgController.height;
             if (x > maskWidth / 2 && y > maskHeight / 2 && x < imgWidth - maskWidth / 2  && y < imgHeight - maskHeight / 2)
             {
-                Pixel[] tempArray = new Pixel[MaskArrayLength];
-                Point topRight = updateablePoints[0];
-                Point bottomRight = updateablePoints[updateablePoints.Length - 1];
-                
                 // Заполняем верхнюю строку
-                Array.Copy(maskPixels, 1, tempArray, 0, maskWidth - 1);
-                tempArray[maskWidth - 1] = imgController.GetPixel(x + topRight.X, y + topRight.Y);
-
+                Pixel[] topArray = updateTop(currentPosition, updateablePoints.top);
                 // Заполняем одиночные элементы
-                int i = maskWidth;
-                for(int index =1; index < updateablePoints.Length-1; index++)
-                {
-                    tempArray[i] = imgController.GetPixel(x + updateablePoints[index].X, y + updateablePoints[index].Y);
-                    i++;
-                }
-
+                Pixel[] middleArray =  updateMiddle(currentPosition);
                 // Заполняем нижнюю строку
-                Array.Copy(maskPixels, maskPixels.Length - maskWidth + 1, tempArray, i, maskWidth - 1);
-                tempArray[MaskArrayLength-1] = imgController.GetPixel(x + bottomRight.X, y + bottomRight.Y);
+                Pixel[] bottomArray = updateBottom(currentPosition, updateablePoints.bottom);
 
-                tempArray.CopyTo(maskPixels, 0);
+                Array.Copy(topArray, 0, maskPixels, 0, topArray.Length);
+                Array.Copy(middleArray, 0, maskPixels, topArray.Length, middleArray.Length);
+                Array.Copy(bottomArray, 0, maskPixels, topArray.Length+middleArray.Length, bottomArray.Length);
             }
             else
             {
                 fillMask();
             }
+        }
+
+        private Pixel[] updateTop(Point currentPos, Point point)
+        {
+            Pixel[] arr = new Pixel[maskSize.width];
+            Array.Copy(maskPixels, 1, arr, 0, maskSize.width - 1);
+            arr[maskSize.width - 1] = imgController.GetPixel(currentPos.X + point.X, currentPos.Y + point.Y);
+            return arr;
+        }
+        private Pixel[] updateMiddle(Point currentPos)
+        {
+            Pixel[] arr = new Pixel[maskSize.height - 2]; 
+            for(int j =0; j < updateablePoints.middle.Length; j++)
+            {
+                arr[j] = imgController.GetPixel(currentPos.X + updateablePoints.middle[j].X, currentPos.Y + updateablePoints.middle[j].Y);
+            }
+            return arr;
+        }
+
+        private Pixel[] updateBottom(Point currentPos, Point point)
+        {
+            Pixel[] arr = new Pixel[maskSize.width];
+            Array.Copy(maskPixels, maskPixels.Length - maskSize.width + 1, arr, 0, maskSize.width - 1);
+            arr[maskSize.width-1] = imgController.GetPixel(currentPos.X + point.X, currentPos.Y + point.Y);
+            return arr;
         }
 
         private void moveFilter()
