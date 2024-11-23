@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace WindowsFormsApp1
 {
-    class Pixel
+    public class Pixel
     {
        public byte r, g, b;
        public int rgbSum

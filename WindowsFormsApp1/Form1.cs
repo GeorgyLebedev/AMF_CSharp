@@ -55,7 +55,8 @@ namespace WindowsFormsApp1
                 byte replaceLimit = (byte)replaceLimitInput.Value;
                 int minLineLength = (int)lineLengthInput.Value;
                 MedianFilter filter = new MedianFilter(new Bitmap(inputPictureBox.Image), replaceLimit, maskSize, minLineLength);
-                filter.doFiltration(progressBar);
+                filter.setProgressBar(progressBar);
+                filter.doFiltration();
                 processedImage = filter.getResultImage();
                 outputPictureBox.Image = processedImage;
                 resetImgBtn.Visible = true;
