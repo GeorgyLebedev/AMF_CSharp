@@ -279,18 +279,21 @@ namespace WindowsFormsApp1
             // Обработка строк изображения параллельно
             for (int i = 0; i < imgController.height - 1; i++)
             {
-                int rowIndex = i;
+                if (i % 100 == 0)
+                {
+                    progressBar.Value= i;
+                }
                 // Создание новой задачи, если пул не заполнен
                 if (i < numCores)
                 {
-                    taskSet[i] = Task.Run(() => processRow(rowIndex));
+                    taskSet[i] = Task.Run(() => processRow(i));
                 }
                 else
                 {
                     // Ожидание завершения одной из задач и замена ее новой
                     Task completedTask = Task.WhenAny(taskSet).Result;
                     int completedTaskIndex = Array.IndexOf(taskSet, completedTask);
-                    taskSet[completedTaskIndex] = Task.Run(() => processRow(rowIndex));
+                    taskSet[completedTaskIndex] = Task.Run(() => processRow(i));
                 }
             }
             Task.WaitAll(taskSet);
