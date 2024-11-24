@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
             }
        }
     }
-    class ImageController
+    public class ImageController
     {
         public readonly int width;
         public readonly int height;
