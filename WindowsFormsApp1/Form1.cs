@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using WindowsFormsApp1.types;
 
 namespace WindowsFormsApp1
 {

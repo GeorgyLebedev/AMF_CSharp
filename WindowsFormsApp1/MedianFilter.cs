@@ -1,80 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
+using WindowsFormsApp1.types;
 
 namespace WindowsFormsApp1
 {
-    public class MaskSize
-    {
-        public readonly byte width;
-        public readonly byte height; 
-
-        public MaskSize(byte width, byte height) { 
-            this.width = width; 
-            this.height = height;
-        }
-
-    }
-
-    public class ReplacePixels
-    {
-        private Dictionary<int, List<Pixel>> storage;
-        int index = -1;
-        public ReplacePixels()
-        {
-            storage = new Dictionary<int, List<Pixel>>();
-        }
-
-        public void pushPixel(int index, Pixel pixel)
-        {
-            if (this.index == -1)
-            {
-                storage.Add(index, new List<Pixel>());
-                this.index = index;
-            }
-            storage[this.index].Add(pixel);
-        }
-
-        public void clearCurrentList()
-        {
-            storage.Remove(index);
-        }
-
-        public void resetIndex()
-        {
-            index = -1;
-        }
-
-        public int getCurrentListLength()
-        {
-            if (index == -1)
-            {
-                return index;
-            }
-            else
-            {
-                return storage[index].Count;
-            }
-        }
-
-        public Dictionary<int, List<Pixel>> getStorage()
-        {
-            return storage;
-        }
-
-    }
-
-    public class MaskUpdateablePoints
-    {
-        public Point top;
-        public Point[] middle;
-        public Point bottom;
-    }
-
     public class MedianFilter
     {
         //Класс для управления пикселями изображения
@@ -88,7 +20,7 @@ namespace WindowsFormsApp1
         //Длина последовательности - минимальная длина последовательности пикселей под замену
         private int sequenceLength;
         // Максимальное число пикселей в маске
-        private int MaskPixelsCount;
+        private int maskPixelsCount;
         // Массив координат маски, пиксели на которых могут обновляться
         private MaskUpdateablePoints updateablePoints;
 
@@ -107,8 +39,8 @@ namespace WindowsFormsApp1
 
         private void init()
         {
-            MaskPixelsCount = maskSize.width * 2 + maskSize.height - 2;
-            maskCoords = getMaskCoords();
+            maskPixelsCount = maskSize.width * 2 + maskSize.height - 2;
+            setMaskCoords();
             setUpdateablePoints();
         }
 
@@ -120,10 +52,10 @@ namespace WindowsFormsApp1
             progressBar.Maximum = imgController.height;
         }
 
-        private Point[] getMaskCoords()
+        private void setMaskCoords()
         {
             MaskSize size = maskSize;
-            Point[] maskCoords = new Point[MaskPixelsCount];
+            Point[] coords = new Point[maskPixelsCount];
             Point centerPoint = new Point(size.width/2, size.height/2);
             int coordIndex = 0;
             for (int y = 0; y < size.height; y++)
@@ -135,13 +67,12 @@ namespace WindowsFormsApp1
                     {
                         //Заполняем все точки в первой строке или стоблце, а таже центральные
                         Point maskPoint = new Point(x - centerPoint.X, y - centerPoint.Y);
-                        maskCoords[coordIndex]=maskPoint;
+                        coords[coordIndex]=maskPoint;
                         coordIndex++;
-                       // Console.WriteLine(maskPoint);
                     }
                 }
             }
-            return maskCoords;
+            maskCoords = coords;
         }
 
         private void setUpdateablePoints()
@@ -153,7 +84,7 @@ namespace WindowsFormsApp1
 
         private void fillMask(Point currentPos, ref Pixel[] mask)
         {
-            Pixel[] newMaskPixels= new Pixel[MaskPixelsCount];
+            Pixel[] newMaskPixels= new Pixel[maskPixelsCount];
             int index = 0;
             foreach (Point maskPoint in maskCoords)
             {
@@ -177,7 +108,7 @@ namespace WindowsFormsApp1
             int y = currentPos.Y;
             if (x > maskWidth / 2 && y > maskHeight / 2 && x < imgWidth - maskWidth / 2  && y < imgHeight - maskHeight / 2)
             {
-                Pixel[] newMaskPixels = new Pixel[MaskPixelsCount];
+                Pixel[] newMaskPixels = new Pixel[maskPixelsCount];
                 // Заполняем верхнюю строку
                 Pixel[] topArray = updateTop(currentPos, updateablePoints.top, mask);
                 // Заполняем одиночные элементы
@@ -222,7 +153,7 @@ namespace WindowsFormsApp1
             return arr;
         }
 
-        private void fillRowPixels(Point currentPos, Pixel[] mask, ReplacePixels replacePixels)
+        private void fillReplacePixels(Point currentPos, Pixel[] mask, ReplacePixels replacePixels)
         {
             Pixel[] sortedPixels = new Pixel[mask.Length];
             mask.CopyTo(sortedPixels,0);
@@ -244,12 +175,12 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void filterRow(int rowIndex, ReplacePixels replacePixels)
+        private void filterReplacePixels(int rowIndex, ReplacePixels replacePixels)
         {
-            foreach (var row in replacePixels.getStorage()) {
-                for (int i = 0; i < row.Value.Count; i++)
+            foreach (var list in replacePixels.getStorage()) {
+                for (int i = 0; i < list.Value.Count; i++)
                 {
-                    imgController.SetPixel(row.Key+i, rowIndex, row.Value[i]);
+                    imgController.SetPixel(list.Key+i, rowIndex, list.Value[i]);
                 }
             }
             replacePixels = null;
@@ -259,15 +190,15 @@ namespace WindowsFormsApp1
         {
             int x = 0;
             ReplacePixels replacePixels = new ReplacePixels();
-            Pixel[] rowMask = new Pixel[MaskPixelsCount];
+            Pixel[] rowMask = new Pixel[maskPixelsCount];
             fillMask(new Point(x,y), ref rowMask);
             while(x < imgController.width - 1)
             {
-                fillRowPixels(new Point(x, y), rowMask, replacePixels);
-                updateMask(new Point(x,y), ref rowMask );
+                fillReplacePixels(new Point(x, y), rowMask, replacePixels);
+                updateMask(new Point(x,y), ref rowMask);
                 x++;
             }
-            filterRow(y, replacePixels);
+            filterReplacePixels(y, replacePixels);
         }
 
         public void doFiltration()
