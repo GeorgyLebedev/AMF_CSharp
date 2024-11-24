@@ -230,11 +230,5 @@ namespace WindowsFormsApp1
             progressBar.Visible = false;
             return imgController.updateImageData();
         }
-
-
-        public Bitmap getResultImage()
-        {
-            return imgController.GetImg();
-        }
     }
 }
