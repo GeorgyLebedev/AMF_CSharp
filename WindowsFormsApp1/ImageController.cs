@@ -43,13 +43,14 @@ namespace WindowsFormsApp1
             src.UnlockBits(bitmapData);
         }
 
-        public void updateImageData()
+        public Bitmap updateImageData()
         {
             Rectangle rect = new Rectangle(0, 0, width, height);
             BitmapData bitmapData = imgSrc.LockBits(rect, ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
             IntPtr ptr = bitmapData.Scan0;
             Marshal.Copy(filteredPixels, 0, ptr, filteredPixels.Length);
             imgSrc.UnlockBits(bitmapData);
+            return imgSrc;
         }
 
         public bool IsExistPixel(int x, int y)
@@ -79,11 +80,6 @@ namespace WindowsFormsApp1
             filteredPixels[4 * i] = pixel.b;
             filteredPixels[4 * i + 1] = pixel.g;
             filteredPixels[4 * i + 2] = pixel.r;
-        }
-
-        public Bitmap GetImg()
-        {
-            return imgSrc;
         }
     }
 }

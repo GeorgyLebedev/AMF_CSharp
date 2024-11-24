@@ -38,7 +38,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void filterBtn_Click(object sender, EventArgs e)
+        private async void filterBtn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -57,8 +57,7 @@ namespace WindowsFormsApp1
                 int minLineLength = (int)lineLengthInput.Value;
                 MedianFilter filter = new MedianFilter(new Bitmap(inputPictureBox.Image), replaceLimit, maskSize, minLineLength);
                 filter.setProgressBar(progressBar);
-                filter.doFiltration();
-                processedImage = filter.getResultImage();
+                processedImage = await filter.doFiltration();
                 outputPictureBox.Image = processedImage;
                 resetImgBtn.Visible = true;
                 if (isNeedRotate)

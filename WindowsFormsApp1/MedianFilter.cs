@@ -201,7 +201,7 @@ namespace WindowsFormsApp1
             filterReplacePixels(y, replacePixels);
         }
 
-        public void doFiltration()
+        public async Task<Bitmap> doFiltration()
         {
             // Количество потоков процессора
             int numCores = Environment.ProcessorCount;
@@ -222,14 +222,13 @@ namespace WindowsFormsApp1
                 else
                 {
                     // Ожидание завершения одной из задач и замена ее новой
-                    Task completedTask = Task.WhenAny(taskSet).Result;
+                    var completedTask = await Task.WhenAny(taskSet);
                     int completedTaskIndex = Array.IndexOf(taskSet, completedTask);
                     taskSet[completedTaskIndex] = Task.Run(() => processRow(i));
                 }
             }
-            Task.WaitAll(taskSet);
-            imgController.updateImageData();
             progressBar.Visible = false;
+            return imgController.updateImageData();
         }
 
 
