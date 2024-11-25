@@ -42,7 +42,7 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.filterBtn = new System.Windows.Forms.Button();
-            this.replaceLimitInput = new System.Windows.Forms.NumericUpDown();
+            this.minBrightness = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.button11x11 = new System.Windows.Forms.Button();
@@ -60,7 +60,7 @@
             this.elapsedLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.replaceLimitInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).BeginInit();
@@ -172,25 +172,20 @@
             this.filterBtn.UseVisualStyleBackColor = true;
             this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
             // 
-            // replaceLimitInput
+            // minBrightness
             // 
-            this.replaceLimitInput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.replaceLimitInput.Location = new System.Drawing.Point(809, 46);
-            this.replaceLimitInput.Maximum = new decimal(new int[] {
-            254,
+            this.minBrightness.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.minBrightness.Location = new System.Drawing.Point(809, 46);
+            this.minBrightness.Maximum = new decimal(new int[] {
+            255,
             0,
             0,
             0});
-            this.replaceLimitInput.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.replaceLimitInput.Name = "replaceLimitInput";
-            this.replaceLimitInput.Size = new System.Drawing.Size(96, 20);
-            this.replaceLimitInput.TabIndex = 4;
-            this.replaceLimitInput.Value = new decimal(new int[] {
-            1,
+            this.minBrightness.Name = "minBrightness";
+            this.minBrightness.Size = new System.Drawing.Size(96, 20);
+            this.minBrightness.TabIndex = 4;
+            this.minBrightness.Value = new decimal(new int[] {
+            50,
             0,
             0,
             0});
@@ -201,9 +196,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(806, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 13);
+            this.label1.Size = new System.Drawing.Size(157, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Предел замены:";
+            this.label1.Text = "Номинальная яркость линии:";
             // 
             // button11x11
             // 
@@ -372,7 +367,7 @@
             this.lineLengthInput.Size = new System.Drawing.Size(96, 20);
             this.lineLengthInput.TabIndex = 4;
             this.lineLengthInput.Value = new decimal(new int[] {
-            30,
+            50,
             0,
             0,
             0});
@@ -410,7 +405,7 @@
             this.Controls.Add(this.elapsedLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lineLengthInput);
-            this.Controls.Add(this.replaceLimitInput);
+            this.Controls.Add(this.minBrightness);
             this.Controls.Add(this.resetImgBtn);
             this.Controls.Add(this.filterBtn);
             this.Controls.Add(this.progressBar);
@@ -423,7 +418,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.replaceLimitInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minBrightness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).EndInit();
@@ -448,7 +443,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button filterBtn;
-        private System.Windows.Forms.NumericUpDown replaceLimitInput;
+        private System.Windows.Forms.NumericUpDown minBrightness;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button button11x11;

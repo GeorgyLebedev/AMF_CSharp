@@ -53,7 +53,7 @@ namespace WindowsFormsApp1
                 {
                     image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 }
-                byte replaceLimit = (byte)replaceLimitInput.Value;
+                byte replaceLimit = (byte)minBrightness.Value;
                 int minLineLength = (int)lineLengthInput.Value;
                 MedianFilter filter = new MedianFilter(new Bitmap(inputPictureBox.Image), replaceLimit, maskSize, minLineLength);
                 filter.setProgressBar(progressBar);

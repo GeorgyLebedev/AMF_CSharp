@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "E:\\repos\\AMF\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|e:\\repos\\amf\\windowsformsapp1\\medianfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\medianfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\medianfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\medianfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|e:\\repos\\amf\\windowsformsapp1\\types\\mask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\types\\mask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\types\\mask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|e:\\repos\\amf\\windowsformsapp1\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\imagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\imageloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,46 +42,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Mask.cs",
               "DocumentMoniker": "E:\\repos\\AMF\\WindowsFormsApp1\\types\\Mask.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\types\\Mask.cs",
               "ToolTip": "E:\\repos\\AMF\\WindowsFormsApp1\\types\\Mask.cs",
               "RelativeToolTip": "WindowsFormsApp1\\types\\Mask.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAADwvx8AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAAIwHUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-24T16:49:12.652Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-24T16:49:12.652Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Form1.cs",
               "DocumentMoniker": "E:\\repos\\AMF\\WindowsFormsApp1\\Form1.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form1.cs",
               "ToolTip": "E:\\repos\\AMF\\WindowsFormsApp1\\Form1.cs",
               "RelativeToolTip": "WindowsFormsApp1\\Form1.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAwwD8AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowDcAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-04T08:09:06.872Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MedianFilter.cs",
               "DocumentMoniker": "E:\\repos\\AMF\\WindowsFormsApp1\\MedianFilter.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\MedianFilter.cs",
-              "ToolTip": "E:\\repos\\AMF\\WindowsFormsApp1\\MedianFilter.cs*",
-              "RelativeToolTip": "WindowsFormsApp1\\MedianFilter.cs*",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBIAAAAAAAAAAAAAAA==",
+              "ToolTip": "E:\\repos\\AMF\\WindowsFormsApp1\\MedianFilter.cs",
+              "RelativeToolTip": "WindowsFormsApp1\\MedianFilter.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBcAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-03T08:56:08.365Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "E:\\repos\\AMF\\WindowsFormsApp1\\Form1.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form1.cs",
@@ -93,7 +92,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "ImageController.cs",
               "DocumentMoniker": "E:\\repos\\AMF\\WindowsFormsApp1\\ImageController.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\ImageController.cs",

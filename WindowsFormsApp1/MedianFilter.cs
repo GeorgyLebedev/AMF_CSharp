@@ -10,8 +10,8 @@ namespace WindowsFormsApp1
     {
         //Класс для управления пикселями изображения
         private ImageController imgController;
-        //Предел замены - разница яркостей, при которой мы заменяем значение
-        private readonly byte filterLimit;
+        //Номинальное значение яркости линий, при котором линия будет фильтроваться
+        private readonly byte minBrigthness;
         //Длина последовательности - минимальная длина последовательности пикселей под замену
         private int sequenceLength;
         //Маска фильтра
@@ -19,11 +19,10 @@ namespace WindowsFormsApp1
 
         ProgressBar progressBar;
 
-        public MedianFilter(Bitmap imageData, byte limit, MaskSize size, int minLineLength)
+        public MedianFilter(Bitmap imageData, byte minBrigthness, MaskSize size, int minLineLength)
         {
             imgController = new ImageController(imageData); 
-            // FIXME: FilterLimit более не используется
-            filterLimit = limit;
+            this.minBrigthness = minBrigthness;
             sequenceLength = minLineLength;
             mask = new Mask(size, imgController);
         }
@@ -44,7 +43,7 @@ namespace WindowsFormsApp1
             Pixel medianPixel = sortedPixels[(sortedPixels.Length + 1) / 2 ];
             byte medianBrightness = (byte)(medianPixel.rgbSum / 3);
             byte currentBrightness = (byte)imgController.getPixelMiddleValue(currentPos.X, currentPos.Y);
-            if (medianBrightness != currentBrightness)
+            if (medianBrightness != currentBrightness && currentBrightness>minBrigthness)
             {
                 replacePixels.pushPixel(currentPos.X, medianPixel);
             }
