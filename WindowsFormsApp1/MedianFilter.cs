@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
         //Маска фильтра
         private Mask mask;
 
-        ProgressBar progressBar;
+        Guna.UI2.WinForms.Guna2CircleProgressBar progressBar;
 
         public MedianFilter(Bitmap imageData, byte minBrigthness, MaskSize size, int minLineLength)
         {
@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
             mask = new Mask(size, imgController);
         }
 
-        public void setProgressBar(ProgressBar progressBar)
+        public void setProgressBar(Guna.UI2.WinForms.Guna2CircleProgressBar progressBar)
         {
             this.progressBar = progressBar;
             progressBar.Value = 0;

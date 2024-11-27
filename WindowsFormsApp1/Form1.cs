@@ -2,20 +2,21 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using WindowsFormsApp1.Properties;
 using WindowsFormsApp1.types;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        MaskSize maskSize = new MaskSize(5, 5);
    
         Bitmap image;
         Bitmap processedImage;
-
+        PictureBox outputPictureBox = null;
         public Form1()
         {
             InitializeComponent();
+            maskSizeComboBox.SelectedIndex = 0;
         }
 
         private void openImageClick(object sender, EventArgs e)
@@ -28,7 +29,6 @@ namespace WindowsFormsApp1
                     image = loader.Load();
                     inputPictureBox.Image = image;
                     inputPictureBox.Invalidate();
-                    outputPictureBox.Image = null;
                     filterBtn.Enabled = true;
                 }
                 catch (Exception ex)
@@ -48,18 +48,23 @@ namespace WindowsFormsApp1
                 stopWatch.Start();
                 /////////////////
                 /////////////////
+                if (outputPictureBox != null)
+                {
+                    tableLayoutPanel1.Controls.Remove(outputPictureBox);
+                    outputPictureBox = null;
+                }
+                tableLayoutPanel1.Controls.Add(progressBar, 1, 0);
                 bool isNeedRotate = image.Width < image.Height;
                 if (isNeedRotate)
                 {
                     image.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 }
-                byte replaceLimit = (byte)minBrightness.Value;
-                int minLineLength = (int)lineLengthInput.Value;
-                MedianFilter filter = new MedianFilter(new Bitmap(inputPictureBox.Image), replaceLimit, maskSize, minLineLength);
-                filter.setProgressBar(progressBar);
-                processedImage = await filter.doFiltration();
+                MedianFilter medianFilter = createFilter();
+                processedImage = await medianFilter.doFiltration();
+                outputPictureBox = createOutputPictureBox();
+                tableLayoutPanel1.Controls.Remove(progressBar);
+                tableLayoutPanel1.Controls.Add(outputPictureBox, 1, 0);
                 outputPictureBox.Image = processedImage;
-                resetImgBtn.Visible = true;
                 if (isNeedRotate)
                 {
                     processedImage.RotateFlip(RotateFlipType.Rotate270FlipNone);
@@ -81,37 +86,68 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void resetButtonsStyle()
+        private MedianFilter createFilter()
         {
-            button5x5.Enabled = true;
-            button7x7.Enabled = true;
-            button9x9.Enabled = true;
-            button11x11.Enabled = true;
-            button13x13.Enabled = true;
-            button5x5.FlatAppearance.BorderSize = 0;
-            button7x7.FlatAppearance.BorderSize = 0;
-            button9x9.FlatAppearance.BorderSize = 0;
-            button11x11.FlatAppearance.BorderSize = 0;
-            button13x13.FlatAppearance.BorderSize = 0;
+            byte replaceLimit = (byte)minBrightness.Value;
+            int minLineLength = (int)lineLengthInput.Value;
+            MedianFilter filter = new MedianFilter(new Bitmap(inputPictureBox.Image), replaceLimit, getMaskSize(), minLineLength);
+            filter.setProgressBar(progressBar);
+            return filter;
         }
 
-        private void setMaskSize(object sender, EventArgs e)
+        private PictureBox createOutputPictureBox()
         {
-            resetButtonsStyle();
-            Button button = (Button)sender;
-            string sizeStr = button.Name.Substring(button.Name.IndexOf("x") + 1);
-            byte size = Convert.ToByte(sizeStr);
-            maskSize =  new MaskSize(size, size);
-            groupBox1.Text = "Тип маски:" + size + " X " + size;
-            button.Enabled = false;
-            button.FlatAppearance.BorderSize = 3;
+            PictureBox outputPictureBox = new PictureBox();
+            outputPictureBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            outputPictureBox.BackColor = SystemColors.ControlLight;
+            outputPictureBox.Location = new Point(512, 6);
+            outputPictureBox.Margin = new Padding(5, 5, 10, 5);
+            outputPictureBox.Name = "outputPictureBox";
+            outputPictureBox.Size = new Size(491, 458);
+            outputPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            outputPictureBox.TabIndex = 1;
+            outputPictureBox.TabStop = false;
+            return outputPictureBox;
         }
 
-        private void resetImgBtn_Click(object sender, EventArgs e)
+        private MaskSize getMaskSize()
         {
-            outputPictureBox.Image = null;
-            processedImage = null;
-            resetImgBtn.Visible = false;
+            string value;
+            if (preSizeRadio.Checked)
+            {
+                value = maskSizeComboBox.SelectedItem.ToString();
+            }
+            else
+            {
+                value = maskSizeTextBox.Text;
+            }
+            string[] sizeStr = value.Split('x');
+            byte width = Convert.ToByte(sizeStr[0]);
+            byte heigth = Convert.ToByte(sizeStr[1]);
+            return  new MaskSize(width, heigth);
+        }
+
+        private void preSizeRadio_Click(object sender, EventArgs e)
+        {
+            preSizeRadio.Checked = true;
+            ownSizeRadio.Checked = false;
+            maskSizeComboBox.Enabled = true;
+            maskSizeTextBox.Enabled = false;
+        }
+
+        private void ownSizeRadio_Click(object sender, EventArgs e)
+        {
+            var maskSizeForm = new Form2();
+            if (maskSizeForm.ShowDialog() == DialogResult.OK)
+            {
+                byte maskWidth = maskSizeForm.width;
+                byte maskHeight = maskSizeForm.height;
+                maskSizeTextBox.Text = maskWidth + "x" + maskHeight;
+                preSizeRadio.Checked = false;
+                ownSizeRadio.Checked = true;
+                maskSizeComboBox.Enabled = false;
+                maskSizeTextBox.Enabled = true;
+            }
         }
     }
 }

@@ -28,3 +28,6 @@ E:\repos\AMF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource
 E:\repos\AMF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 E:\repos\AMF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 E:\repos\AMF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+E:\repos\AMF\WindowsFormsApp1\bin\Debug\Guna.UI2.dll
+E:\repos\AMF\WindowsFormsApp1\obj\Debug\WindowsF.A1EEDF9B.Up2Date
+E:\repos\AMF\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form2.resources
