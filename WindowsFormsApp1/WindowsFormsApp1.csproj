@@ -104,7 +104,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="resources\" />
+    <None Include="resources\start_disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\save_as.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\placeholder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

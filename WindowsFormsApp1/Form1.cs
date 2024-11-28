@@ -101,7 +101,7 @@ namespace WindowsFormsApp1
             outputPictureBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             outputPictureBox.BackColor = SystemColors.ControlLight;
             outputPictureBox.Location = new Point(512, 6);
-            outputPictureBox.Margin = new Padding(5, 5, 10, 5);
+            outputPictureBox.Margin = new Padding(5, 5, 5, 5);
             outputPictureBox.Name = "outputPictureBox";
             outputPictureBox.Size = new Size(491, 458);
             outputPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
