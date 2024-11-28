@@ -51,6 +51,7 @@
             this.saveAsButton = new Guna.UI2.WinForms.Guna2Button();
             this.saveButton = new Guna.UI2.WinForms.Guna2Button();
             this.openFileBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.lenseButton = new Guna.UI2.WinForms.Guna2Button();
             this.filterBtn = new Guna.UI2.WinForms.Guna2Button();
             this.inputPictureBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.minBrightness)).BeginInit();
@@ -164,6 +165,8 @@
             this.guna2Panel1.Controls.Add(this.guna2GroupBox2);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox1);
             this.guna2Panel1.Controls.Add(this.elapsedLabel);
+            this.guna2Panel1.Controls.Add(this.lenseButton);
+            this.guna2Panel1.Controls.Add(this.filterBtn);
             this.guna2Panel1.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Panel1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.guna2Panel1.FillColor = System.Drawing.Color.Gainsboro;
@@ -190,7 +193,7 @@
             this.guna2GroupBox2.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox2.Location = new System.Drawing.Point(431, 5);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(431, 7);
             this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(248, 100);
@@ -241,7 +244,7 @@
             this.guna2GroupBox1.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(689, 5);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(689, 7);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Padding = new System.Windows.Forms.Padding(5);
@@ -353,7 +356,7 @@
             this.progressBar.FillThickness = 13;
             this.progressBar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.progressBar.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.progressBar.Location = new System.Drawing.Point(688, 175);
+            this.progressBar.Location = new System.Drawing.Point(688, 174);
             this.progressBar.Minimum = 0;
             this.progressBar.Name = "progressBar";
             this.progressBar.ProgressBrushMode = Guna.UI2.WinForms.Enums.BrushMode.SolidTransition;
@@ -379,11 +382,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.inputPictureBox, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.progressBar, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 122);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 124);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1014, 494);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1014, 492);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // guna2GroupBox3
@@ -396,13 +400,12 @@
             this.guna2GroupBox3.Controls.Add(this.saveAsButton);
             this.guna2GroupBox3.Controls.Add(this.saveButton);
             this.guna2GroupBox3.Controls.Add(this.openFileBtn);
-            this.guna2GroupBox3.Controls.Add(this.filterBtn);
             this.guna2GroupBox3.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2GroupBox3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.guna2GroupBox3.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox3.Location = new System.Drawing.Point(10, 5);
+            this.guna2GroupBox3.Location = new System.Drawing.Point(10, 7);
             this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
             this.guna2GroupBox3.Size = new System.Drawing.Size(410, 100);
@@ -503,10 +506,34 @@
             this.toolTip1.SetToolTip(this.openFileBtn, "Открыть файл");
             this.openFileBtn.Click += new System.EventHandler(this.openImageClick);
             // 
+            // lenseButton
+            // 
+            this.lenseButton.BackColor = System.Drawing.Color.Transparent;
+            this.lenseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.lenseButton.BorderColor = System.Drawing.Color.DarkGray;
+            this.lenseButton.BorderRadius = 10;
+            this.lenseButton.BorderThickness = 1;
+            this.lenseButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.lenseButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.lenseButton.DisabledState.FillColor = System.Drawing.Color.Silver;
+            this.lenseButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.lenseButton.DisabledState.Image = global::WindowsFormsApp1.Properties.Resources.magnifier_disabled;
+            this.lenseButton.Enabled = false;
+            this.lenseButton.FillColor = System.Drawing.Color.Transparent;
+            this.lenseButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lenseButton.ForeColor = System.Drawing.Color.White;
+            this.lenseButton.Image = global::WindowsFormsApp1.Properties.Resources.magnifier;
+            this.lenseButton.ImageSize = new System.Drawing.Size(40, 40);
+            this.lenseButton.Location = new System.Drawing.Point(974, 34);
+            this.lenseButton.Margin = new System.Windows.Forms.Padding(5, 5, 10, 5);
+            this.lenseButton.Name = "lenseButton";
+            this.lenseButton.Size = new System.Drawing.Size(50, 50);
+            this.lenseButton.TabIndex = 0;
+            this.lenseButton.Click += new System.EventHandler(this.filterBtn_Click);
+            // 
             // filterBtn
             // 
             this.filterBtn.BackColor = System.Drawing.Color.Transparent;
-            this.filterBtn.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.start;
             this.filterBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.filterBtn.BorderColor = System.Drawing.Color.DarkGray;
             this.filterBtn.BorderRadius = 10;
@@ -520,11 +547,12 @@
             this.filterBtn.FillColor = System.Drawing.Color.Transparent;
             this.filterBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.filterBtn.ForeColor = System.Drawing.Color.White;
-            this.filterBtn.ImageSize = new System.Drawing.Size(45, 50);
-            this.filterBtn.Location = new System.Drawing.Point(344, 24);
-            this.filterBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.filterBtn.Image = global::WindowsFormsApp1.Properties.Resources.start;
+            this.filterBtn.ImageSize = new System.Drawing.Size(40, 40);
+            this.filterBtn.Location = new System.Drawing.Point(914, 34);
+            this.filterBtn.Margin = new System.Windows.Forms.Padding(5, 5, 10, 5);
             this.filterBtn.Name = "filterBtn";
-            this.filterBtn.Size = new System.Drawing.Size(50, 65);
+            this.filterBtn.Size = new System.Drawing.Size(50, 50);
             this.filterBtn.TabIndex = 0;
             this.toolTip1.SetToolTip(this.filterBtn, "Обработать");
             this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
@@ -540,7 +568,7 @@
             this.inputPictureBox.Location = new System.Drawing.Point(6, 6);
             this.inputPictureBox.Margin = new System.Windows.Forms.Padding(5);
             this.inputPictureBox.Name = "inputPictureBox";
-            this.inputPictureBox.Size = new System.Drawing.Size(495, 482);
+            this.inputPictureBox.Size = new System.Drawing.Size(495, 480);
             this.inputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.inputPictureBox.TabIndex = 1;
             this.inputPictureBox.TabStop = false;
@@ -553,7 +581,7 @@
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(900, 500);
+            this.MinimumSize = new System.Drawing.Size(1000, 500);
             this.Name = "Form1";
             this.Text = "AMF";
             ((System.ComponentModel.ISupportInitialize)(this.minBrightness)).EndInit();
@@ -594,6 +622,7 @@
         private Guna.UI2.WinForms.Guna2Button saveButton;
         private Guna.UI2.WinForms.Guna2Button saveAsButton;
         private Guna.UI2.WinForms.Guna2Button helpButton;
+        private Guna.UI2.WinForms.Guna2Button lenseButton;
     }
 }
 

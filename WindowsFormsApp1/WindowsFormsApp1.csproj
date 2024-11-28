@@ -124,5 +124,11 @@
   <ItemGroup>
     <None Include="resources\placeholder.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\magnifier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\magnifier_disabled.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
