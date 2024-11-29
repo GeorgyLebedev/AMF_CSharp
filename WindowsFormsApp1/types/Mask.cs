@@ -57,7 +57,7 @@ namespace WindowsFormsApp1.types
                 for (int x = 0; x < size.width; x++)
                 {
 
-                    if (y == 0 || y == size.width - 1 || x == centerPoint.X)
+                    if (y == 0 || y == size.height - 1 || x == centerPoint.X)
                     {
                         //Заполняем все точки в первой строке или стоблце, а таже центральные
                         Point maskPoint = new Point(x - centerPoint.X, y - centerPoint.Y);
@@ -73,7 +73,7 @@ namespace WindowsFormsApp1.types
             updateablePoints = new MaskUpdateablePoints();
             updateablePoints.top = new Point(size.width / 2, size.height / 2);
             updateablePoints.bottom = new Point(size.width / 2, -size.height / 2);
-            updateablePoints.middle = coordinates.Where(point => point.X == 0 && Math.Abs(point.Y) != size.height / 2).ToArray();
+            updateablePoints.middle = coordinates.Where(point => point.X == 0 && Math.Abs(point.Y) < size.height / 2).ToArray();
         }
 
         public void fill(Point currentPos, ref Pixel[] pixels)
@@ -103,11 +103,11 @@ namespace WindowsFormsApp1.types
             {
                 Pixel[] newMaskPixels = new Pixel[pixelsCount];
                 // Заполняем верхнюю строку
-                Pixel[] topArray = updateTop(currentPos, updateablePoints.top, pixels);
+                Pixel[] topArray = updateTop(currentPos, pixels);
                 // Заполняем одиночные элементы
                 Pixel[] middleArray = updateMiddle(currentPos);
                 // Заполняем нижнюю строку
-                Pixel[] bottomArray = updateBottom(currentPos, updateablePoints.bottom, pixels);
+                Pixel[] bottomArray = updateBottom(currentPos, pixels);
 
                 Array.Copy(topArray, 0, newMaskPixels, 0, topArray.Length);
                 Array.Copy(middleArray, 0, newMaskPixels, topArray.Length, middleArray.Length);
@@ -121,11 +121,11 @@ namespace WindowsFormsApp1.types
         }
 
 
-        private Pixel[] updateTop(Point currentPos, Point point, Pixel[] pixels)
+        private Pixel[] updateTop(Point currentPos, Pixel[] pixels)
         {
             Pixel[] arr = new Pixel[size.width];
             Array.Copy(pixels, 1, arr, 0, size.width - 1);
-            arr[size.width - 1] = imageController.GetPixel(currentPos.X + point.X, currentPos.Y + point.Y);
+            arr[size.width - 1] = imageController.GetPixel(currentPos.X + updateablePoints.top.X, currentPos.Y + updateablePoints.top.Y);
             return arr;
         }
 
@@ -139,11 +139,11 @@ namespace WindowsFormsApp1.types
             return arr;
         }
 
-        private Pixel[] updateBottom(Point currentPos, Point point, Pixel[] mask)
+        private Pixel[] updateBottom(Point currentPos, Pixel[] mask)
         {
             Pixel[] arr = new Pixel[size.width];
             Array.Copy(mask, mask.Length - size.width + 1, arr, 0, size.width - 1);
-            arr[size.width - 1] = imageController.GetPixel(currentPos.X + point.X, currentPos.Y + point.Y);
+            arr[size.width - 1] = imageController.GetPixel(currentPos.X + updateablePoints.bottom.X, currentPos.Y + updateablePoints.bottom.Y);
             return arr;
         }
     }

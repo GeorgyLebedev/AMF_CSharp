@@ -572,6 +572,7 @@
             this.inputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.inputPictureBox.TabIndex = 1;
             this.inputPictureBox.TabStop = false;
+            this.inputPictureBox.Click += new System.EventHandler(this.openImageClick);
             // 
             // Form1
             // 
