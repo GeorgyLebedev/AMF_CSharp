@@ -1,84 +1,45 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
-using WindowsFormsApp1.Properties;
-using WindowsFormsApp1.types;
+using WindowsFormsApp1.entities;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-   
-        Bitmap image;
-        Bitmap processedImage;
-        PictureBox outputPictureBox = null;
+        ImageManager imageManager;
         public Form1()
         {
             InitializeComponent();
             maskSizeComboBox.SelectedIndex = 0;
+            imageManager = new ImageManager(openFileDialog, saveFileDialog, inputPictureBox, outputPictureBox);
         }
 
         private void openImageClick(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    ImageLoader loader = new ImageLoader(openFileDialog.FileName);
-                    image = loader.Load();
-                    inputPictureBox.Image = image;
-                    inputPictureBox.Invalidate();
-                    filterBtn.Enabled = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ошибка открытия файла:\n\n {ex.Message}\n\n");
-                }
-            }
+            imageManager.openImage();
+            filterBtn.Enabled = true;
         }
 
         private async void filterBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                elapsedLabel.Text = "";
-                filterBtn.Enabled = false;
-                Stopwatch stopWatch = new Stopwatch();
-                stopWatch.Start();
-                /////////////////
-                /////////////////
-                if (outputPictureBox != null)
-                {
-                    tableLayoutPanel1.Controls.Remove(outputPictureBox);
-                    outputPictureBox = null;
-                }
-                tableLayoutPanel1.Controls.Add(progressBar, 1, 0);
-                bool isNeedRotate = image.Width < image.Height;
-                if (isNeedRotate)
-                {
-                    image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                }
-                MedianFilter medianFilter = createFilter();
-                processedImage = await medianFilter.doFiltration();
-                outputPictureBox = createOutputPictureBox();
-                tableLayoutPanel1.Controls.Remove(progressBar);
-                tableLayoutPanel1.Controls.Add(outputPictureBox, 1, 0);
-                outputPictureBox.Image = processedImage;
-                if (isNeedRotate)
-                {
-                    processedImage.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                    image.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                }
-                inputPictureBox.Invalidate();
-                outputPictureBox.Invalidate();
-                /////////////////
-                /////////////////
-                stopWatch.Stop();
-                TimeSpan ts = stopWatch.Elapsed;
-                elapsedLabel.Text = ts.TotalSeconds.ToString("F5") + "s";
+                Benchmark benchmark = new Benchmark(elapsedLabel, filterBtn);
+                benchmark.begin();
 
-                filterBtn.Enabled = true;
+                swapPanel(true);
+                imageManager.rotateBeforeProcessing();
+
+                MedianFilter medianFilter = createFilter();
+                imageManager.setOutputImage(await medianFilter.doFiltration());
+
+                swapPanel(false);
+                imageManager.rotateAfterProcessing();
+
+                benchmark.end();
             }
             catch (Exception ex)
             {
@@ -93,21 +54,6 @@ namespace WindowsFormsApp1
             MedianFilter filter = new MedianFilter(new Bitmap(inputPictureBox.Image), replaceLimit, getMaskSize(), minLineLength);
             filter.setProgressBar(progressBar);
             return filter;
-        }
-
-        private PictureBox createOutputPictureBox()
-        {
-            PictureBox outputPictureBox = new PictureBox();
-            outputPictureBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            outputPictureBox.BackColor = SystemColors.ControlLight;
-            outputPictureBox.Location = new Point(512, 6);
-            outputPictureBox.Margin = new Padding(5, 5, 5, 5);
-            outputPictureBox.Name = "outputPictureBox";
-            outputPictureBox.Size = new Size(491, 458);
-            outputPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            outputPictureBox.TabIndex = 1;
-            outputPictureBox.TabStop = false;
-            return outputPictureBox;
         }
 
         private MaskSize getMaskSize()
@@ -147,6 +93,54 @@ namespace WindowsFormsApp1
                 ownSizeRadio.Checked = true;
                 maskSizeComboBox.Enabled = false;
                 maskSizeTextBox.Enabled = true;
+            }
+        }
+
+        private void swapPanel(bool isProcessing)
+        {
+            if (isProcessing)
+            {
+                tableLayoutPanel1.Controls.Remove(outputPictureBox);
+                tableLayoutPanel1.Controls.Add(progressBar, 1, 0);
+            }
+            else
+            {
+                tableLayoutPanel1.Controls.Remove(progressBar);
+                tableLayoutPanel1.Controls.Add(outputPictureBox, 1, 0);
+            }
+        }
+
+        private void saveAsButtonClick(object sender, EventArgs e)
+        {
+            imageManager.dialogSaveOutputImage();
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            imageManager.saveOutputImage();
+        }
+
+        private void inputPictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                openImageClick(sender,e);
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                imageManager.rotateInputImg();
+            }
+        }
+
+        private void outputPictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                saveAsButtonClick(sender, e);
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                imageManager.rotateOutputImg();
             }
         }
     }

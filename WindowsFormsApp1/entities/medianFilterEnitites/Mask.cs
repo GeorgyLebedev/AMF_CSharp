@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Linq;
 
-namespace WindowsFormsApp1.types
+namespace WindowsFormsApp1.entities
 {
     public class MaskSize
     {

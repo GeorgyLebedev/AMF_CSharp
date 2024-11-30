@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1.types
+namespace WindowsFormsApp1.entities
 {
     public class ReplacePixels
     {

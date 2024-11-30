@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using WindowsFormsApp1.types;
+using WindowsFormsApp1.entities;
 
 namespace WindowsFormsApp1
 {
