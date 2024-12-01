@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="entities\Benchmark.cs" />
+    <Compile Include="entities\medianFilterEnitites\MaskDisplay.cs" />
     <Compile Include="entities\Picture.cs" />
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>

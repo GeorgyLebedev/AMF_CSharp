@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Linq;
 
-namespace WindowsFormsApp1.entities
+namespace WindowsFormsApp1.entities.medianFilterEnitites
 {
     public class MaskSize
     {

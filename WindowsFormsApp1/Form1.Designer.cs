@@ -41,6 +41,7 @@
             this.filterBtn = new Guna.UI2.WinForms.Guna2Button();
             this.elapsedLabel = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.maskPictureBox = new System.Windows.Forms.PictureBox();
             this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.progressBar = new Guna.UI2.WinForms.Guna2CircleProgressBar();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
@@ -59,6 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.minBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineLengthInput)).BeginInit();
             this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maskPictureBox)).BeginInit();
             this.guna2GroupBox3.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
@@ -286,7 +288,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel1.BorderColor = System.Drawing.Color.LightGray;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.maskPictureBox);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox3);
+            this.guna2Panel1.Controls.Add(this.progressBar);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox2);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox1);
             this.guna2Panel1.Controls.Add(this.elapsedLabel);
@@ -303,6 +307,15 @@
             this.guna2Panel1.Size = new System.Drawing.Size(1036, 116);
             this.guna2Panel1.TabIndex = 12;
             // 
+            // maskPictureBox
+            // 
+            this.maskPictureBox.Location = new System.Drawing.Point(747, 9);
+            this.maskPictureBox.Name = "maskPictureBox";
+            this.maskPictureBox.Size = new System.Drawing.Size(100, 100);
+            this.maskPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.maskPictureBox.TabIndex = 19;
+            this.maskPictureBox.TabStop = false;
+            // 
             // guna2GroupBox3
             // 
             this.guna2GroupBox3.BackColor = System.Drawing.Color.Transparent;
@@ -310,7 +323,6 @@
             this.guna2GroupBox3.BorderRadius = 10;
             this.guna2GroupBox3.BorderThickness = 2;
             this.guna2GroupBox3.Controls.Add(this.helpButton);
-            this.guna2GroupBox3.Controls.Add(this.progressBar);
             this.guna2GroupBox3.Controls.Add(this.saveAsButton);
             this.guna2GroupBox3.Controls.Add(this.saveButton);
             this.guna2GroupBox3.Controls.Add(this.openFileBtn);
@@ -322,7 +334,7 @@
             this.guna2GroupBox3.Location = new System.Drawing.Point(10, 7);
             this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
-            this.guna2GroupBox3.Size = new System.Drawing.Size(410, 100);
+            this.guna2GroupBox3.Size = new System.Drawing.Size(249, 100);
             this.guna2GroupBox3.TabIndex = 18;
             this.guna2GroupBox3.Text = "Панель управления";
             this.guna2GroupBox3.TextOffset = new System.Drawing.Point(0, -10);
@@ -336,7 +348,7 @@
             this.progressBar.FillThickness = 13;
             this.progressBar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.progressBar.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.progressBar.Location = new System.Drawing.Point(277, 23);
+            this.progressBar.Location = new System.Drawing.Point(1011, 107);
             this.progressBar.Minimum = 0;
             this.progressBar.Name = "progressBar";
             this.progressBar.ProgressBrushMode = Guna.UI2.WinForms.Enums.BrushMode.SolidTransition;
@@ -365,7 +377,7 @@
             this.guna2GroupBox2.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox2.Location = new System.Drawing.Point(431, 7);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(265, 7);
             this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(248, 100);
@@ -416,11 +428,11 @@
             this.guna2GroupBox1.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(689, 7);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(522, 9);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.guna2GroupBox1.Size = new System.Drawing.Size(215, 100);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(217, 100);
             this.guna2GroupBox1.TabIndex = 18;
             this.guna2GroupBox1.Text = "Размер маски";
             this.guna2GroupBox1.TextOffset = new System.Drawing.Point(0, -10);
@@ -518,6 +530,7 @@
             this.maskSizeComboBox.Name = "maskSizeComboBox";
             this.maskSizeComboBox.Size = new System.Drawing.Size(94, 30);
             this.maskSizeComboBox.TabIndex = 15;
+            this.maskSizeComboBox.SelectedValueChanged += new System.EventHandler(this.maskSizeComboBox_SelectedValueChanged);
             // 
             // lenseButton
             // 
@@ -619,6 +632,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lineLengthInput)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maskPictureBox)).EndInit();
             this.guna2GroupBox3.ResumeLayout(false);
             this.guna2GroupBox2.ResumeLayout(false);
             this.guna2GroupBox2.PerformLayout();
@@ -657,6 +671,7 @@
         private Guna.UI2.WinForms.Guna2Button lenseButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.PictureBox outputPictureBox;
+        private System.Windows.Forms.PictureBox maskPictureBox;
     }
 }
 

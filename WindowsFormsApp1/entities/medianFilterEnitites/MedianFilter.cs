@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using WindowsFormsApp1.entities;
 
-namespace WindowsFormsApp1
+namespace WindowsFormsApp1.entities.medianFilterEnitites
 {
     public class MedianFilter
     {

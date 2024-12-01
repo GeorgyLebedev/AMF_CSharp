@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1.entities
+namespace WindowsFormsApp1.entities.medianFilterEnitites
 {
     public class ReplacePixels
     {

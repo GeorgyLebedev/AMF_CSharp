@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Windows.Forms;
+using WindowsFormsApp1.entities.medianFilterEnitites;
 using WindowsFormsApp1.entities;
 
 namespace WindowsFormsApp1
@@ -10,11 +9,14 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         ImageManager imageManager;
+        MaskDisplay maskDisplay;
         public Form1()
         {
             InitializeComponent();
             maskSizeComboBox.SelectedIndex = 0;
             imageManager = new ImageManager(openFileDialog, saveFileDialog, inputPictureBox, outputPictureBox);
+            maskDisplay = new MaskDisplay(maskPictureBox);
+            maskDisplay.update(new MaskSize(3,3));
         }
 
         private void openImageClick(object sender, EventArgs e)
@@ -79,6 +81,8 @@ namespace WindowsFormsApp1
             ownSizeRadio.Checked = false;
             maskSizeComboBox.Enabled = true;
             maskSizeTextBox.Enabled = false;
+
+            maskDisplay.update(getMaskSize());
         }
 
         private void ownSizeRadio_Click(object sender, EventArgs e)
@@ -93,6 +97,8 @@ namespace WindowsFormsApp1
                 ownSizeRadio.Checked = true;
                 maskSizeComboBox.Enabled = false;
                 maskSizeTextBox.Enabled = true;
+
+                maskDisplay.update(getMaskSize());
             }
         }
 
@@ -141,6 +147,14 @@ namespace WindowsFormsApp1
             if (e.Button == MouseButtons.Right)
             {
                 imageManager.rotateOutputImg();
+            }
+        }
+
+        private void maskSizeComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (maskDisplay != null)
+            {
+                maskDisplay.update(getMaskSize());
             }
         }
     }
