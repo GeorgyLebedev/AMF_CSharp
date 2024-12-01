@@ -81,5 +81,13 @@ namespace WindowsFormsApp1
             filteredPixels[4 * i + 1] = pixel.g;
             filteredPixels[4 * i + 2] = pixel.r;
         }
+
+        public void SetPixelColor(int x, int y, Color color)
+        {
+            int i = y * width + x;
+            filteredPixels[4 * i] = color.B;
+            filteredPixels[4 * i + 1] = color.G;
+            filteredPixels[4 * i + 2] = color.R;
+        }
     }
 }

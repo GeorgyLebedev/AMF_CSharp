@@ -8,17 +8,14 @@ namespace WindowsFormsApp1.entities
     {
         Stopwatch stopwatch;
         Label elapsedLabel;
-        Guna2Button blockedButton;
-        public Benchmark(Label label, Guna2Button button) { 
+        public Benchmark(Label label) { 
             elapsedLabel = label;
-            blockedButton = button;
             stopwatch = new Stopwatch();
         }
 
         public void begin()
         {
             elapsedLabel.Text = "";
-            blockedButton.Enabled = false;
             stopwatch.Start();
         }
 
@@ -26,7 +23,6 @@ namespace WindowsFormsApp1.entities
         {
             stopwatch.Stop();
             elapsedLabel.Text = stopwatch.Elapsed.TotalSeconds.ToString("F5") + "s";
-            blockedButton.Enabled = true;   
         }
     }
 }

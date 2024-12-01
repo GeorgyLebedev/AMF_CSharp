@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using WindowsFormsApp1.entities.medianFilterEnitites;
 using WindowsFormsApp1.entities;
+using WindowsFormsApp1.entities.medianFilterEnitites;
 
 namespace WindowsFormsApp1
 {
+    struct FilterType
+    {
+        public static string analyzer = "analyzer";
+        public static string medianFilter = "filter";
+    }
+
     public partial class Form1 : Form
     {
         ImageManager imageManager;
@@ -22,20 +28,21 @@ namespace WindowsFormsApp1
         private void openImageClick(object sender, EventArgs e)
         {
             imageManager.openImage();
-            filterBtn.Enabled = true;
+            filterBtn.Enabled = imageManager.isLoaded();
+            lenseButton.Enabled = imageManager.isLoaded();
         }
 
         private async void filterBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                Benchmark benchmark = new Benchmark(elapsedLabel, filterBtn);
+                Benchmark benchmark = new Benchmark(elapsedLabel);
                 benchmark.begin();
 
                 swapPanel(true);
                 imageManager.rotateBeforeProcessing();
 
-                MedianFilter medianFilter = createFilter();
+                MedianFilter medianFilter = createFilter(FilterType.medianFilter);
                 imageManager.setOutputImage(await medianFilter.doFiltration());
 
                 swapPanel(false);
@@ -49,13 +56,42 @@ namespace WindowsFormsApp1
             }
         }
 
-        private MedianFilter createFilter()
+        private async void lenseButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                swapPanel(true);
+                imageManager.rotateBeforeProcessing();
+
+                FilterAnalyzer analyzer = (FilterAnalyzer)createFilter(FilterType.analyzer);
+                imageManager.setOutputImage(await analyzer.doAnalysis());
+
+                swapPanel(false);
+                imageManager.rotateAfterProcessing();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка анализа изображения:\n\n {ex.Message}\n\n");
+            }
+        }
+
+        private MedianFilter createFilter(string filterType)
         {
             byte replaceLimit = (byte)minBrightness.Value;
             int minLineLength = (int)lineLengthInput.Value;
-            MedianFilter filter = new MedianFilter(new Bitmap(inputPictureBox.Image), replaceLimit, getMaskSize(), minLineLength);
-            filter.setProgressBar(progressBar);
-            return filter;
+            if (filterType == FilterType.medianFilter)
+            {
+                MedianFilter filter = new MedianFilter(new Bitmap(inputPictureBox.Image), replaceLimit, getMaskSize(), minLineLength);
+                filter.setProgressBar(progressBar);
+                return filter;
+            }
+            else
+            {
+                FilterAnalyzer analyzer = new FilterAnalyzer(new Bitmap(inputPictureBox.Image), replaceLimit, getMaskSize(), minLineLength);
+                analyzer.setProgressBar(progressBar);
+                return analyzer;
+            }
+            
         }
 
         private MaskSize getMaskSize()
@@ -114,6 +150,7 @@ namespace WindowsFormsApp1
                 tableLayoutPanel1.Controls.Remove(progressBar);
                 tableLayoutPanel1.Controls.Add(outputPictureBox, 1, 0);
             }
+            this.Enabled = !isProcessing;
         }
 
         private void saveAsButtonClick(object sender, EventArgs e)
@@ -157,5 +194,7 @@ namespace WindowsFormsApp1
                 maskDisplay.update(getMaskSize());
             }
         }
+
+    
     }
 }

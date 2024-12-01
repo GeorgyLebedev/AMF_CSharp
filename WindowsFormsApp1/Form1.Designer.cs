@@ -555,7 +555,7 @@
             this.lenseButton.Name = "lenseButton";
             this.lenseButton.Size = new System.Drawing.Size(50, 50);
             this.lenseButton.TabIndex = 0;
-            this.lenseButton.Click += new System.EventHandler(this.filterBtn_Click);
+            this.lenseButton.Click += new System.EventHandler(this.lenseButton_Click);
             // 
             // tableLayoutPanel1
             // 

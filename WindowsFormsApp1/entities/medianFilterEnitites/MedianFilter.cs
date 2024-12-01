@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Drawing;
 using System.Threading.Tasks;
-using WindowsFormsApp1.entities;
 
 namespace WindowsFormsApp1.entities.medianFilterEnitites
 {
     public class MedianFilter
     {
         //Класс для управления пикселями изображения
-        private ImageController imgController;
+        protected ImageController imgController;
         //Номинальное значение яркости линий, при котором линия будет фильтроваться
-        private readonly byte minBrigthness;
+        protected byte minBrigthness;
         //Длина последовательности - минимальная длина последовательности пикселей под замену
-        private int sequenceLength;
+        protected int sequenceLength;
         //Маска фильтра
-        private Mask mask;
+        protected Mask mask;
 
-        Guna.UI2.WinForms.Guna2CircleProgressBar progressBar;
+        protected Guna.UI2.WinForms.Guna2CircleProgressBar progressBar;
 
         public MedianFilter(Bitmap imageData, byte minBrigthness, MaskSize size, int minLineLength)
         {
@@ -34,7 +33,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             progressBar.Maximum = imgController.height;
         }
 
-        private void fillReplacePixels(Point currentPos, Pixel[] mask, ReplacePixels replacePixels)
+        protected void fillReplacePixels(Point currentPos, Pixel[] mask, ReplacePixels replacePixels)
         {
             Pixel[] sortedPixels = new Pixel[mask.Length];
             mask.CopyTo(sortedPixels,0);
@@ -56,7 +55,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             }
         }
 
-        private void filterReplacePixels(int rowIndex, ReplacePixels replacePixels)
+        protected void filterReplacePixels(int rowIndex, ReplacePixels replacePixels)
         {
             foreach (var list in replacePixels.getStorage()) {
                 for (int i = 0; i < list.Value.Count; i++)
@@ -67,7 +66,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             replacePixels = null;
         }
 
-        private void processRow(int y)
+        protected void processRow(int y)
         {
             int x = 0;
             ReplacePixels replacePixels = new ReplacePixels();
