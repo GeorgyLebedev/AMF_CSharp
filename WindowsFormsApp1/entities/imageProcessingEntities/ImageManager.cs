@@ -71,22 +71,23 @@ namespace WindowsFormsApp1
             output.rotate90();
         }
 
-        public void openImage()
+        public Boolean openImage()
         {
-            if (dialogs.open.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
-
+            imgLoaded = false;
             try
             {
-                input.setImg(new Bitmap(dialogs.open.FileName), true);
-                imgLoaded = true;
+                if (dialogs.open.ShowDialog() == DialogResult.OK)
+                {
+                    input.setImg(new Bitmap(dialogs.open.FileName), true);
+                    imgLoaded = true;
+                }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка открытия файла:\n\n {ex.Message}\n\n");
             }
+            return imgLoaded;
         }
 
         public void saveOutputImage()

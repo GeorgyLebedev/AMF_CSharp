@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "E:\\repos\\AMF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\entities\\imageprocessingentities\\imagemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\entities\\imageprocessingentities\\imagemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|e:\\repos\\amf\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\entities\\medianfilterenitites\\medianfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\entities\\medianfilterenitites\\medianfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\entities\\medianfilterenitites\\mask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,8 +31,8 @@
       "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\entities\\medianfilterenitites\\medianfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\entities\\medianfilterenitites\\medianfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|solutionrelative:windowsformsapp1\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D31BB720-D2A3-4F65-9D92-BC170CB8E43D}|WindowsFormsApp1\\WindowsFormsApp1.csproj|E:\\repos\\AMF\\windowsformsapp1\\entities\\medianfilterenitites\\maskdisplay.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 226,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,13 +58,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ImageManager.cs",
               "DocumentMoniker": "E:\\repos\\AMF\\WindowsFormsApp1\\entities\\imageProcessingEntities\\ImageManager.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\entities\\imageProcessingEntities\\ImageManager.cs",
               "ToolTip": "E:\\repos\\AMF\\WindowsFormsApp1\\entities\\imageProcessingEntities\\ImageManager.cs",
               "RelativeToolTip": "WindowsFormsApp1\\entities\\imageProcessingEntities\\ImageManager.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAASwFcAAABQAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAYwEsAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-18T11:27:40.597Z",
               "EditorCaption": ""
@@ -79,7 +79,8 @@
               "RelativeToolTip": "WindowsFormsApp1\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T10:50:54.546Z"
+              "WhenOpened": "2025-01-18T10:50:54.546Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -91,7 +92,8 @@
               "RelativeToolTip": "WindowsFormsApp1\\entities\\medianFilterEnitites\\ReplacePixels.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAqwAsAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T10:38:07.787Z"
+              "WhenOpened": "2025-01-18T10:38:07.787Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -103,32 +105,34 @@
               "RelativeToolTip": "WindowsFormsApp1\\entities\\medianFilterEnitites\\Mask.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-18T10:24:16.36Z"
+              "WhenOpened": "2025-01-18T10:24:16.36Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs",
               "DocumentMoniker": "E:\\repos\\AMF\\WindowsFormsApp1\\Form1.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form1.cs",
-              "ToolTip": "E:\\repos\\AMF\\WindowsFormsApp1\\Form1.cs*",
-              "RelativeToolTip": "WindowsFormsApp1\\Form1.cs*",
-              "ViewState": "AgIAAGAAAAAAAAAAAAArwIIAAAAxAAAAAAAAAA==",
+              "ToolTip": "E:\\repos\\AMF\\WindowsFormsApp1\\Form1.cs",
+              "RelativeToolTip": "WindowsFormsApp1\\Form1.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAvwBcAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-04T08:09:06.872Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "MedianFilter.cs",
               "DocumentMoniker": "E:\\repos\\AMF\\WindowsFormsApp1\\entities\\medianFilterEnitites\\MedianFilter.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\entities\\medianFilterEnitites\\MedianFilter.cs",
               "ToolTip": "E:\\repos\\AMF\\WindowsFormsApp1\\entities\\medianFilterEnitites\\MedianFilter.cs",
               "RelativeToolTip": "WindowsFormsApp1\\entities\\medianFilterEnitites\\MedianFilter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T14:51:53.994Z"
+              "WhenOpened": "2024-12-01T14:51:53.994Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -160,15 +164,15 @@
               "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "E:\\repos\\AMF\\WindowsFormsApp1\\Form1.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form1.cs",
-              "ToolTip": "E:\\repos\\AMF\\WindowsFormsApp1\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
-              "RelativeToolTip": "WindowsFormsApp1\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]*",
+              "ToolTip": "E:\\repos\\AMF\\WindowsFormsApp1\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "WindowsFormsApp1\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-03T08:55:15.459Z",
               "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "E:\\repos\\AMF\\WindowsFormsApp1\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "WindowsFormsApp1\\Form1.Designer.cs",

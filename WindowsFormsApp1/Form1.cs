@@ -21,8 +21,12 @@ namespace WindowsFormsApp1
 
         private void openImageClick(object sender, EventArgs e)
         {
-            imageManager.openImage();
-            filterBtn.Enabled = true;
+            if (imageManager.openImage())
+            {
+                filterBtn.Enabled = true;
+                saveButton.Enabled = false;
+                saveAsButton.Enabled = false;
+            }
         }
 
         private async void filterBtn_Click(object sender, EventArgs e)
@@ -32,16 +36,19 @@ namespace WindowsFormsApp1
                 Benchmark benchmark = new Benchmark(elapsedLabel, filterBtn);
                 benchmark.begin();
 
-                swapPanel(true);
+                displayProgress(true);
                 imageManager.rotateBeforeProcessing();
 
                 MedianFilter medianFilter = createFilter();
                 imageManager.setOutputImage(await medianFilter.doFiltration());
 
-                swapPanel(false);
+                displayProgress(false);
                 imageManager.rotateAfterProcessing();
 
                 benchmark.end();
+
+                saveAsButton.Enabled = true;
+                saveButton.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -102,7 +109,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void swapPanel(bool isProcessing)
+        private void displayProgress(bool isProcessing)
         {
             if (isProcessing)
             {

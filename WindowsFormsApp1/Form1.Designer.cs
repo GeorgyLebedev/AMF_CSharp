@@ -181,6 +181,7 @@
             this.saveAsButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.saveAsButton.DisabledState.FillColor = System.Drawing.Color.Silver;
             this.saveAsButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.saveAsButton.Enabled = false;
             this.saveAsButton.FillColor = System.Drawing.Color.Transparent;
             this.saveAsButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.saveAsButton.ForeColor = System.Drawing.Color.White;
@@ -205,6 +206,7 @@
             this.saveButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.saveButton.DisabledState.FillColor = System.Drawing.Color.Silver;
             this.saveButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.saveButton.Enabled = false;
             this.saveButton.FillColor = System.Drawing.Color.Transparent;
             this.saveButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.saveButton.ForeColor = System.Drawing.Color.White;
@@ -253,7 +255,6 @@
             this.filterBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.filterBtn.DisabledState.FillColor = System.Drawing.Color.Silver;
             this.filterBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.filterBtn.DisabledState.Image = global::WindowsFormsApp1.Properties.Resources.start_disabled;
             this.filterBtn.Enabled = false;
             this.filterBtn.FillColor = System.Drawing.Color.Transparent;
             this.filterBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
