@@ -123,7 +123,17 @@ namespace WindowsFormsApp1
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            imageManager.saveOutputImage();
+             DialogResult result = MessageBox.Show(
+                  "Вы уверены, что хотите перезаписать исходный файл?",
+                  "Подтверждение",
+                  MessageBoxButtons.YesNo,
+                  MessageBoxIcon.Question,
+                  MessageBoxDefaultButton.Button2);
+            if(result == DialogResult.Yes)
+            {
+                imageManager.saveOutputImage();
+
+            }
         }
 
         private void inputPictureBox_MouseDown(object sender, MouseEventArgs e)
