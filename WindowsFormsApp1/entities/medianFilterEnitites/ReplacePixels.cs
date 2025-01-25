@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
     public class ReplacePixels
     {
         private Dictionary<int, List<Pixel>> storage;
-        int index = -1;
+        private int index = -1;
         public ReplacePixels()
         {
             storage = new Dictionary<int, List<Pixel>>();

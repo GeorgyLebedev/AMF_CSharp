@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1.entities.medianFilterEnitites
@@ -17,11 +13,12 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
         private int width;
         private int height;
         private int offset;
-        static int side = 100;
+        private int side;
         public MaskDisplay(PictureBox pictureBox) 
         {
             this.pictureBox = pictureBox;
             offset = 1;
+            side = pictureBox.Width;
             brush =  new SolidBrush(Color.LightSlateGray);
         }
 

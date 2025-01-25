@@ -8,7 +8,7 @@ namespace WindowsFormsApp1.entities
 {
     public class Picture
     {
-        PictureBox box;
+        private PictureBox box;
         public bool isVertical
         {
             get
@@ -22,16 +22,13 @@ namespace WindowsFormsApp1.entities
             box = pictureBox;   
         }
 
-        public void firstSetImg(Bitmap img)
+        public void setImg(Bitmap img, bool isFirst=false)
         {
             box.Image = img;
-            grayscaleImage();
-            update();
-        }
-
-        public void setImg(Bitmap img)
-        {
-            box.Image = img;
+            if (isFirst)
+            {
+                grayscaleImage();
+            }
             update();
         }
 

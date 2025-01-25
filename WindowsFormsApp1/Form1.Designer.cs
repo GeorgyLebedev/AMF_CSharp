@@ -52,7 +52,6 @@
             this.preSizeRadio = new Guna.UI2.WinForms.Guna2Button();
             this.maskSizeTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.maskSizeComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.lenseButton = new Guna.UI2.WinForms.Guna2Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.inputPictureBox = new System.Windows.Forms.PictureBox();
             this.outputPictureBox = new System.Windows.Forms.PictureBox();
@@ -294,7 +293,6 @@
             this.guna2Panel1.Controls.Add(this.guna2GroupBox2);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox1);
             this.guna2Panel1.Controls.Add(this.elapsedLabel);
-            this.guna2Panel1.Controls.Add(this.lenseButton);
             this.guna2Panel1.Controls.Add(this.filterBtn);
             this.guna2Panel1.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Panel1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
@@ -336,7 +334,7 @@
             this.guna2GroupBox3.Name = "guna2GroupBox3";
             this.guna2GroupBox3.Size = new System.Drawing.Size(249, 100);
             this.guna2GroupBox3.TabIndex = 18;
-            this.guna2GroupBox3.Text = "Панель управления";
+            this.guna2GroupBox3.Text = "Работа с файлами";
             this.guna2GroupBox3.TextOffset = new System.Drawing.Point(0, -10);
             // 
             // progressBar
@@ -532,31 +530,6 @@
             this.maskSizeComboBox.TabIndex = 15;
             this.maskSizeComboBox.SelectedValueChanged += new System.EventHandler(this.maskSizeComboBox_SelectedValueChanged);
             // 
-            // lenseButton
-            // 
-            this.lenseButton.BackColor = System.Drawing.Color.Transparent;
-            this.lenseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.lenseButton.BorderColor = System.Drawing.Color.DarkGray;
-            this.lenseButton.BorderRadius = 10;
-            this.lenseButton.BorderThickness = 1;
-            this.lenseButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.lenseButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.lenseButton.DisabledState.FillColor = System.Drawing.Color.Silver;
-            this.lenseButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.lenseButton.DisabledState.Image = global::WindowsFormsApp1.Properties.Resources.magnifier_disabled;
-            this.lenseButton.Enabled = false;
-            this.lenseButton.FillColor = System.Drawing.Color.Transparent;
-            this.lenseButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lenseButton.ForeColor = System.Drawing.Color.White;
-            this.lenseButton.Image = global::WindowsFormsApp1.Properties.Resources.magnifier;
-            this.lenseButton.ImageSize = new System.Drawing.Size(40, 40);
-            this.lenseButton.Location = new System.Drawing.Point(974, 34);
-            this.lenseButton.Margin = new System.Windows.Forms.Padding(5, 5, 10, 5);
-            this.lenseButton.Name = "lenseButton";
-            this.lenseButton.Size = new System.Drawing.Size(50, 50);
-            this.lenseButton.TabIndex = 0;
-            this.lenseButton.Click += new System.EventHandler(this.filterBtn_Click);
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -668,7 +641,6 @@
         private Guna.UI2.WinForms.Guna2Button saveButton;
         private Guna.UI2.WinForms.Guna2Button saveAsButton;
         private Guna.UI2.WinForms.Guna2Button helpButton;
-        private Guna.UI2.WinForms.Guna2Button lenseButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.PictureBox outputPictureBox;
         private System.Windows.Forms.PictureBox maskPictureBox;

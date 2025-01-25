@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WindowsFormsApp1.Program">
+    <Position X="11" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.entities.Picture">
+    <Position X="15.25" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAACAgAAAAAAAAgAAAAAAAAAAAAgAAAAEEgA=</HashCode>
+      <FileName>entities\Picture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.entities.medianFilterEnitites.MaskSize">
+    <Position X="23.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>entities\medianFilterEnitites\Mask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.entities.medianFilterEnitites.MaskUpdateablePoints">
+    <Position X="23.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAgAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>entities\medianFilterEnitites\Mask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.entities.medianFilterEnitites.Mask">
+    <Position X="21" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAEACACIAAAIAgAAAAEAAAEAAAEAgAAAAEAAA=</HashCode>
+      <FileName>entities\medianFilterEnitites\Mask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.entities.medianFilterEnitites.MaskDisplay">
+    <Position X="25.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACABAAAEgAAAAQAQIAAAAAAACAAAAAAAAAAAAAEAgA=</HashCode>
+      <FileName>entities\medianFilterEnitites\MaskDisplay.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.entities.medianFilterEnitites.MedianFilter">
+    <Position X="28.5" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAARAAgkAAAAAAAAAAJAAAAAAAAAAIAAAAAAgAg=</HashCode>
+      <FileName>entities\medianFilterEnitites\MedianFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.entities.medianFilterEnitites.ReplacePixels">
+    <Position X="30.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAIIAAAAAAAAAACAAAAAAAAAAAAAAACAAARAAA=</HashCode>
+      <FileName>entities\medianFilterEnitites\ReplacePixels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Pixel">
+    <Position X="12.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAIAQABAAAAAAA=</HashCode>
+      <FileName>entities\imageProcessingEntities\ImageController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.ImageController">
+    <Position X="10.5" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABABQAAAAAgAUAQABAAAKAAAAAAAAAAAgAAAAIAAA=</HashCode>
+      <FileName>entities\imageProcessingEntities\ImageController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.Dialogs">
+    <Position X="20" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>entities\imageProcessingEntities\ImageManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.ImageManager">
+    <Position X="17.5" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>BAAQAACAAAACAAAQAAAACABACAAAhBAAAAEIAAAAAAo=</HashCode>
+      <FileName>entities\imageProcessingEntities\ImageManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9.75" />
+</ClassDiagram>
