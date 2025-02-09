@@ -14,9 +14,11 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             maskSizeComboBox.SelectedIndex = 0;
+            maskTypeComboBox.SelectedIndex = 0;
             imageManager = new ImageManager(openFileDialog, saveFileDialog, inputPictureBox, outputPictureBox);
             maskDisplay = new MaskDisplay(maskPictureBox);
-            maskDisplay.update(new MaskSize(3,3));
+            maskDisplay.update(getMaskSize());
+            elapsedLabel.Visible = false;
         }
 
         private void openImageClick(object sender, EventArgs e)
@@ -60,9 +62,15 @@ namespace WindowsFormsApp1
         {
             byte replaceLimit = (byte)minBrightness.Value;
             int minLineLength = (int)lineLengthInput.Value;
-            MedianFilter filter = new MedianFilter(new Bitmap(inputPictureBox.Image), replaceLimit, getMaskSize(), minLineLength);
+            MaskType maskType = new MaskType(getMaskSize(), getMaskTypeEnum());
+            MedianFilter filter = new MedianFilter(new Bitmap(inputPictureBox.Image), replaceLimit, maskType, minLineLength);
             filter.setProgressBar(progressBar);
             return filter;
+        }
+
+        private MaskTypeEnum getMaskTypeEnum()
+        {
+           return (MaskTypeEnum)maskTypeComboBox.SelectedIndex;
         }
 
         private MaskSize getMaskSize()

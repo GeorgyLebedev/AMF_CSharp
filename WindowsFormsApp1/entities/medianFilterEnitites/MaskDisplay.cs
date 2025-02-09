@@ -34,7 +34,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             width = maskSize.width;
             height = maskSize.height;
             squareSize = (side - maxSquaresDimension - offset) / maxSquaresDimension;
-            int newWidth = width * (squareSize+offset)+offset;
+            int newWidth = width * (squareSize+offset) + offset;
             while (newWidth > side) {
                 squareSize--;
                 newWidth = width * (squareSize + offset) + offset;

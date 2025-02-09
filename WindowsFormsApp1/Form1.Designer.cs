@@ -56,6 +56,8 @@
             this.inputPictureBox = new System.Windows.Forms.PictureBox();
             this.outputPictureBox = new System.Windows.Forms.PictureBox();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.guna2GroupBox4 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.maskTypeComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.minBrightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineLengthInput)).BeginInit();
             this.guna2Panel1.SuspendLayout();
@@ -66,6 +68,7 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).BeginInit();
+            this.guna2GroupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -261,7 +264,7 @@
             this.filterBtn.ForeColor = System.Drawing.Color.White;
             this.filterBtn.Image = global::WindowsFormsApp1.Properties.Resources.start;
             this.filterBtn.ImageSize = new System.Drawing.Size(40, 40);
-            this.filterBtn.Location = new System.Drawing.Point(914, 34);
+            this.filterBtn.Location = new System.Drawing.Point(1019, 31);
             this.filterBtn.Margin = new System.Windows.Forms.Padding(5, 5, 10, 5);
             this.filterBtn.Name = "filterBtn";
             this.filterBtn.Size = new System.Drawing.Size(50, 50);
@@ -271,13 +274,13 @@
             // 
             // elapsedLabel
             // 
-            this.elapsedLabel.AutoSize = true;
             this.elapsedLabel.BackColor = System.Drawing.Color.Transparent;
+            this.elapsedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.elapsedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.elapsedLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.elapsedLabel.Location = new System.Drawing.Point(912, 9);
+            this.elapsedLabel.Location = new System.Drawing.Point(1019, 9);
             this.elapsedLabel.Name = "elapsedLabel";
-            this.elapsedLabel.Size = new System.Drawing.Size(103, 13);
+            this.elapsedLabel.Size = new System.Drawing.Size(50, 15);
             this.elapsedLabel.TabIndex = 5;
             this.elapsedLabel.Text = "                        ";
             this.elapsedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -292,6 +295,7 @@
             this.guna2Panel1.Controls.Add(this.guna2GroupBox3);
             this.guna2Panel1.Controls.Add(this.progressBar);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox2);
+            this.guna2Panel1.Controls.Add(this.guna2GroupBox4);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox1);
             this.guna2Panel1.Controls.Add(this.elapsedLabel);
             this.guna2Panel1.Controls.Add(this.filterBtn);
@@ -303,12 +307,12 @@
             this.guna2Panel1.ShadowDecoration.BorderRadius = 10;
             this.guna2Panel1.ShadowDecoration.Depth = 10;
             this.guna2Panel1.ShadowDecoration.Enabled = true;
-            this.guna2Panel1.Size = new System.Drawing.Size(1036, 116);
+            this.guna2Panel1.Size = new System.Drawing.Size(1155, 116);
             this.guna2Panel1.TabIndex = 12;
             // 
             // maskPictureBox
             // 
-            this.maskPictureBox.Location = new System.Drawing.Point(747, 9);
+            this.maskPictureBox.Location = new System.Drawing.Point(901, 9);
             this.maskPictureBox.Name = "maskPictureBox";
             this.maskPictureBox.Size = new System.Drawing.Size(100, 100);
             this.maskPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -347,7 +351,7 @@
             this.progressBar.FillThickness = 13;
             this.progressBar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.progressBar.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.progressBar.Location = new System.Drawing.Point(1011, 107);
+            this.progressBar.Location = new System.Drawing.Point(1070, 107);
             this.progressBar.Minimum = 0;
             this.progressBar.Name = "progressBar";
             this.progressBar.ProgressBrushMode = Guna.UI2.WinForms.Enums.BrushMode.SolidTransition;
@@ -427,7 +431,7 @@
             this.guna2GroupBox1.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(522, 9);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(676, 7);
             this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Padding = new System.Windows.Forms.Padding(5);
@@ -518,7 +522,6 @@
             this.maskSizeComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.maskSizeComboBox.ItemHeight = 24;
             this.maskSizeComboBox.Items.AddRange(new object[] {
-            "3x3",
             "5x5",
             "7x7",
             "9x9",
@@ -548,7 +551,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1014, 492);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1133, 492);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // inputPictureBox
@@ -562,7 +565,7 @@
             this.inputPictureBox.Location = new System.Drawing.Point(6, 6);
             this.inputPictureBox.Margin = new System.Windows.Forms.Padding(5);
             this.inputPictureBox.Name = "inputPictureBox";
-            this.inputPictureBox.Size = new System.Drawing.Size(495, 480);
+            this.inputPictureBox.Size = new System.Drawing.Size(555, 480);
             this.inputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.inputPictureBox.TabIndex = 1;
             this.inputPictureBox.TabStop = false;
@@ -576,10 +579,10 @@
             this.outputPictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
             this.outputPictureBox.Image = global::WindowsFormsApp1.Properties.Resources.placeholder;
             this.outputPictureBox.InitialImage = global::WindowsFormsApp1.Properties.Resources.placeholder;
-            this.outputPictureBox.Location = new System.Drawing.Point(512, 6);
+            this.outputPictureBox.Location = new System.Drawing.Point(572, 6);
             this.outputPictureBox.Margin = new System.Windows.Forms.Padding(5);
             this.outputPictureBox.Name = "outputPictureBox";
-            this.outputPictureBox.Size = new System.Drawing.Size(496, 480);
+            this.outputPictureBox.Size = new System.Drawing.Size(555, 480);
             this.outputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.outputPictureBox.TabIndex = 1;
             this.outputPictureBox.TabStop = false;
@@ -591,11 +594,54 @@
             this.saveFileDialog.RestoreDirectory = true;
             this.saveFileDialog.Title = "Сохранить как";
             // 
+            // guna2GroupBox4
+            // 
+            this.guna2GroupBox4.BackColor = System.Drawing.Color.Transparent;
+            this.guna2GroupBox4.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GroupBox4.BorderRadius = 10;
+            this.guna2GroupBox4.BorderThickness = 2;
+            this.guna2GroupBox4.Controls.Add(this.maskTypeComboBox);
+            this.guna2GroupBox4.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2GroupBox4.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
+            this.guna2GroupBox4.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2GroupBox4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.guna2GroupBox4.ForeColor = System.Drawing.Color.White;
+            this.guna2GroupBox4.Location = new System.Drawing.Point(520, 7);
+            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(5);
+            this.guna2GroupBox4.Name = "guna2GroupBox4";
+            this.guna2GroupBox4.Padding = new System.Windows.Forms.Padding(5);
+            this.guna2GroupBox4.Size = new System.Drawing.Size(146, 100);
+            this.guna2GroupBox4.TabIndex = 18;
+            this.guna2GroupBox4.Text = "Тип маски";
+            this.guna2GroupBox4.TextOffset = new System.Drawing.Point(0, -10);
+            // 
+            // maskTypeComboBox
+            // 
+            this.maskTypeComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.maskTypeComboBox.BorderColor = System.Drawing.Color.Gray;
+            this.maskTypeComboBox.BorderRadius = 10;
+            this.maskTypeComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.maskTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.maskTypeComboBox.FocusedColor = System.Drawing.Color.RoyalBlue;
+            this.maskTypeComboBox.FocusedState.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.maskTypeComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.maskTypeComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.maskTypeComboBox.ItemHeight = 24;
+            this.maskTypeComboBox.Items.AddRange(new object[] {
+            "Тип А",
+            "Тип B",
+            "Тип C"});
+            this.maskTypeComboBox.Location = new System.Drawing.Point(19, 44);
+            this.maskTypeComboBox.Name = "maskTypeComboBox";
+            this.maskTypeComboBox.Size = new System.Drawing.Size(109, 30);
+            this.maskTypeComboBox.TabIndex = 15;
+            this.maskTypeComboBox.SelectedValueChanged += new System.EventHandler(this.maskSizeComboBox_SelectedValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1036, 628);
+            this.ClientSize = new System.Drawing.Size(1155, 628);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -605,7 +651,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.minBrightness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineLengthInput)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maskPictureBox)).EndInit();
             this.guna2GroupBox3.ResumeLayout(false);
             this.guna2GroupBox2.ResumeLayout(false);
@@ -614,6 +659,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).EndInit();
+            this.guna2GroupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -645,6 +691,8 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.PictureBox outputPictureBox;
         private System.Windows.Forms.PictureBox maskPictureBox;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox4;
+        private Guna.UI2.WinForms.Guna2ComboBox maskTypeComboBox;
     }
 }
 

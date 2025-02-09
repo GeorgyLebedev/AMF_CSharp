@@ -17,6 +17,7 @@ namespace WindowsFormsApp1.entities
 
         public void begin()
         {
+            elapsedLabel.Visible = false;
             elapsedLabel.Text = "";
             blockedButton.Enabled = false;
             stopwatch.Start();
@@ -25,7 +26,8 @@ namespace WindowsFormsApp1.entities
         public void end()
         {
             stopwatch.Stop();
-            elapsedLabel.Text = stopwatch.Elapsed.TotalSeconds.ToString("F5") + "s";
+            elapsedLabel.Visible = true;
+            elapsedLabel.Text = stopwatch.Elapsed.TotalSeconds.ToString("F3") + "s";
             blockedButton.Enabled = true;   
         }
     }

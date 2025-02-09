@@ -16,14 +16,17 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
         //Маска фильтра
         private Mask mask;
 
+        private int pixelsCount;
+
         Guna.UI2.WinForms.Guna2CircleProgressBar progressBar;
 
-        public MedianFilter(Bitmap imageData, byte minBrigthness, MaskSize size, int minLineLength)
+        public MedianFilter(Bitmap imageData, byte minBrigthness, MaskType maskType, int minLineLength)
         {
             imgController = new ImageController(imageData); 
             this.minBrigthness = minBrigthness;
             sequenceLength = minLineLength;
-            mask = new Mask(size, imgController);
+            mask = new Mask(maskType, imgController);
+            pixelsCount = maskType.getPixelsCount();
         }
 
         public void setProgressBar(Guna.UI2.WinForms.Guna2CircleProgressBar progressBar)
@@ -71,7 +74,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
         {
             int x = 0;
             ReplacePixels replacePixels = new ReplacePixels();
-            Pixel[] maskPixels = new Pixel[mask.pixelsCount];
+            Pixel[] maskPixels = new Pixel[pixelsCount];
             mask.fill(new Point(x,y), ref maskPixels);
             while(x < imgController.width - 1)
             {
