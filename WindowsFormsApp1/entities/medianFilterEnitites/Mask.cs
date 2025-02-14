@@ -37,8 +37,8 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
 
         public void update(Point currentPos, ref Pixel[] pixels)
         {
-            int maskWidth = maskType.maskSize.width;
-            int maskHeight = maskType.maskSize.height;
+            int maskWidth = maskType.getSize().width;
+            int maskHeight = maskType.getSize().height;
             int imgWidth = imageController.width;
             int imgHeight = imageController.height;
             int x = currentPos.X;

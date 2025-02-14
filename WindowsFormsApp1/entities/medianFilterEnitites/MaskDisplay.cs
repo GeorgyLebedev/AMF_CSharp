@@ -9,23 +9,26 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
     {
         PictureBox pictureBox;
         SolidBrush brush;
+        MaskType maskType;
         private int squareSize;
         private int width;
         private int height;
         private int offset;
         private int side;
-        public MaskDisplay(PictureBox pictureBox) 
+        public MaskDisplay(PictureBox pictureBox, MaskType maskType) 
         {
             this.pictureBox = pictureBox;
+            this.maskType = maskType;
             offset = 1;
             side = pictureBox.Width;
             brush =  new SolidBrush(Color.LightSlateGray);
         }
 
-        public void update(MaskSize maskSize)
+        public void update(MaskType maskType)
         {
-            calcSquareSize(maskSize);
-            drawMask();
+            this.maskType = maskType;
+            calcSquareSize(maskType.getSize());
+            drawMask(maskType);
         }
 
         private void calcSquareSize(MaskSize maskSize)
@@ -59,38 +62,25 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             }
         }
 
-        public void drawMask()
+        public void drawMask(MaskType maskType)
         {
-            int innerHeight = height - 2;
+            Point[] coordinates = maskType.getCoordinates();
             int x, y;
             using (Graphics g = Graphics.FromImage(pictureBox.Image))
             {
-                for (int i = 0; i < width; i++)
+                foreach (Point point in coordinates)
                 {
-                    x = offset + squareSize * i + offset * i;
-                    y = offset;
-                    g.FillRectangle(brush, new Rectangle(x, y, squareSize, squareSize));
-                }
-                for(int i=1; i < innerHeight+1; i++)
-                {
-                    x = offset + squareSize * (width - 1) / 2 + offset * (width - 1) / 2;
-                    y = offset + squareSize * i + offset * i;
-                    if ((innerHeight+1) / 2 == i)
+                    if(point.X == 0 && point.Y == 0)
                     {
                         brush.Color = Color.Maroon;
-                        g.FillRectangle(brush, new Rectangle(x, y, squareSize, squareSize));
-                        brush.Color = Color.LightSlateGray;
                     }
                     else
                     {
-                        g.FillRectangle(brush, new Rectangle(x, y, squareSize, squareSize));
+                        brush.Color = Color.LightSlateGray;
                     }
-                }
-                for (int i = 0; i < width; i++)
-                {
-                    x = offset + squareSize * i + offset * i;
-                    y = (height - 1) * (squareSize + offset) + offset;
-                    g.FillRectangle(brush, new Rectangle(x, y, squareSize, squareSize));
+                    x = point.X + maskType.getSize().width / 2;
+                    y = point.Y + maskType.getSize().height / 2;
+                    g.FillRectangle(brush, new Rectangle(x * (squareSize+offset) + offset, y * (squareSize + offset) + offset, squareSize, squareSize));
                 }
             }
         }

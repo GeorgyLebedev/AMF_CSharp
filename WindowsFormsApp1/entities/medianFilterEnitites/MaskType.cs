@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
         private Point[] coordinates;
         private Point centerPoint;
         private int pixelsCount;
-        public readonly MaskSize maskSize;
+        private MaskSize maskSize;
 
         public MaskType(MaskSize maskSize, MaskTypeEnum maskType)
         {
@@ -109,7 +109,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             updateableIndexes = new int[] { maskSize.width-1, maskSize.width, pixelsCount-1 };
 
             coordinates = new Point[pixelsCount];
-            int coordIndex = 0;
+            int index = 0;
             for (int y = 0; y < maskSize.height; y++)
             {
                 for (int x = 0; x < maskSize.width; x++)
@@ -119,11 +119,21 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
                     {
                         //Заполняем все точки в первой строке и последней строке, а также одну центральную
                         Point maskPoint = new Point(x - centerPoint.X, y - centerPoint.Y);
-                        coordinates[coordIndex] = maskPoint;
-                        coordIndex++;
+                        coordinates[index] = maskPoint;
+                        index++;
                     }
                 }
             }
+        }
+
+        public MaskSize getSize()
+        {
+            return maskSize;
+        }
+
+        public MaskTypeEnum getMaskTypeEnum()
+        {
+            return maskType;
         }
 
         public int getPixelsCount()

@@ -10,14 +10,16 @@ namespace WindowsFormsApp1
     {
         ImageManager imageManager;
         MaskDisplay maskDisplay;
+        MaskType maskType;
         public Form1()
         {
             InitializeComponent();
             maskSizeComboBox.SelectedIndex = 0;
             maskTypeComboBox.SelectedIndex = 0;
             imageManager = new ImageManager(openFileDialog, saveFileDialog, inputPictureBox, outputPictureBox);
-            maskDisplay = new MaskDisplay(maskPictureBox);
-            maskDisplay.update(getMaskSize());
+            maskType = new MaskType(getMaskSize(), getMaskTypeEnum());
+            maskDisplay = new MaskDisplay(maskPictureBox, maskType);
+            maskDisplay.update(maskType);
             elapsedLabel.Visible = false;
         }
 
@@ -62,7 +64,6 @@ namespace WindowsFormsApp1
         {
             byte replaceLimit = (byte)minBrightness.Value;
             int minLineLength = (int)lineLengthInput.Value;
-            MaskType maskType = new MaskType(getMaskSize(), getMaskTypeEnum());
             MedianFilter filter = new MedianFilter(new Bitmap(inputPictureBox.Image), replaceLimit, maskType, minLineLength);
             filter.setProgressBar(progressBar);
             return filter;
@@ -97,7 +98,7 @@ namespace WindowsFormsApp1
             maskSizeComboBox.Enabled = true;
             maskSizeTextBox.Enabled = false;
 
-            maskDisplay.update(getMaskSize());
+            maskDisplay.update(maskType);
         }
 
         private void ownSizeRadio_Click(object sender, EventArgs e)
@@ -112,8 +113,8 @@ namespace WindowsFormsApp1
                 ownSizeRadio.Checked = true;
                 maskSizeComboBox.Enabled = false;
                 maskSizeTextBox.Enabled = true;
-
-                maskDisplay.update(getMaskSize());
+                maskType = new MaskType(getMaskSize(), getMaskTypeEnum());
+                maskDisplay.update(maskType);
             }
         }
 
@@ -177,10 +178,23 @@ namespace WindowsFormsApp1
 
         private void maskSizeComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (maskDisplay != null)
+            
+            if (maskDisplay != null && maskType != null)
             {
-                maskDisplay.update(getMaskSize());
+                maskType = new MaskType(getMaskSize(), getMaskTypeEnum());  
+                maskDisplay.update(maskType);
             }
         }
+
+        private void maskTypeComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+          
+            if (maskDisplay != null && maskType != null)
+            {
+                maskType = new MaskType(getMaskSize(), getMaskTypeEnum());
+                maskDisplay.update(maskType);
+            }
+        }
+
     }
 }
