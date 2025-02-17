@@ -26,7 +26,7 @@ namespace WindowsFormsApp1
             {
                 height = Convert.ToByte(maskHeightInput.Text);
                 width = Convert.ToByte(maskWidthInput.Text);
-                if (height < 5 || height % 2 == 0 || width < 5 || width % 2 == 0)
+                if (height < 5 || height % 2 == 0 || width < 5 || width % 2 == 0 || height > 31 || width > 31)
                 {
                     AcceptBtn.Enabled = false;
                 }

@@ -71,7 +71,7 @@ namespace WindowsFormsApp1
             output.rotate90();
         }
 
-        public Boolean openImage()
+        public bool openImage()
         {
             imgLoaded = false;
             try

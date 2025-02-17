@@ -9,16 +9,14 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
     {
         PictureBox pictureBox;
         SolidBrush brush;
-        MaskType maskType;
         private int squareSize;
         private int width;
         private int height;
         private int offset;
         private int side;
-        public MaskDisplay(PictureBox pictureBox, MaskType maskType) 
+        public MaskDisplay(PictureBox pictureBox) 
         {
             this.pictureBox = pictureBox;
-            this.maskType = maskType;
             offset = 1;
             side = pictureBox.Width;
             brush =  new SolidBrush(Color.LightSlateGray);
@@ -26,16 +24,15 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
 
         public void update(MaskType maskType)
         {
-            this.maskType = maskType;
             calcSquareSize(maskType.getSize());
             drawMask(maskType);
         }
 
-        private void calcSquareSize(MaskSize maskSize)
+        private void calcSquareSize(Size maskSize)
         {
-            int maxSquaresDimension = Math.Max(maskSize.width, maskSize.height);
-            width = maskSize.width;
-            height = maskSize.height;
+            int maxSquaresDimension = Math.Max(maskSize.Width, maskSize.Height);
+            width = maskSize.Width;
+            height = maskSize.Height;
             squareSize = (side - maxSquaresDimension - offset) / maxSquaresDimension;
             int newWidth = width * (squareSize+offset) + offset;
             while (newWidth > side) {
@@ -48,9 +45,9 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
                 squareSize--;
                 newHeight = height * (squareSize + offset) + offset;
             }
-            if (maskSize.width>maskSize.height)
+            if (maskSize.Width>maskSize.Height  )
             {
-                pictureBox.Image = new Bitmap(newWidth, (squareSize+offset) * maskSize.height + offset);
+                pictureBox.Image = new Bitmap(newWidth, (squareSize+offset) * maskSize.Height + offset);
             }
             else if (width == height)
             {
@@ -58,14 +55,14 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             }
             else
             {
-                pictureBox.Image = new Bitmap((squareSize + offset) * maskSize.width + offset,newHeight);
+                pictureBox.Image = new Bitmap((squareSize + offset) * maskSize.Width + offset,newHeight);
             }
         }
 
         public void drawMask(MaskType maskType)
         {
             Point[] coordinates = maskType.getCoordinates();
-            int x, y;
+            int newX, newY;
             using (Graphics g = Graphics.FromImage(pictureBox.Image))
             {
                 foreach (Point point in coordinates)
@@ -78,9 +75,15 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
                     {
                         brush.Color = Color.LightSlateGray;
                     }
-                    x = point.X + maskType.getSize().width / 2;
-                    y = point.Y + maskType.getSize().height / 2;
-                    g.FillRectangle(brush, new Rectangle(x * (squareSize+offset) + offset, y * (squareSize + offset) + offset, squareSize, squareSize));
+
+                    // Транслируем координаты пикселя маски в координаты класса Graphics  
+                    newX = point.X + maskType.getSize().Width / 2;
+                    newY = point.Y + maskType.getSize().Height / 2;
+                    // Получаем координаты верхнего левого угла квадрата
+                    newX *= (squareSize + offset);
+                    newY *= (squareSize + offset);
+
+                    g.FillRectangle(brush, new Rectangle(newX + offset, newY + offset, squareSize, squareSize));
                 }
             }
         }

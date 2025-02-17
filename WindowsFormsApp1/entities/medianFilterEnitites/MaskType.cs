@@ -15,19 +15,18 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
 
     public class MaskType
     {
-        private int[] updateableIndexes;
+        private int[] dynamicIndexes;
+        private int[] staticIndexes;
         private MaskTypeEnum maskType;
         private Point[] coordinates;
         private Point centerPoint;
         private int pixelsCount;
-        private MaskSize maskSize;
+        private Size maskSize;
 
-        public MaskType(MaskSize maskSize, MaskTypeEnum maskType)
+        public MaskType(Size maskSize, MaskTypeEnum maskType)
         {
-            this.maskSize = maskSize;
             this.maskType = maskType;
-            centerPoint = new Point(maskSize.width / 2, maskSize.height / 2);
-            setConfig();
+            updateSize(maskSize);
         }
 
 
@@ -50,19 +49,20 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
 
         private void setConfigA()
         {
-            pixelsCount = maskSize.width * 2 + maskSize.height - 2;
+            pixelsCount = maskSize.Width * 2 + maskSize.Height - 2;
 
-            updateableIndexes = new int[maskSize.height];
-            updateableIndexes = Enumerable.Range(maskSize.width - 1, maskSize.height - 2).ToArray();
-            updateableIndexes[updateableIndexes.Length - 1] = pixelsCount - 1;
+            dynamicIndexes = new int[maskSize.Height];
+            dynamicIndexes = Enumerable.Range(maskSize.Width - 1, maskSize.Height - 2).ToArray();
+            dynamicIndexes[dynamicIndexes.Length - 1] = pixelsCount - 1;
+            fillStaticIndexes();
 
             coordinates = new Point[pixelsCount];
             int coordIndex = 0;
-            for (int y = 0; y < maskSize.height; y++)
+            for (int y = 0; y < maskSize.Height; y++)
             {
-                for (int x = 0; x < maskSize.width; x++)
+                for (int x = 0; x < maskSize.Width; x++)
                 {
-                    if (y == 0 || y == maskSize.height - 1 || x == centerPoint.X)
+                    if (y == 0 || y == maskSize.Height - 1 || x == centerPoint.X)
                     {
                         //Заполняем все точки в первой и последней строке, а также центральные
                         Point maskPoint = new Point(x - centerPoint.X, y - centerPoint.Y);
@@ -75,21 +75,22 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
 
         private void setConfigB()
         {
-            pixelsCount = maskSize.width * 4 + maskSize.height - 4;
+            pixelsCount = maskSize.Width * 4 + maskSize.Height - 4;
 
-            updateableIndexes = new int[maskSize.height];
-            updateableIndexes[0] = maskSize.width - 1;
-            var range = Enumerable.Range((maskSize.width - 1) * 2, maskSize.height - 4).ToArray();
-            Array.Copy(range, 0, updateableIndexes, 1, range.Length);
-            updateableIndexes[maskSize.height - 2] = pixelsCount - maskSize.width - 1;
-            updateableIndexes[maskSize.height - 1] = pixelsCount - 1;
+            dynamicIndexes = new int[maskSize.Height];
+            dynamicIndexes[0] = maskSize.Width - 1;
+            var range = Enumerable.Range((maskSize.Width - 1) * 2, maskSize.Height - 4).ToArray();
+            Array.Copy(range, 0, dynamicIndexes, 1, range.Length);
+            dynamicIndexes[maskSize.Height - 2] = pixelsCount - maskSize.Width - 1;
+            dynamicIndexes[maskSize.Height - 1] = pixelsCount - 1;
+            fillStaticIndexes();
 
             coordinates = new Point[pixelsCount];
             int coordIndex = 0;
-            int[] edges = new int[] { 0, 1, maskSize.height - 1, maskSize.height - 2 };
-            for (int y = 0; y < maskSize.height; y++)
+            int[] edges = new int[] { 0, 1, maskSize.Height - 1, maskSize.Height - 2 };
+            for (int y = 0; y < maskSize.Height; y++)
             {
-                for (int x = 0; x < maskSize.width; x++)
+                for (int x = 0; x < maskSize.Height; x++)
                 {
                     if (edges.Contains(y) || x == centerPoint.X)
                     {
@@ -104,18 +105,19 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
 
         private void setConfigC()
         {
-            pixelsCount = maskSize.width * 2 + 1;
+            pixelsCount = maskSize.Width * 2 + 1;
 
-            updateableIndexes = new int[] { maskSize.width-1, maskSize.width, pixelsCount-1 };
+            dynamicIndexes = new int[] { maskSize.Width-1, maskSize.Width, pixelsCount-1 };
+            fillStaticIndexes();
 
             coordinates = new Point[pixelsCount];
             int index = 0;
-            for (int y = 0; y < maskSize.height; y++)
+            for (int y = 0; y < maskSize.Height; y++)
             {
-                for (int x = 0; x < maskSize.width; x++)
+                for (int x = 0; x < maskSize.Width; x++)
                 {
 
-                    if (y == 0 || y == maskSize.height - 1 || (x == centerPoint.X && y == centerPoint.Y))
+                    if (y == 0 || y == maskSize.Height - 1 || (x == centerPoint.X && y == centerPoint.Y))
                     {
                         //Заполняем все точки в первой строке и последней строке, а также одну центральную
                         Point maskPoint = new Point(x - centerPoint.X, y - centerPoint.Y);
@@ -126,14 +128,27 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             }
         }
 
-        public MaskSize getSize()
+        private void fillStaticIndexes()
         {
-            return maskSize;
+            staticIndexes = Enumerable.Range(0, pixelsCount).Except(dynamicIndexes).ToArray();
         }
 
-        public MaskTypeEnum getMaskTypeEnum()
+        public void updateSize(Size newSize)
         {
-            return maskType;
+            maskSize = newSize;
+            centerPoint = new Point(maskSize.Width / 2, maskSize.Height / 2);
+            setConfig();
+        }
+
+        public void updateType(MaskTypeEnum newType)
+        {
+            maskType = newType;
+            setConfig();
+        }
+
+        public Size getSize()
+        {
+            return maskSize;
         }
 
         public int getPixelsCount()
@@ -146,16 +161,15 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             return coordinates;
         }
 
-        public Point getCoordinate(int index)
+        public int[] getStaticIndexes()
         {
-            return coordinates[index];
+            return staticIndexes;
         }
 
-        public bool isUpdateableIndex(int index)
+        public int[] getDynamicUndexes()
         {
-            return updateableIndexes.Contains(index);
+            return dynamicIndexes;
         }
+
     }
-
-
 }

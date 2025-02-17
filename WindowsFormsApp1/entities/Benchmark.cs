@@ -6,9 +6,9 @@ namespace WindowsFormsApp1.entities
 {
     public class Benchmark
     {
-        Stopwatch stopwatch;
-        Label elapsedLabel;
-        Guna2Button blockedButton;
+        private Stopwatch stopwatch;
+        private Label elapsedLabel;
+        private Guna2Button blockedButton;
         public Benchmark(Label label, Guna2Button button) { 
             elapsedLabel = label;
             blockedButton = button;

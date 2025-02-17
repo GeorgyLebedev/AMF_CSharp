@@ -53,12 +53,17 @@ namespace WindowsFormsApp1
             return imgSrc;
         }
 
-        public bool IsExistPixel(int x, int y)
+        public bool isExistPixel(int x, int y)
         {
             return x>=0 && y>=0 && x<width && y<height;
         }
 
-        public Pixel GetPixel(int x, int y)
+        public Size getSize()
+        {
+            return new Size(width, height);
+        }
+
+        public Pixel getPixel(int x, int y)
         {
             int i = y * width + x;
             Pixel px = new Pixel();

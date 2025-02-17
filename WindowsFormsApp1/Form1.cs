@@ -11,6 +11,7 @@ namespace WindowsFormsApp1
         ImageManager imageManager;
         MaskDisplay maskDisplay;
         MaskType maskType;
+
         public Form1()
         {
             InitializeComponent();
@@ -18,7 +19,7 @@ namespace WindowsFormsApp1
             maskTypeComboBox.SelectedIndex = 0;
             imageManager = new ImageManager(openFileDialog, saveFileDialog, inputPictureBox, outputPictureBox);
             maskType = new MaskType(getMaskSize(), getMaskTypeEnum());
-            maskDisplay = new MaskDisplay(maskPictureBox, maskType);
+            maskDisplay = new MaskDisplay(maskPictureBox);
             maskDisplay.update(maskType);
             elapsedLabel.Visible = false;
         }
@@ -74,7 +75,7 @@ namespace WindowsFormsApp1
            return (MaskTypeEnum)maskTypeComboBox.SelectedIndex;
         }
 
-        private MaskSize getMaskSize()
+        private Size getMaskSize()
         {
             string value;
             if (preSizeRadio.Checked)
@@ -88,7 +89,7 @@ namespace WindowsFormsApp1
             string[] sizeStr = value.Split('x');
             byte width = Convert.ToByte(sizeStr[0]);
             byte heigth = Convert.ToByte(sizeStr[1]);
-            return  new MaskSize(width, heigth);
+            return  new Size(width, heigth);
         }
 
         private void preSizeRadio_Click(object sender, EventArgs e)
@@ -113,7 +114,7 @@ namespace WindowsFormsApp1
                 ownSizeRadio.Checked = true;
                 maskSizeComboBox.Enabled = false;
                 maskSizeTextBox.Enabled = true;
-                maskType = new MaskType(getMaskSize(), getMaskTypeEnum());
+                maskType.updateSize(getMaskSize());
                 maskDisplay.update(maskType);
             }
         }
@@ -181,7 +182,7 @@ namespace WindowsFormsApp1
             
             if (maskDisplay != null && maskType != null)
             {
-                maskType = new MaskType(getMaskSize(), getMaskTypeEnum());  
+                maskType.updateSize(getMaskSize());  
                 maskDisplay.update(maskType);
             }
         }
@@ -191,7 +192,7 @@ namespace WindowsFormsApp1
           
             if (maskDisplay != null && maskType != null)
             {
-                maskType = new MaskType(getMaskSize(), getMaskTypeEnum());
+                maskType.updateType(getMaskTypeEnum());
                 maskDisplay.update(maskType);
             }
         }
