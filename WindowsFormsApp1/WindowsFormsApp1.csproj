@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="entities\Benchmark.cs" />
+    <Compile Include="entities\medianFilterEnitites\FilterOptions.cs" />
     <Compile Include="entities\medianFilterEnitites\MaskType.cs" />
     <Compile Include="entities\medianFilterEnitites\MaskDisplay.cs" />
     <Compile Include="entities\Picture.cs" />
@@ -134,6 +135,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\magnifier_disabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\mulithread.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\mulithread1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\mulithread-active.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,6 +11,7 @@ namespace WindowsFormsApp1
         ImageManager imageManager;
         MaskDisplay maskDisplay;
         MaskType maskType;
+        FilterOptions filterOptions;
 
         public Form1()
         {
@@ -63,9 +64,8 @@ namespace WindowsFormsApp1
 
         private MedianFilter createFilter()
         {
-            byte replaceLimit = (byte)minBrightness.Value;
-            int minLineLength = (int)lineLengthInput.Value;
-            MedianFilter filter = new MedianFilter(new Bitmap(inputPictureBox.Image), replaceLimit, maskType, minLineLength);
+            filterOptions = new FilterOptions((int)minBrightnessInput.Value, (int)lineLengthInput.Value, multiThreadButton.Checked);
+            MedianFilter filter = new MedianFilter(filterOptions, new Bitmap(inputPictureBox.Image), maskType);
             filter.setProgressBar(progressBar);
             return filter;
         }
@@ -197,5 +197,10 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void multiThreadButton_Click(object sender, EventArgs e)
+        {
+            multiThreadButton.Checked = !multiThreadButton.Checked;
+            toolTip1.SetToolTip(multiThreadButton, multiThreadButton.Checked? "Деактивировать многопоточность" : "Активировать многопоточность");
+        }
     }
 }

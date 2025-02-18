@@ -9,22 +9,18 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
     {
         //Класс для управления пикселями изображения
         private ImageController imgController;
-        //Номинальное значение яркости линий, при котором линия будет фильтроваться
-        private readonly byte minBrigthness;
-        //Длина последовательности - минимальная длина последовательности пикселей под замену
-        private int sequenceLength;
         //Маска фильтра
         private Mask mask;
-
+        //Опции фильтрации
+        private FilterOptions options;
         private int pixelsCount;
 
         Guna.UI2.WinForms.Guna2CircleProgressBar progressBar;
 
-        public MedianFilter(Bitmap imageData, byte minBrigthness, MaskType maskType, int minLineLength)
+        public MedianFilter(FilterOptions options, Bitmap imageData, MaskType maskType)
         {
             imgController = new ImageController(imageData); 
-            this.minBrigthness = minBrigthness;
-            sequenceLength = minLineLength;
+            this.options = options;
             mask = new Mask(maskType, imgController);
             pixelsCount = maskType.getPixelsCount();
         }
@@ -45,13 +41,13 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             Pixel medianPixel = sortedPixels[(sortedPixels.Length + 1) / 2 ];
             byte medianBrightness = (byte)(medianPixel.rgbSum / 3);
             byte currentBrightness = (byte)imgController.getPixelMiddleValue(currentPos.X, currentPos.Y);
-            if (medianBrightness != currentBrightness && currentBrightness>minBrigthness)
+            if (medianBrightness != currentBrightness && currentBrightness>options.minBrightness)
             {
                 replacePixels.pushPixel(currentPos.X, medianPixel);
             }
             else
             {
-                if(replacePixels.getCurrentListLength() < sequenceLength)
+                if(replacePixels.getCurrentListLength() < options.sequenceLength)
                 {
                    replacePixels.clearCurrentList();
                 }
@@ -88,7 +84,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
         public async Task<Bitmap> doFiltration()
         {
             // Количество потоков процессора
-            int numCores = Environment.ProcessorCount;
+            int numCores = options.useMultiThread ? Environment.ProcessorCount : 1;
             // Создание массива задач
             Task[] taskSet = new Task[numCores];
             // Обработка строк изображения параллельно

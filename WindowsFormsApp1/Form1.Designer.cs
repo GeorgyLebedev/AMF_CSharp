@@ -31,17 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.minBrightness = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            this.minBrightnessInput = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.lineLengthInput = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.helpButton = new Guna.UI2.WinForms.Guna2Button();
-            this.saveAsButton = new Guna.UI2.WinForms.Guna2Button();
-            this.saveButton = new Guna.UI2.WinForms.Guna2Button();
-            this.openFileBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.filterBtn = new Guna.UI2.WinForms.Guna2Button();
             this.elapsedLabel = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.maskPictureBox = new System.Windows.Forms.PictureBox();
             this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.progressBar = new Guna.UI2.WinForms.Guna2CircleProgressBar();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
@@ -55,18 +49,24 @@
             this.maskSizeTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.maskSizeComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.maskPictureBox = new System.Windows.Forms.PictureBox();
+            this.multiThreadButton = new Guna.UI2.WinForms.Guna2Button();
+            this.saveAsButton = new Guna.UI2.WinForms.Guna2Button();
+            this.saveButton = new Guna.UI2.WinForms.Guna2Button();
+            this.openFileBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.filterBtn = new Guna.UI2.WinForms.Guna2Button();
             this.inputPictureBox = new System.Windows.Forms.PictureBox();
             this.outputPictureBox = new System.Windows.Forms.PictureBox();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.minBrightness)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minBrightnessInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineLengthInput)).BeginInit();
             this.guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.maskPictureBox)).BeginInit();
             this.guna2GroupBox3.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
             this.guna2GroupBox4.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maskPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -76,36 +76,36 @@
             this.openFileDialog.Filter = "Изображение JPG|*.jpg|Изображение PNG|*.png";
             this.openFileDialog.RestoreDirectory = true;
             // 
-            // minBrightness
+            // minBrightnessInput
             // 
-            this.minBrightness.BackColor = System.Drawing.Color.Transparent;
-            this.minBrightness.BorderColor = System.Drawing.Color.Gray;
-            this.minBrightness.BorderRadius = 10;
-            this.minBrightness.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.minBrightness.FocusedState.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.minBrightness.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.minBrightness.Increment = new decimal(new int[] {
+            this.minBrightnessInput.BackColor = System.Drawing.Color.Transparent;
+            this.minBrightnessInput.BorderColor = System.Drawing.Color.Gray;
+            this.minBrightnessInput.BorderRadius = 10;
+            this.minBrightnessInput.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.minBrightnessInput.FocusedState.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.minBrightnessInput.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.minBrightnessInput.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.minBrightness.Location = new System.Drawing.Point(162, 60);
-            this.minBrightness.Maximum = new decimal(new int[] {
+            this.minBrightnessInput.Location = new System.Drawing.Point(162, 60);
+            this.minBrightnessInput.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.minBrightness.Minimum = new decimal(new int[] {
+            this.minBrightnessInput.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.minBrightness.Name = "minBrightness";
-            this.minBrightness.Size = new System.Drawing.Size(76, 30);
-            this.minBrightness.TabIndex = 1;
-            this.minBrightness.UpDownButtonFillColor = System.Drawing.Color.Silver;
-            this.minBrightness.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.minBrightness.Value = new decimal(new int[] {
+            this.minBrightnessInput.Name = "minBrightnessInput";
+            this.minBrightnessInput.Size = new System.Drawing.Size(76, 30);
+            this.minBrightnessInput.TabIndex = 1;
+            this.minBrightnessInput.UpDownButtonFillColor = System.Drawing.Color.Silver;
+            this.minBrightnessInput.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.minBrightnessInput.Value = new decimal(new int[] {
             50,
             0,
             0,
@@ -150,128 +150,6 @@
             // 
             this.toolTip1.AutomaticDelay = 350;
             // 
-            // helpButton
-            // 
-            this.helpButton.BackColor = System.Drawing.Color.Transparent;
-            this.helpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.helpButton.BorderColor = System.Drawing.Color.DarkGray;
-            this.helpButton.BorderRadius = 10;
-            this.helpButton.BorderThickness = 1;
-            this.helpButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.helpButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.helpButton.DisabledState.FillColor = System.Drawing.Color.Silver;
-            this.helpButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.helpButton.FillColor = System.Drawing.Color.Transparent;
-            this.helpButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.helpButton.ForeColor = System.Drawing.Color.White;
-            this.helpButton.Image = global::WindowsFormsApp1.Properties.Resources.help;
-            this.helpButton.ImageSize = new System.Drawing.Size(40, 40);
-            this.helpButton.Location = new System.Drawing.Point(190, 32);
-            this.helpButton.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
-            this.helpButton.Name = "helpButton";
-            this.helpButton.Size = new System.Drawing.Size(50, 50);
-            this.helpButton.TabIndex = 0;
-            this.toolTip1.SetToolTip(this.helpButton, "Справка");
-            // 
-            // saveAsButton
-            // 
-            this.saveAsButton.BackColor = System.Drawing.Color.Transparent;
-            this.saveAsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.saveAsButton.BorderColor = System.Drawing.Color.DarkGray;
-            this.saveAsButton.BorderRadius = 10;
-            this.saveAsButton.BorderThickness = 1;
-            this.saveAsButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.saveAsButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.saveAsButton.DisabledState.FillColor = System.Drawing.Color.Silver;
-            this.saveAsButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.saveAsButton.Enabled = false;
-            this.saveAsButton.FillColor = System.Drawing.Color.Transparent;
-            this.saveAsButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.saveAsButton.ForeColor = System.Drawing.Color.White;
-            this.saveAsButton.Image = global::WindowsFormsApp1.Properties.Resources.save_as;
-            this.saveAsButton.ImageSize = new System.Drawing.Size(40, 40);
-            this.saveAsButton.Location = new System.Drawing.Point(130, 32);
-            this.saveAsButton.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
-            this.saveAsButton.Name = "saveAsButton";
-            this.saveAsButton.Size = new System.Drawing.Size(50, 50);
-            this.saveAsButton.TabIndex = 0;
-            this.toolTip1.SetToolTip(this.saveAsButton, "Сохранить как...");
-            this.saveAsButton.Click += new System.EventHandler(this.saveAsButtonClick);
-            // 
-            // saveButton
-            // 
-            this.saveButton.BackColor = System.Drawing.Color.Transparent;
-            this.saveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.saveButton.BorderColor = System.Drawing.Color.DarkGray;
-            this.saveButton.BorderRadius = 10;
-            this.saveButton.BorderThickness = 1;
-            this.saveButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.saveButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.saveButton.DisabledState.FillColor = System.Drawing.Color.Silver;
-            this.saveButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.saveButton.Enabled = false;
-            this.saveButton.FillColor = System.Drawing.Color.Transparent;
-            this.saveButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.saveButton.ForeColor = System.Drawing.Color.White;
-            this.saveButton.Image = global::WindowsFormsApp1.Properties.Resources.save;
-            this.saveButton.ImageSize = new System.Drawing.Size(40, 40);
-            this.saveButton.Location = new System.Drawing.Point(70, 32);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(50, 50);
-            this.saveButton.TabIndex = 0;
-            this.toolTip1.SetToolTip(this.saveButton, "Сохранить");
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-            // 
-            // openFileBtn
-            // 
-            this.openFileBtn.BackColor = System.Drawing.Color.Transparent;
-            this.openFileBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.openFileBtn.BorderColor = System.Drawing.Color.DarkGray;
-            this.openFileBtn.BorderRadius = 10;
-            this.openFileBtn.BorderThickness = 1;
-            this.openFileBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.openFileBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.openFileBtn.DisabledState.FillColor = System.Drawing.Color.Silver;
-            this.openFileBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.openFileBtn.FillColor = System.Drawing.Color.Transparent;
-            this.openFileBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.openFileBtn.ForeColor = System.Drawing.Color.White;
-            this.openFileBtn.Image = global::WindowsFormsApp1.Properties.Resources.open;
-            this.openFileBtn.ImageSize = new System.Drawing.Size(35, 40);
-            this.openFileBtn.Location = new System.Drawing.Point(10, 32);
-            this.openFileBtn.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
-            this.openFileBtn.Name = "openFileBtn";
-            this.openFileBtn.Size = new System.Drawing.Size(50, 50);
-            this.openFileBtn.TabIndex = 0;
-            this.toolTip1.SetToolTip(this.openFileBtn, "Открыть файл");
-            this.openFileBtn.Click += new System.EventHandler(this.openImageClick);
-            // 
-            // filterBtn
-            // 
-            this.filterBtn.BackColor = System.Drawing.Color.Transparent;
-            this.filterBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.filterBtn.BorderColor = System.Drawing.Color.DarkGray;
-            this.filterBtn.BorderRadius = 10;
-            this.filterBtn.BorderThickness = 1;
-            this.filterBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.filterBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.filterBtn.DisabledState.FillColor = System.Drawing.Color.Silver;
-            this.filterBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.filterBtn.Enabled = false;
-            this.filterBtn.FillColor = System.Drawing.Color.Transparent;
-            this.filterBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.filterBtn.ForeColor = System.Drawing.Color.White;
-            this.filterBtn.Image = global::WindowsFormsApp1.Properties.Resources.start;
-            this.filterBtn.ImageSize = new System.Drawing.Size(40, 40);
-            this.filterBtn.Location = new System.Drawing.Point(1019, 31);
-            this.filterBtn.Margin = new System.Windows.Forms.Padding(5, 5, 10, 5);
-            this.filterBtn.Name = "filterBtn";
-            this.filterBtn.Size = new System.Drawing.Size(50, 50);
-            this.filterBtn.TabIndex = 0;
-            this.toolTip1.SetToolTip(this.filterBtn, "Обработать");
-            this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
-            // 
             // elapsedLabel
             // 
             this.elapsedLabel.BackColor = System.Drawing.Color.Transparent;
@@ -310,22 +188,13 @@
             this.guna2Panel1.Size = new System.Drawing.Size(1155, 116);
             this.guna2Panel1.TabIndex = 12;
             // 
-            // maskPictureBox
-            // 
-            this.maskPictureBox.Location = new System.Drawing.Point(901, 9);
-            this.maskPictureBox.Name = "maskPictureBox";
-            this.maskPictureBox.Size = new System.Drawing.Size(100, 100);
-            this.maskPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.maskPictureBox.TabIndex = 19;
-            this.maskPictureBox.TabStop = false;
-            // 
             // guna2GroupBox3
             // 
             this.guna2GroupBox3.BackColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox3.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2GroupBox3.BorderRadius = 10;
             this.guna2GroupBox3.BorderThickness = 2;
-            this.guna2GroupBox3.Controls.Add(this.helpButton);
+            this.guna2GroupBox3.Controls.Add(this.multiThreadButton);
             this.guna2GroupBox3.Controls.Add(this.saveAsButton);
             this.guna2GroupBox3.Controls.Add(this.saveButton);
             this.guna2GroupBox3.Controls.Add(this.openFileBtn);
@@ -372,7 +241,7 @@
             this.guna2GroupBox2.BorderRadius = 10;
             this.guna2GroupBox2.BorderThickness = 2;
             this.guna2GroupBox2.Controls.Add(this.lineLengthInput);
-            this.guna2GroupBox2.Controls.Add(this.minBrightness);
+            this.guna2GroupBox2.Controls.Add(this.minBrightnessInput);
             this.guna2GroupBox2.Controls.Add(this.label2);
             this.guna2GroupBox2.Controls.Add(this.label1);
             this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -597,6 +466,148 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1133, 492);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.Filter = "Формат PNG (*.png)|*.png|Формат JPG (*.jpg)|*.jpg|Формат BMP (*.bmp)|*.bmp";
+            this.saveFileDialog.RestoreDirectory = true;
+            this.saveFileDialog.Title = "Сохранить как";
+            // 
+            // maskPictureBox
+            // 
+            this.maskPictureBox.Location = new System.Drawing.Point(901, 9);
+            this.maskPictureBox.Name = "maskPictureBox";
+            this.maskPictureBox.Size = new System.Drawing.Size(100, 100);
+            this.maskPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.maskPictureBox.TabIndex = 19;
+            this.maskPictureBox.TabStop = false;
+            // 
+            // multiThreadButton
+            // 
+            this.multiThreadButton.BackColor = System.Drawing.Color.Transparent;
+            this.multiThreadButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.multiThreadButton.BorderColor = System.Drawing.Color.DarkGray;
+            this.multiThreadButton.BorderRadius = 10;
+            this.multiThreadButton.BorderThickness = 1;
+            this.multiThreadButton.Checked = true;
+            this.multiThreadButton.CheckedState.BorderColor = System.Drawing.Color.LimeGreen;
+            this.multiThreadButton.CheckedState.FillColor = System.Drawing.Color.PaleGreen;
+            this.multiThreadButton.CheckedState.Image = global::WindowsFormsApp1.Properties.Resources.mulithread_active;
+            this.multiThreadButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.multiThreadButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.multiThreadButton.DisabledState.FillColor = System.Drawing.Color.Silver;
+            this.multiThreadButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.multiThreadButton.FillColor = System.Drawing.Color.Transparent;
+            this.multiThreadButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.multiThreadButton.ForeColor = System.Drawing.Color.White;
+            this.multiThreadButton.Image = global::WindowsFormsApp1.Properties.Resources.mulithread;
+            this.multiThreadButton.ImageSize = new System.Drawing.Size(40, 40);
+            this.multiThreadButton.Location = new System.Drawing.Point(190, 32);
+            this.multiThreadButton.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
+            this.multiThreadButton.Name = "multiThreadButton";
+            this.multiThreadButton.Size = new System.Drawing.Size(50, 50);
+            this.multiThreadButton.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.multiThreadButton, "Деактивировать многопоточность");
+            this.multiThreadButton.Click += new System.EventHandler(this.multiThreadButton_Click);
+            // 
+            // saveAsButton
+            // 
+            this.saveAsButton.BackColor = System.Drawing.Color.Transparent;
+            this.saveAsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.saveAsButton.BorderColor = System.Drawing.Color.DarkGray;
+            this.saveAsButton.BorderRadius = 10;
+            this.saveAsButton.BorderThickness = 1;
+            this.saveAsButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.saveAsButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.saveAsButton.DisabledState.FillColor = System.Drawing.Color.Silver;
+            this.saveAsButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.saveAsButton.Enabled = false;
+            this.saveAsButton.FillColor = System.Drawing.Color.Transparent;
+            this.saveAsButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.saveAsButton.ForeColor = System.Drawing.Color.White;
+            this.saveAsButton.Image = global::WindowsFormsApp1.Properties.Resources.save_as;
+            this.saveAsButton.ImageSize = new System.Drawing.Size(40, 40);
+            this.saveAsButton.Location = new System.Drawing.Point(130, 32);
+            this.saveAsButton.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
+            this.saveAsButton.Name = "saveAsButton";
+            this.saveAsButton.Size = new System.Drawing.Size(50, 50);
+            this.saveAsButton.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.saveAsButton, "Сохранить как...");
+            this.saveAsButton.Click += new System.EventHandler(this.saveAsButtonClick);
+            // 
+            // saveButton
+            // 
+            this.saveButton.BackColor = System.Drawing.Color.Transparent;
+            this.saveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.saveButton.BorderColor = System.Drawing.Color.DarkGray;
+            this.saveButton.BorderRadius = 10;
+            this.saveButton.BorderThickness = 1;
+            this.saveButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.saveButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.saveButton.DisabledState.FillColor = System.Drawing.Color.Silver;
+            this.saveButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.saveButton.Enabled = false;
+            this.saveButton.FillColor = System.Drawing.Color.Transparent;
+            this.saveButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.saveButton.ForeColor = System.Drawing.Color.White;
+            this.saveButton.Image = global::WindowsFormsApp1.Properties.Resources.save;
+            this.saveButton.ImageSize = new System.Drawing.Size(40, 40);
+            this.saveButton.Location = new System.Drawing.Point(70, 32);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(50, 50);
+            this.saveButton.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.saveButton, "Сохранить");
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // openFileBtn
+            // 
+            this.openFileBtn.BackColor = System.Drawing.Color.Transparent;
+            this.openFileBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.openFileBtn.BorderColor = System.Drawing.Color.DarkGray;
+            this.openFileBtn.BorderRadius = 10;
+            this.openFileBtn.BorderThickness = 1;
+            this.openFileBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.openFileBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.openFileBtn.DisabledState.FillColor = System.Drawing.Color.Silver;
+            this.openFileBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.openFileBtn.FillColor = System.Drawing.Color.Transparent;
+            this.openFileBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.openFileBtn.ForeColor = System.Drawing.Color.White;
+            this.openFileBtn.Image = global::WindowsFormsApp1.Properties.Resources.open;
+            this.openFileBtn.ImageSize = new System.Drawing.Size(35, 40);
+            this.openFileBtn.Location = new System.Drawing.Point(10, 32);
+            this.openFileBtn.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
+            this.openFileBtn.Name = "openFileBtn";
+            this.openFileBtn.Size = new System.Drawing.Size(50, 50);
+            this.openFileBtn.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.openFileBtn, "Открыть файл");
+            this.openFileBtn.Click += new System.EventHandler(this.openImageClick);
+            // 
+            // filterBtn
+            // 
+            this.filterBtn.BackColor = System.Drawing.Color.Transparent;
+            this.filterBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.filterBtn.BorderColor = System.Drawing.Color.DarkGray;
+            this.filterBtn.BorderRadius = 10;
+            this.filterBtn.BorderThickness = 1;
+            this.filterBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.filterBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.filterBtn.DisabledState.FillColor = System.Drawing.Color.Silver;
+            this.filterBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.filterBtn.Enabled = false;
+            this.filterBtn.FillColor = System.Drawing.Color.Transparent;
+            this.filterBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.filterBtn.ForeColor = System.Drawing.Color.White;
+            this.filterBtn.Image = global::WindowsFormsApp1.Properties.Resources.start;
+            this.filterBtn.ImageSize = new System.Drawing.Size(40, 40);
+            this.filterBtn.Location = new System.Drawing.Point(1019, 31);
+            this.filterBtn.Margin = new System.Windows.Forms.Padding(5, 5, 10, 5);
+            this.filterBtn.Name = "filterBtn";
+            this.filterBtn.Size = new System.Drawing.Size(50, 50);
+            this.filterBtn.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.filterBtn, "Обработать");
+            this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
+            // 
             // inputPictureBox
             // 
             this.inputPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -631,12 +642,6 @@
             this.outputPictureBox.TabStop = false;
             this.outputPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.outputPictureBox_MouseDown);
             // 
-            // saveFileDialog
-            // 
-            this.saveFileDialog.Filter = "Формат PNG (*.png)|*.png|Формат JPG (*.jpg)|*.jpg|Формат BMP (*.bmp)|*.bmp";
-            this.saveFileDialog.RestoreDirectory = true;
-            this.saveFileDialog.Title = "Сохранить как";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -648,16 +653,16 @@
             this.MinimumSize = new System.Drawing.Size(1000, 500);
             this.Name = "Form1";
             this.Text = "AMF";
-            ((System.ComponentModel.ISupportInitialize)(this.minBrightness)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minBrightnessInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineLengthInput)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.maskPictureBox)).EndInit();
             this.guna2GroupBox3.ResumeLayout(false);
             this.guna2GroupBox2.ResumeLayout(false);
             this.guna2GroupBox2.PerformLayout();
             this.guna2GroupBox4.ResumeLayout(false);
             this.guna2GroupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.maskPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -668,7 +673,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label elapsedLabel;
-        private Guna.UI2.WinForms.Guna2NumericUpDown minBrightness;
+        private Guna.UI2.WinForms.Guna2NumericUpDown minBrightnessInput;
         private Guna.UI2.WinForms.Guna2NumericUpDown lineLengthInput;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2CircleProgressBar progressBar;
@@ -687,7 +692,7 @@
         private Guna.UI2.WinForms.Guna2Button openFileBtn;
         private Guna.UI2.WinForms.Guna2Button saveButton;
         private Guna.UI2.WinForms.Guna2Button saveAsButton;
-        private Guna.UI2.WinForms.Guna2Button helpButton;
+        private Guna.UI2.WinForms.Guna2Button multiThreadButton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.PictureBox outputPictureBox;
         private System.Windows.Forms.PictureBox maskPictureBox;
