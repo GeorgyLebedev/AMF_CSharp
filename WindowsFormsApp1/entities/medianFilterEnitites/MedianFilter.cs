@@ -33,7 +33,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             progressBar.Maximum = imgController.height;
         }
 
-        private void fillReplacePixels(Point currentPos, Pixel[] mask, ReplacePixels replacePixels)
+        private void fillSequences(Point currentPos, Pixel[] mask, SequenceArray sequences)
         {
             Pixel[] sortedPixels = new Pixel[mask.Length];
             mask.CopyTo(sortedPixels,0);
@@ -43,42 +43,42 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             byte currentBrightness = (byte)imgController.getPixelMiddleValue(currentPos.X, currentPos.Y);
             if (medianBrightness != currentBrightness && currentBrightness>options.minBrightness)
             {
-                replacePixels.pushPixel(currentPos.X, medianPixel);
+                sequences.pushPixel(currentPos.X, medianPixel);
             }
             else
             {
-                if(replacePixels.getCurrentListLength() < options.sequenceLength)
+                if(sequences.getCurrentSequenceLength() < options.sequenceLength)
                 {
-                   replacePixels.clearCurrentList();
+                   sequences.clearCurrentSequence();
                 }
-                replacePixels.resetIndex();
+                sequences.resetIndex();
             }
         }
 
-        private void filterReplacePixels(int rowIndex, ReplacePixels replacePixels)
+        private void filterSequences(int rowIndex, SequenceArray sequences)
         {
-            foreach (var list in replacePixels.getStorage()) {
-                for (int i = 0; i < list.Value.Count; i++)
+            foreach (var sequence in sequences.getSequences()) {
+                for (int i = 0; i < sequence.Value.Count; i++)
                 {
-                    imgController.SetPixel(list.Key+i, rowIndex, list.Value[i]);
+                    imgController.SetPixel(sequence.Key+i, rowIndex, sequence.Value[i]);
                 }
             }
-            replacePixels = null;
+            sequences = null;
         }
 
         private void processRow(int y)
         {
             int x = 0;
-            ReplacePixels replacePixels = new ReplacePixels();
+            SequenceArray sequences = new SequenceArray();
             Pixel[] maskPixels = new Pixel[pixelsCount];
             mask.fill(new Point(x,y), ref maskPixels);
             while(x < imgController.width - 1)
             {
-                fillReplacePixels(new Point(x, y), maskPixels, replacePixels);
+                fillSequences(new Point(x, y), maskPixels, sequences);
                 mask.update(new Point(x,y), ref maskPixels);
                 x++;
             }
-            filterReplacePixels(y, replacePixels);
+            filterSequences(y, sequences);
         }
 
         public async Task<Bitmap> doFiltration()

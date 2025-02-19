@@ -6,28 +6,28 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.entities.medianFilterEnitites
 {
-    public class ReplacePixels
+    public class SequenceArray
     {
-        private Dictionary<int, List<Pixel>> storage;
+        private Dictionary<int, List<Pixel>> sequences;
         private int index = -1;
-        public ReplacePixels()
+        public SequenceArray()
         {
-            storage = new Dictionary<int, List<Pixel>>();
+            sequences = new Dictionary<int, List<Pixel>>();
         }
 
         public void pushPixel(int index, Pixel pixel)
         {
             if (this.index == -1)
             {
-                storage.Add(index, new List<Pixel>());
+                sequences.Add(index, new List<Pixel>());
                 this.index = index;
             }
-            storage[this.index].Add(pixel);
+            sequences[this.index].Add(pixel);
         }
 
-        public void clearCurrentList()
+        public void clearCurrentSequence()
         {
-            storage.Remove(index);
+            sequences.Remove(index);
         }
 
         public void resetIndex()
@@ -35,7 +35,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             index = -1;
         }
 
-        public int getCurrentListLength()
+        public int getCurrentSequenceLength()
         {
             if (index == -1)
             {
@@ -43,13 +43,13 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             }
             else
             {
-                return storage[index].Count;
+                return sequences[index].Count;
             }
         }
 
-        public Dictionary<int, List<Pixel>> getStorage()
+        public Dictionary<int, List<Pixel>> getSequences()
         {
-            return storage;
+            return sequences;
         }
 
     }
