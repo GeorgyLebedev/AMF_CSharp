@@ -64,7 +64,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="WindowsFormsApp1.entities.medianFilterEnitites.MaskType">
-    <Position X="26" Y="0.5" Width="1.5" />
+    <Position X="26" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AIAAAACAAIEACQEACAAgAAAAABAEAAAAEIABAADgAQE=</HashCode>
       <FileName>entities\medianFilterEnitites\MaskType.cs</FileName>

@@ -23,8 +23,8 @@ namespace WindowsFormsApp1
         private Dialogs dialogs;
         private Picture input;
         private Picture output;
-        private bool isNeedRotate;
-        private bool imgLoaded = false;
+        private bool imageRotated = false;
+        private bool imageLoaded = false;
 
         public ImageManager(OpenFileDialog openDialog, SaveFileDialog saveDialog, PictureBox inputPictureBox, PictureBox outputPictureBox)
         {
@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
 
         public bool isLoaded()
         {
-            return imgLoaded;
+            return imageLoaded;
         }
 
         public void setOutputImage(Bitmap outputImage)
@@ -43,22 +43,18 @@ namespace WindowsFormsApp1
             output.setImg(outputImage);
         }
 
-        public void rotateBeforeProcessing()
+        public void rotateImages()
         {
-            isNeedRotate = input.isVertical;
-            if (isNeedRotate)
+            bool shouldRotate = input.isVertical || imageRotated;
+            if (!shouldRotate)
             {
-                input.RotateByOrientation(false);
+                return;
             }
-        }
+            bool rotateClockwise = !imageRotated;
 
-        public void rotateAfterProcessing()
-        {
-            if (isNeedRotate)
-            {
-                input.RotateByOrientation(true);
-                output.RotateByOrientation(true);
-            }
+            input.RotateByOrientation(rotateClockwise);
+            output.RotateByOrientation(rotateClockwise);
+            imageRotated = !imageRotated;
         }
 
         public void rotateInputImg()
@@ -73,13 +69,13 @@ namespace WindowsFormsApp1
 
         public bool openImage()
         {
-            imgLoaded = false;
+            imageLoaded = false;
             try
             {
                 if (dialogs.open.ShowDialog() == DialogResult.OK)
                 {
                     input.setImg(new Bitmap(dialogs.open.FileName), true);
-                    imgLoaded = true;
+                    imageLoaded = true;
                 }
 
             }
@@ -87,7 +83,7 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show($"Ошибка открытия файла:\n\n {ex.Message}\n\n");
             }
-            return imgLoaded;
+            return imageLoaded;
         }
 
         public void saveOutputImage()

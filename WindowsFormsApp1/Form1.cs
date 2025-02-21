@@ -43,13 +43,13 @@ namespace WindowsFormsApp1
                 benchmark.begin();
 
                 displayProgress(true);
-                imageManager.rotateBeforeProcessing();
+                imageManager.rotateImages();
 
                 MedianFilter medianFilter = createFilter();
                 imageManager.setOutputImage(await medianFilter.doFiltration());
 
                 displayProgress(false);
-                imageManager.rotateAfterProcessing();
+                imageManager.rotateImages();
 
                 benchmark.end();
 

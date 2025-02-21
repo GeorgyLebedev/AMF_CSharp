@@ -86,18 +86,18 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             fillStaticIndexes();
 
             coordinates = new Point[pixelsCount];
-            int coordIndex = 0;
+            int index = 0;
             int[] edges = new int[] { 0, 1, maskSize.Height - 1, maskSize.Height - 2 };
             for (int y = 0; y < maskSize.Height; y++)
             {
-                for (int x = 0; x < maskSize.Height; x++)
+                for (int x = 0; x < maskSize.Width; x++)
                 {
                     if (edges.Contains(y) || x == centerPoint.X)
                     {
                         //Заполняем все точки в первой и последней строке, а также центральные
                         Point maskPoint = new Point(x - centerPoint.X, y - centerPoint.Y);
-                        coordinates[coordIndex] = maskPoint;
-                        coordIndex++;
+                        coordinates[index] = maskPoint;
+                        index++;
                     }
                 }
             }

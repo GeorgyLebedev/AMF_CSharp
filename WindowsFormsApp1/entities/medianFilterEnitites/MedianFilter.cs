@@ -60,7 +60,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             foreach (var sequence in sequences.getSequences()) {
                 for (int i = 0; i < sequence.Value.Count; i++)
                 {
-                    imgController.SetPixel(sequence.Key+i, rowIndex, sequence.Value[i]);
+                    imgController.setPixel(sequence.Key+i, rowIndex, sequence.Value[i]);
                 }
             }
             sequences = null;

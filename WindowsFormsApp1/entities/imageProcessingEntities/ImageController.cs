@@ -79,7 +79,7 @@ namespace WindowsFormsApp1
             return (pixels[4 * i] + pixels[4 * i + 1] + pixels[4 * i + 2])/3;
         }
 
-        public void SetPixel(int x, int y, Pixel pixel)
+        public void setPixel(int x, int y, Pixel pixel)
         {
             int i = y * width + x;
             filteredPixels[4 * i] = pixel.b;
