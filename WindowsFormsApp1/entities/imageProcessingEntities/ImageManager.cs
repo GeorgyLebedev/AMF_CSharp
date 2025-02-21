@@ -52,20 +52,23 @@ namespace WindowsFormsApp1
             }
             bool rotateClockwise = !imageRotated;
 
-            input.RotateByOrientation(rotateClockwise);
-            output.RotateByOrientation(rotateClockwise);
+            input.rotateByOrientation(rotateClockwise);
+            output.rotateByOrientation(rotateClockwise);
             imageRotated = !imageRotated;
         }
 
-        public void rotateInputImg()
+        public void rotateImageByClick(bool isInput)
         {
-            input.rotate90();
+            if (isInput)
+            {
+                input.rotate90();
+            }
+            else 
+            { 
+                output.rotate90();
+            }
         }
 
-        public void rotateOutputImg()
-        {
-            output.rotate90();
-        }
 
         public bool openImage()
         {
@@ -75,6 +78,7 @@ namespace WindowsFormsApp1
                 if (dialogs.open.ShowDialog() == DialogResult.OK)
                 {
                     input.setImg(new Bitmap(dialogs.open.FileName), true);
+                    output.clear();
                     imageLoaded = true;
                 }
 

@@ -25,6 +25,7 @@ namespace WindowsFormsApp1.entities
         public void setImg(Bitmap img, bool isFirst=false)
         {
             box.Image = img;
+            box.Enabled = true;
             if (isFirst)
             {
                 grayscaleImage();
@@ -42,7 +43,16 @@ namespace WindowsFormsApp1.entities
             box.Image.Save(fileName, imageFormat);
         }
 
-        public void RotateByOrientation(bool toVertical)
+        public void clear()
+        {
+            box.Image = box.InitialImage;
+            if (isVertical) {
+                rotateByOrientation(false);
+            }
+            box.Enabled = false;
+        }
+
+        public void rotateByOrientation(bool toVertical)
         {
             if (toVertical)
             {

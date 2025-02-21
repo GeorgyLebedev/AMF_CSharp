@@ -161,7 +161,7 @@ namespace WindowsFormsApp1
             }
             if (e.Button == MouseButtons.Right)
             {
-                imageManager.rotateInputImg();
+                imageManager.rotateImageByClick(true);
             }
         }
 
@@ -173,7 +173,7 @@ namespace WindowsFormsApp1
             }
             if (e.Button == MouseButtons.Right)
             {
-                imageManager.rotateOutputImg();
+                imageManager.rotateImageByClick(false);
             }
         }
 
