@@ -22,11 +22,11 @@ namespace WindowsFormsApp1.entities
             box = pictureBox;   
         }
 
-        public void setImg(Bitmap img, bool isFirst=false)
+        public void setImage(Bitmap image, bool isNeedGrayscale=false)
         {
-            box.Image = img;
+            box.Image = image;
             box.Enabled = true;
-            if (isFirst)
+            if (isNeedGrayscale)
             {
                 grayscaleImage();
             }

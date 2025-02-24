@@ -14,8 +14,6 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
         public readonly int sequenceLength;
         // Использовать потоки процессора
         public readonly bool useMultiThread;
-        // Использовать обработку на GPU
-        public readonly bool useGPU;
 
         public FilterOptions(int minBrightness, int sequenceLength, bool useMultiThread)
         {

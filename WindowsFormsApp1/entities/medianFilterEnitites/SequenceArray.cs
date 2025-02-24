@@ -8,12 +8,8 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
 {
     public class SequenceArray
     {
-        private Dictionary<int, List<Pixel>> sequences;
+        private Dictionary<int, List<Pixel>> sequences = new Dictionary<int, List<Pixel>>();
         private int index = -1;
-        public SequenceArray()
-        {
-            sequences = new Dictionary<int, List<Pixel>>();
-        }
 
         public void pushPixel(int index, Pixel pixel)
         {

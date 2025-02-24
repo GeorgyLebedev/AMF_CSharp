@@ -10,7 +10,7 @@
   <Class Name="WindowsFormsApp1.entities.Picture">
     <Position X="15.25" Y="7" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAACAgAAAAAAAAgAAAAAAAAAAAAgAAAAEEgA=</HashCode>
+      <HashCode>AEAAAAEAAACAAAAAAAAAAgAAAAAAgAAAAAgAAAAEEgA=</HashCode>
       <FileName>entities\Picture.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -24,14 +24,14 @@
   <Class Name="WindowsFormsApp1.entities.medianFilterEnitites.MaskDisplay">
     <Position X="25.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACABAAAEgAAAAQAQIAAAAAAACAAAAAAAAAAAAAEAgA=</HashCode>
+      <HashCode>AAKABAAEEgAAAAAAAAAAAAAAICAQAAAAAAAAAAAEAAA=</HashCode>
       <FileName>entities\medianFilterEnitites\MaskDisplay.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WindowsFormsApp1.entities.medianFilterEnitites.MedianFilter">
     <Position X="28.5" Y="6.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AEAAAAARAAAkAAAAAAAAAABAAAAAAAEAEAAAAAAAgAA=</HashCode>
+      <HashCode>AEAAAAARAAAkAAAAAAAAAABAAAAAAAEAAAAAAAAAgAA=</HashCode>
       <FileName>entities\medianFilterEnitites\MedianFilter.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -45,7 +45,7 @@
   <Class Name="WindowsFormsApp1.ImageController">
     <Position X="10.5" Y="6.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAABQAAIAAgEUAQAAAAAKAAAAAAAAAAAgAAAAAAQA=</HashCode>
+      <HashCode>EAAAAAQAAIAAgEUAQAAAAAKAAAAAAAAAAAgAAAAAAQA=</HashCode>
       <FileName>entities\imageProcessingEntities\ImageController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -59,7 +59,7 @@
   <Class Name="WindowsFormsApp1.ImageManager">
     <Position X="17.5" Y="5.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>BAAQAACAAAACAAAQAAAACABACAAAhBAAAAEIAAAAAAo=</HashCode>
+      <HashCode>AAAQAACAAABQAAAAAAAACAAACAAABBAAAAEIAAACAAo=</HashCode>
       <FileName>entities\imageProcessingEntities\ImageManager.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -71,10 +71,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="WindowsFormsApp1.entities.medianFilterEnitites.SequenceArray">
-    <Position X="28.75" Y="2.5" Width="1.5" />
+    <Position X="28.75" Y="2.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>EAAAQAEAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAARAAA=</HashCode>
       <FileName>entities\medianFilterEnitites\SequenceArray.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WindowsFormsApp1.entities.medianFilterEnitites.FilterOptions">
+    <Position X="16.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAQAAAAAgA=</HashCode>
+      <FileName>entities\medianFilterEnitites\FilterOptions.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="WindowsFormsApp1.entities.medianFilterEnitites.MaskTypeEnum">

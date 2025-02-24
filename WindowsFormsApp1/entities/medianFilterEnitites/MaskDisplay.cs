@@ -7,49 +7,50 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
 
     public class MaskDisplay
     {
-        PictureBox pictureBox;
-        SolidBrush brush;
+        private PictureBox pictureBox;
+        private SolidBrush brush;
         private int squareSize;
-        private int width;
-        private int height;
+        private int screenSize;
+        private int maskWidth;
+        private int maskHeight;
         private int offset;
-        private int side;
+
         public MaskDisplay(PictureBox pictureBox) 
         {
             this.pictureBox = pictureBox;
             offset = 1;
-            side = pictureBox.Width;
+            screenSize = pictureBox.Width;
             brush =  new SolidBrush(Color.LightSlateGray);
         }
 
         public void update(MaskType maskType)
         {
-            calcSquareSize(maskType.getSize());
+            setSquareSize(maskType.getSize());
             drawMask(maskType);
         }
 
-        private void calcSquareSize(Size maskSize)
+        private void setSquareSize(Size maskSize)
         {
             int maxSquaresDimension = Math.Max(maskSize.Width, maskSize.Height);
-            width = maskSize.Width;
-            height = maskSize.Height;
-            squareSize = (side - maxSquaresDimension - offset) / maxSquaresDimension;
-            int newWidth = width * (squareSize+offset) + offset;
-            while (newWidth > side) {
+            maskWidth = maskSize.Width;
+            maskHeight = maskSize.Height;
+            squareSize = (screenSize - maxSquaresDimension - offset) / maxSquaresDimension;
+            int newWidth = maskWidth * (squareSize+offset) + offset;
+            while (newWidth > screenSize) {
                 squareSize--;
-                newWidth = width * (squareSize + offset) + offset;
+                newWidth = maskWidth * (squareSize + offset) + offset;
             }
-            int newHeight = height * (squareSize + offset) + offset;
-            while (newHeight > side)
+            int newHeight = maskHeight * (squareSize + offset) + offset;
+            while (newHeight > screenSize)
             {
                 squareSize--;
-                newHeight = height * (squareSize + offset) + offset;
+                newHeight = maskHeight * (squareSize + offset) + offset;
             }
             if (maskSize.Width>maskSize.Height  )
             {
                 pictureBox.Image = new Bitmap(newWidth, (squareSize+offset) * maskSize.Height + offset);
             }
-            else if (width == height)
+            else if (maskWidth == maskHeight)
             {
                 pictureBox.Image = new Bitmap(newWidth, newHeight);
             }
@@ -79,6 +80,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
                     // Транслируем координаты пикселя маски в координаты класса Graphics  
                     newX = point.X + maskType.getSize().Width / 2;
                     newY = point.Y + maskType.getSize().Height / 2;
+
                     // Получаем координаты верхнего левого угла квадрата
                     newX *= (squareSize + offset);
                     newY *= (squareSize + offset);

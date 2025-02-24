@@ -618,6 +618,7 @@
             this.inputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.inputPictureBox.TabIndex = 1;
             this.inputPictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.inputPictureBox, "Нажмите ПКМ для вращения изображения");
             this.inputPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inputPictureBox_MouseDown);
             // 
             // outputPictureBox
@@ -636,6 +637,7 @@
             this.outputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.outputPictureBox.TabIndex = 1;
             this.outputPictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.outputPictureBox, "Нажмите ПКМ для вращения изображения");
             this.outputPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.outputPictureBox_MouseDown);
             // 
             // saveFileDialog

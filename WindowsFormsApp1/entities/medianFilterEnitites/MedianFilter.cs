@@ -8,7 +8,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
     public class MedianFilter
     {
         //Класс для управления пикселями изображения
-        private ImageController imgController;
+        private ImageController imageController;
         //Маска фильтра
         private Mask mask;
         //Опции фильтрации
@@ -18,9 +18,9 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
 
         public MedianFilter(FilterOptions options, Bitmap imageData, MaskType maskType)
         {
-            imgController = new ImageController(imageData); 
+            imageController = new ImageController(imageData); 
             this.options = options;
-            mask = new Mask(maskType, imgController);
+            mask = new Mask(maskType, imageController);
         }
 
         public void setProgressBar(Guna.UI2.WinForms.Guna2CircleProgressBar progressBar)
@@ -28,7 +28,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             this.progressBar = progressBar;
             progressBar.Value = 0;
             progressBar.Visible = true;
-            progressBar.Maximum = imgController.height;
+            progressBar.Maximum = imageController.height;
         }
 
         private void fillSequences(Point currentPos, Pixel[] mask, SequenceArray sequences)
@@ -38,7 +38,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             Array.Sort(sortedPixels, (a, b) => (b.r + b.g + b.b).CompareTo(a.r + a.g + a.b));
             Pixel medianPixel = sortedPixels[(sortedPixels.Length + 1) / 2 ];
             byte medianBrightness = (byte)(medianPixel.rgbSum / 3);
-            byte currentBrightness = (byte)imgController.getPixelMiddleValue(currentPos.X, currentPos.Y);
+            byte currentBrightness = (byte)imageController.getPixelMiddleValue(currentPos.X, currentPos.Y);
             if (medianBrightness != currentBrightness && currentBrightness>options.minBrightness)
             {
                 sequences.pushPixel(currentPos.X, medianPixel);
@@ -58,7 +58,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             foreach (var sequence in sequences.getSequences()) {
                 for (int i = 0; i < sequence.Value.Count; i++)
                 {
-                    imgController.setPixel(sequence.Key+i, rowIndex, sequence.Value[i]);
+                    imageController.setPixel(sequence.Key+i, rowIndex, sequence.Value[i]);
                 }
             }
             sequences = null;
@@ -69,7 +69,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             int x = 0;
             SequenceArray sequences = new SequenceArray();
             Pixel[] maskPixels = mask.fill(new Point(x,y));
-            while(x < imgController.width - 1)
+            while(x < imageController.width - 1)
             {
                 fillSequences(new Point(x, y), maskPixels, sequences);
                 mask.update(new Point(x,y), ref maskPixels);
@@ -85,7 +85,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             // Создание массива задач
             Task[] taskSet = new Task[numCores];
             // Обработка строк изображения параллельно
-            for (int i = 0; i < imgController.height - 1; i++)
+            for (int i = 0; i < imageController.height - 1; i++)
             {
                 if (i % 100 == 0)
                 {
@@ -105,7 +105,7 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
                 }
             }
             progressBar.Visible = false;
-            return imgController.updateImageData();
+            return imageController.updateImageData();
         }
     }
 }

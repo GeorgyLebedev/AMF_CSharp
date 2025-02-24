@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
         private Picture input;
         private Picture output;
         private bool imageRotated = false;
-        private bool imageLoaded = false;
+
 
         public ImageManager(OpenFileDialog openDialog, SaveFileDialog saveDialog, PictureBox inputPictureBox, PictureBox outputPictureBox)
         {
@@ -33,14 +33,10 @@ namespace WindowsFormsApp1
             output = new Picture(outputPictureBox);
         }
 
-        public bool isLoaded()
-        {
-            return imageLoaded;
-        }
 
         public void setOutputImage(Bitmap outputImage)
         {
-            output.setImg(outputImage);
+            output.setImage(outputImage);
         }
 
         public void rotateImages()
@@ -72,12 +68,12 @@ namespace WindowsFormsApp1
 
         public bool openImage()
         {
-            imageLoaded = false;
+            bool imageLoaded = false;
             try
             {
                 if (dialogs.open.ShowDialog() == DialogResult.OK)
                 {
-                    input.setImg(new Bitmap(dialogs.open.FileName), true);
+                    input.setImage(new Bitmap(dialogs.open.FileName), true);
                     output.clear();
                     imageLoaded = true;
                 }
