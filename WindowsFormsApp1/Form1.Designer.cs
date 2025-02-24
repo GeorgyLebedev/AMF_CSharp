@@ -170,7 +170,7 @@
             this.multiThreadButton.ForeColor = System.Drawing.Color.White;
             this.multiThreadButton.Image = global::WindowsFormsApp1.Properties.Resources.mulithread;
             this.multiThreadButton.ImageSize = new System.Drawing.Size(40, 40);
-            this.multiThreadButton.Location = new System.Drawing.Point(190, 32);
+            this.multiThreadButton.Location = new System.Drawing.Point(1087, 31);
             this.multiThreadButton.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
             this.multiThreadButton.Name = "multiThreadButton";
             this.multiThreadButton.Size = new System.Drawing.Size(50, 50);
@@ -296,6 +296,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel1.BorderColor = System.Drawing.Color.LightGray;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.multiThreadButton);
             this.guna2Panel1.Controls.Add(this.maskPictureBox);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox3);
             this.guna2Panel1.Controls.Add(this.progressBar);
@@ -317,7 +318,7 @@
             // 
             // maskPictureBox
             // 
-            this.maskPictureBox.Location = new System.Drawing.Point(901, 9);
+            this.maskPictureBox.Location = new System.Drawing.Point(884, 7);
             this.maskPictureBox.Name = "maskPictureBox";
             this.maskPictureBox.Size = new System.Drawing.Size(100, 100);
             this.maskPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -330,7 +331,6 @@
             this.guna2GroupBox3.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2GroupBox3.BorderRadius = 10;
             this.guna2GroupBox3.BorderThickness = 2;
-            this.guna2GroupBox3.Controls.Add(this.multiThreadButton);
             this.guna2GroupBox3.Controls.Add(this.saveAsButton);
             this.guna2GroupBox3.Controls.Add(this.saveButton);
             this.guna2GroupBox3.Controls.Add(this.openFileBtn);
@@ -342,7 +342,7 @@
             this.guna2GroupBox3.Location = new System.Drawing.Point(10, 7);
             this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
-            this.guna2GroupBox3.Size = new System.Drawing.Size(249, 100);
+            this.guna2GroupBox3.Size = new System.Drawing.Size(190, 100);
             this.guna2GroupBox3.TabIndex = 18;
             this.guna2GroupBox3.Text = "Работа с файлами";
             this.guna2GroupBox3.TextOffset = new System.Drawing.Point(0, -10);
@@ -385,8 +385,8 @@
             this.guna2GroupBox2.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox2.Location = new System.Drawing.Point(265, 7);
-            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(220, 7);
+            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(248, 100);
             this.guna2GroupBox2.TabIndex = 18;
@@ -433,10 +433,9 @@
             this.guna2GroupBox4.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2GroupBox4.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox4.Location = new System.Drawing.Point(520, 7);
-            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(5);
+            this.guna2GroupBox4.Location = new System.Drawing.Point(488, 7);
+            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.guna2GroupBox4.Name = "guna2GroupBox4";
-            this.guna2GroupBox4.Padding = new System.Windows.Forms.Padding(5);
             this.guna2GroupBox4.Size = new System.Drawing.Size(146, 100);
             this.guna2GroupBox4.TabIndex = 18;
             this.guna2GroupBox4.Text = "Тип маски";
@@ -479,10 +478,9 @@
             this.guna2GroupBox1.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(676, 7);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(5);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(654, 7);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Padding = new System.Windows.Forms.Padding(5);
             this.guna2GroupBox1.Size = new System.Drawing.Size(217, 100);
             this.guna2GroupBox1.TabIndex = 18;
             this.guna2GroupBox1.Text = "Размер маски";
