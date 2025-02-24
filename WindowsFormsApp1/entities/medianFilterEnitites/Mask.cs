@@ -10,24 +10,33 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
 
         public Mask(MaskType maskType, ImageController imageController)
         {
-            this.maskType = maskType;
             this.imageController = imageController;
+            maskCoordinates = maskType.getCoordinates();
+            staticIndexes = maskType.getStaticIndexes();
+            dynamicIndexes = maskType.getDynamicUndexes();
+            pixelsCount = maskType.getPixelsCount();
+            maskSize = maskType.getSize();
+            halfMaskWidth = maskSize.Width / 2;
+            halfMaskHeight = maskSize.Height / 2;
         }
    
         private ImageController imageController;
-        private MaskType maskType;
+        private readonly Point[] maskCoordinates;
+        private readonly int[] staticIndexes;
+        private readonly int[] dynamicIndexes;
+        private readonly int pixelsCount;
+        private readonly Size maskSize;
+        private readonly int halfMaskWidth;
+        private readonly int halfMaskHeight;
 
         public void update(Point currentPosition, ref Pixel[] pixels)
         {
-            bool isInBounds = isFullMask(currentPosition, maskType.getSize(), imageController.getSize());
+            bool isInBounds = isFullMask(currentPosition, maskSize, imageController.getSize());
             if (isInBounds)
             {
                 int x = currentPosition.X;
                 int y = currentPosition.Y;
-                Point[] maskCoordinates = maskType.getCoordinates();
-                int[] staticIndexes = maskType.getStaticIndexes();
-                int[] dynamicIndexes = maskType.getDynamicUndexes();
-                Pixel[] newMaskPixels = new Pixel[maskType.getPixelsCount()];
+                Pixel[] newMaskPixels = new Pixel[pixelsCount];
                 foreach (int index in dynamicIndexes)
                 {
                     Point point = maskCoordinates[index];
@@ -47,9 +56,9 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
 
         public Pixel[] fill(Point currentPosition)
         {
-            Pixel[] newMaskPixels = new Pixel[maskType.getPixelsCount()];
+            Pixel[] newMaskPixels = new Pixel[pixelsCount];
             int index = 0;
-            foreach (Point maskPoint in maskType.getCoordinates())
+            foreach (Point maskPoint in maskCoordinates)
             {
                 if (imageController.isExistPixel(currentPosition.X + maskPoint.X, currentPosition.Y + maskPoint.Y))
                 {
@@ -58,18 +67,19 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
                     index++;
                 }
             }
-            return newMaskPixels.Take(index).ToArray();
+            Array.Resize(ref newMaskPixels, index);
+            return newMaskPixels;
         }
 
-        private bool isFullMask(Point position, Size maskSize, Size imgSize)
+        private bool isFullMask(Point position, Size maskSize, Size imageSize)
         {
             int x = position.X;
             int y = position.Y;
             int maskWidth = maskSize.Width;
             int maskHeight = maskSize.Height;
-            int imgWidth = imgSize.Width;
-            int imgHeight = imgSize.Height;
-            return x > maskWidth / 2 && y > maskHeight / 2 && x < imgWidth - maskWidth / 2 && y < imgHeight - maskHeight / 2;
+            int imgWidth = imageSize.Width;
+            int imgHeight = imageSize.Height;
+            return x > halfMaskWidth && y > halfMaskHeight && x < imgWidth - halfMaskWidth && y < imgHeight - halfMaskHeight;
         }
     }
 }
