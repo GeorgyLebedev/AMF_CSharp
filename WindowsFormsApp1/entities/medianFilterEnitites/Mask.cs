@@ -21,13 +21,13 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
         }
    
         private ImageController imageController;
-        private readonly Point[] maskCoordinates;
-        private readonly int[] staticIndexes;
-        private readonly int[] dynamicIndexes;
-        private readonly int pixelsCount;
-        private readonly Size maskSize;
-        private readonly int halfMaskWidth;
-        private readonly int halfMaskHeight;
+        private Point[] maskCoordinates;
+        private int[] staticIndexes;
+        private int[] dynamicIndexes;
+        private int pixelsCount;
+        private Size maskSize;
+        private int halfMaskWidth;
+        private int halfMaskHeight;
 
         public void update(Point currentPosition, ref Pixel[] pixels)
         {

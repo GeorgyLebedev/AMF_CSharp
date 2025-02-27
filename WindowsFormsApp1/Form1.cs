@@ -89,7 +89,7 @@ namespace WindowsFormsApp1
             string[] sizeStr = value.Split('x');
             byte width = Convert.ToByte(sizeStr[0]);
             byte heigth = Convert.ToByte(sizeStr[1]);
-            return  new Size(width, heigth);
+            return new Size(width, heigth);
         }
 
         private void preSizeRadio_Click(object sender, EventArgs e)
@@ -155,10 +155,6 @@ namespace WindowsFormsApp1
 
         private void inputPictureBox_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                openImageClick(sender,e);
-            }
             if (e.Button == MouseButtons.Right)
             {
                 imageManager.rotateImageByClick(true);
@@ -167,10 +163,6 @@ namespace WindowsFormsApp1
 
         private void outputPictureBox_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                saveAsButtonClick(sender, e);
-            }
             if (e.Button == MouseButtons.Right)
             {
                 imageManager.rotateImageByClick(false);
@@ -179,7 +171,6 @@ namespace WindowsFormsApp1
 
         private void maskSizeComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            
             if (maskDisplay != null && maskType != null)
             {
                 maskType.updateSize(getMaskSize());  
@@ -189,7 +180,6 @@ namespace WindowsFormsApp1
 
         private void maskTypeComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-          
             if (maskDisplay != null && maskType != null)
             {
                 maskType.updateType(getMaskTypeEnum());

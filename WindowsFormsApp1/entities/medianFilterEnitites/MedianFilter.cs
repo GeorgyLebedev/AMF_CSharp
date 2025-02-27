@@ -13,6 +13,8 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
         private Mask mask;
         //Опции фильтрации
         private FilterOptions options;
+        //Селектор для поиска медианы
+        private MedianSelector selector = new MedianSelector();
 
         Guna.UI2.WinForms.Guna2CircleProgressBar progressBar;
 
@@ -33,21 +35,26 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
 
         private void fillSequences(Point currentPos, Pixel[] mask, SequenceArray sequences)
         {
-            Pixel[] sortedPixels = new Pixel[mask.Length];
-            mask.CopyTo(sortedPixels,0);
-            Array.Sort(sortedPixels, (a, b) => (b.r + b.g + b.b).CompareTo(a.r + a.g + a.b));
-            Pixel medianPixel = sortedPixels[(sortedPixels.Length + 1) / 2 ];
+            // Копируем пиксели из маски в новый массив
+            Pixel[] pixelsCopy = new Pixel[mask.Length];
+            mask.CopyTo(pixelsCopy, 0);
+
+            Pixel medianPixel = selector.quickSelect(pixelsCopy);
+
+            // Получаем текущую яркость пикселей
             byte medianBrightness = (byte)(medianPixel.rgbSum / 3);
             byte currentBrightness = (byte)imageController.getPixelMiddleValue(currentPos.X, currentPos.Y);
-            if (medianBrightness != currentBrightness && currentBrightness>options.minBrightness)
+
+            // Сравниваем яркости и заменяем пиксель при необходимости
+            if (medianBrightness != currentBrightness && currentBrightness > options.minBrightness)
             {
                 sequences.pushPixel(currentPos.X, medianPixel);
             }
             else
             {
-                if(sequences.getCurrentSequenceLength() < options.sequenceLength)
+                if (sequences.getCurrentSequenceLength() < options.sequenceLength)
                 {
-                   sequences.clearCurrentSequence();
+                    sequences.clearCurrentSequence();
                 }
                 sequences.resetIndex();
             }
