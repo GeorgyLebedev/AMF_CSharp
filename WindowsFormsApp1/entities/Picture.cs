@@ -73,28 +73,27 @@ namespace WindowsFormsApp1.entities
         private void grayscaleImage()
         {
             Bitmap image = (Bitmap)box.Image;
-            var tempImage = new Bitmap(image.Width, image.Height);
-            BitmapData rawImageData = image.LockBits(new Rectangle(0, 0, image.Width, image.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
-            BitmapData imageData = tempImage.LockBits(new Rectangle(0, 0, tempImage.Width, tempImage.Height), ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
-            IntPtr rawImagePointer = rawImageData.Scan0;
-            IntPtr imagePointer = imageData.Scan0;
-            byte[] rawImageBytes = new byte[3 * image.Width * image.Height];
+            Bitmap newImage = new Bitmap(image.Width, image.Height);
+            BitmapData imageData = image.LockBits(new Rectangle(0, 0, image.Width, image.Height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+            BitmapData newImageData = newImage.LockBits(new Rectangle(0, 0, newImage.Width, newImage.Height), ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+            IntPtr imageDataPointer = imageData.Scan0;
+            IntPtr newImageDataPointer = newImageData.Scan0;
             byte[] imageBytes = new byte[3 * image.Width * image.Height];
-            Marshal.Copy(rawImagePointer, rawImageBytes, 0, rawImageBytes.Length);
+            byte[] newImageBytes = new byte[3 * image.Width * image.Height];
+            Marshal.Copy(imageDataPointer, imageBytes, 0, imageBytes.Length);
             double kr = 0.2126;
             double kg = 0.7152;
             double kb = 0.0722;
-            int y;
-            int pixelsCount = image.Width * image.Height * 3;
-            for (int i = 0; i < pixelsCount; i += 3)
+            byte y;
+            for (int i = 0; i < imageBytes.Length; i += 3)
             {
-                y = Convert.ToInt32(rawImageBytes[i] * kr + rawImageBytes[i + 1] * kg + rawImageBytes[i + 2] * kb);
-                imageBytes[i] = imageBytes[i + 1] = imageBytes[i + 2] = Convert.ToByte(y);
+                y = (byte)(imageBytes[i] * kr + imageBytes[i + 1] * kg + imageBytes[i + 2] * kb);
+                newImageBytes[i] = newImageBytes[i + 1] = newImageBytes[i + 2] = y;
             }
-            Marshal.Copy(imageBytes, 0, imagePointer, imageBytes.Length);
-            image.UnlockBits(rawImageData);
-            tempImage.UnlockBits(imageData);
-            box.Image= new Bitmap(tempImage);
+            Marshal.Copy(newImageBytes, 0, newImageDataPointer, newImageBytes.Length);
+            image.UnlockBits(imageData);
+            newImage.UnlockBits(newImageData);
+            box.Image = new Bitmap(newImage);
         }
     }
 }
