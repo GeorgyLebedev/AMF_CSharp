@@ -9,15 +9,15 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
     public class FilterOptions
     {
         //Номинальное значение яркости линий, при котором линия будет фильтроваться
-        public readonly int minBrightness;
+        public readonly int minimalBrightness;
         //Длина последовательности - минимальная длина последовательности пикселей под замену
         public readonly int sequenceLength;
         // Использовать потоки процессора
         public readonly bool useMultiThread;
 
-        public FilterOptions(int minBrightness, int sequenceLength, bool useMultiThread)
+        public FilterOptions(int minimalBrightness, int sequenceLength, bool useMultiThread)
         {
-            this.minBrightness = minBrightness;
+            this.minimalBrightness = minimalBrightness;
             this.sequenceLength = sequenceLength;
             this.useMultiThread = useMultiThread;
         }

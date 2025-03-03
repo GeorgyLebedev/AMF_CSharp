@@ -42,11 +42,11 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
             Pixel medianPixel = selector.quickSelect(pixelsCopy);
 
             // Получаем текущую яркость пикселей
-            byte medianBrightness = (byte)(medianPixel.rgbSum / 3);
-            byte currentBrightness = (byte)imageController.getPixelMiddleValue(currentPos.X, currentPos.Y);
-
+            byte medianBrightness = (byte)(medianPixel.rgbSum);
+            byte currentBrightness = (byte)imageController.getPixel(currentPos.X, currentPos.Y).rgbSum;
+            byte diff = (byte)(Math.Abs(currentBrightness - medianBrightness));
             // Сравниваем яркости и заменяем пиксель при необходимости
-            if (medianBrightness != currentBrightness && currentBrightness > options.minBrightness)
+            if (diff >= options.minimalBrightness)
             {
                 sequences.pushPixel(currentPos.X, medianPixel);
             }
@@ -62,10 +62,12 @@ namespace WindowsFormsApp1.entities.medianFilterEnitites
 
         private void filterSequences(int rowIndex, SequenceArray sequences)
         {
-            foreach (var sequence in sequences.getSequences()) {
+            foreach (var sequence in sequences.getSequences())
+            {
                 for (int i = 0; i < sequence.Value.Count; i++)
                 {
-                    imageController.setPixel(sequence.Key+i, rowIndex, sequence.Value[i]);
+                    imageController.setPixel(sequence.Key + i, rowIndex, sequence.Value[i]);
+                    //imageController.setPixel(sequence.Key + i, rowIndex, Color.Maroon);
                 }
             }
             sequences = null;

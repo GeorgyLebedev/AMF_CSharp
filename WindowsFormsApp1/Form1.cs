@@ -42,13 +42,13 @@ namespace WindowsFormsApp1
                 Benchmark benchmark = new Benchmark(elapsedLabel, filterBtn);
                 benchmark.begin();
 
-                displayProgress(true);
+               // displayProgress(true);
                 imageManager.rotateImages();
 
                 MedianFilter medianFilter = createFilter();
                 imageManager.setOutputImage(await medianFilter.doFiltration());
 
-                displayProgress(false);
+               // displayProgress(false);
                 imageManager.rotateImages();
 
                 benchmark.end();

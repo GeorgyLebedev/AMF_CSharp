@@ -39,6 +39,8 @@
             this.saveButton = new Guna.UI2.WinForms.Guna2Button();
             this.openFileBtn = new Guna.UI2.WinForms.Guna2Button();
             this.filterBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.inputPictureBox = new System.Windows.Forms.PictureBox();
+            this.outputPictureBox = new System.Windows.Forms.PictureBox();
             this.elapsedLabel = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.maskPictureBox = new System.Windows.Forms.PictureBox();
@@ -55,11 +57,11 @@
             this.maskSizeTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.maskSizeComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.inputPictureBox = new System.Windows.Forms.PictureBox();
-            this.outputPictureBox = new System.Windows.Forms.PictureBox();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.minBrightnessInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineLengthInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maskPictureBox)).BeginInit();
             this.guna2GroupBox3.SuspendLayout();
@@ -67,8 +69,6 @@
             this.guna2GroupBox4.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -84,11 +84,6 @@
             this.minBrightnessInput.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.minBrightnessInput.FocusedState.BorderColor = System.Drawing.Color.RoyalBlue;
             this.minBrightnessInput.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.minBrightnessInput.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
             this.minBrightnessInput.Location = new System.Drawing.Point(162, 60);
             this.minBrightnessInput.Maximum = new decimal(new int[] {
             255,
@@ -106,7 +101,7 @@
             this.minBrightnessInput.UpDownButtonFillColor = System.Drawing.Color.Silver;
             this.minBrightnessInput.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.minBrightnessInput.Value = new decimal(new int[] {
-            50,
+            3,
             0,
             0,
             0});
@@ -277,6 +272,44 @@
             this.toolTip1.SetToolTip(this.filterBtn, "Обработать");
             this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
             // 
+            // inputPictureBox
+            // 
+            this.inputPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputPictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.inputPictureBox.Enabled = false;
+            this.inputPictureBox.Image = global::WindowsFormsApp1.Properties.Resources.placeholder;
+            this.inputPictureBox.InitialImage = global::WindowsFormsApp1.Properties.Resources.placeholder;
+            this.inputPictureBox.Location = new System.Drawing.Point(6, 6);
+            this.inputPictureBox.Margin = new System.Windows.Forms.Padding(5);
+            this.inputPictureBox.Name = "inputPictureBox";
+            this.inputPictureBox.Size = new System.Drawing.Size(628, 480);
+            this.inputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.inputPictureBox.TabIndex = 1;
+            this.inputPictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.inputPictureBox, "Нажмите ПКМ для вращения изображения");
+            this.inputPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inputPictureBox_MouseDown);
+            // 
+            // outputPictureBox
+            // 
+            this.outputPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.outputPictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.outputPictureBox.Enabled = false;
+            this.outputPictureBox.Image = global::WindowsFormsApp1.Properties.Resources.placeholder;
+            this.outputPictureBox.InitialImage = global::WindowsFormsApp1.Properties.Resources.placeholder;
+            this.outputPictureBox.Location = new System.Drawing.Point(645, 6);
+            this.outputPictureBox.Margin = new System.Windows.Forms.Padding(5);
+            this.outputPictureBox.Name = "outputPictureBox";
+            this.outputPictureBox.Size = new System.Drawing.Size(628, 480);
+            this.outputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.outputPictureBox.TabIndex = 1;
+            this.outputPictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.outputPictureBox, "Нажмите ПКМ для вращения изображения");
+            this.outputPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.outputPictureBox_MouseDown);
+            // 
             // elapsedLabel
             // 
             this.elapsedLabel.BackColor = System.Drawing.Color.Transparent;
@@ -313,7 +346,7 @@
             this.guna2Panel1.ShadowDecoration.BorderRadius = 10;
             this.guna2Panel1.ShadowDecoration.Depth = 10;
             this.guna2Panel1.ShadowDecoration.Enabled = true;
-            this.guna2Panel1.Size = new System.Drawing.Size(1155, 116);
+            this.guna2Panel1.Size = new System.Drawing.Size(1301, 116);
             this.guna2Panel1.TabIndex = 12;
             // 
             // maskPictureBox
@@ -349,14 +382,14 @@
             // 
             // progressBar
             // 
-            this.progressBar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.progressBar.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.progressBar.BackColor = System.Drawing.Color.LightGray;
             this.progressBar.Backwards = true;
             this.progressBar.FillColor = System.Drawing.Color.White;
             this.progressBar.FillThickness = 13;
             this.progressBar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.progressBar.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.progressBar.Location = new System.Drawing.Point(1070, 107);
+            this.progressBar.Location = new System.Drawing.Point(1157, 7);
             this.progressBar.Minimum = 0;
             this.progressBar.Name = "progressBar";
             this.progressBar.ProgressBrushMode = Guna.UI2.WinForms.Enums.BrushMode.SolidTransition;
@@ -365,7 +398,7 @@
             this.progressBar.ProgressThickness = 15;
             this.progressBar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.progressBar.ShowText = true;
-            this.progressBar.Size = new System.Drawing.Size(120, 120);
+            this.progressBar.Size = new System.Drawing.Size(100, 100);
             this.progressBar.TabIndex = 15;
             this.progressBar.Text = "guna2CircleProgressBar1";
             this.progressBar.Visible = false;
@@ -597,46 +630,8 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1133, 492);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1279, 492);
             this.tableLayoutPanel1.TabIndex = 13;
-            // 
-            // inputPictureBox
-            // 
-            this.inputPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputPictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.inputPictureBox.Enabled = false;
-            this.inputPictureBox.Image = global::WindowsFormsApp1.Properties.Resources.placeholder;
-            this.inputPictureBox.InitialImage = global::WindowsFormsApp1.Properties.Resources.placeholder;
-            this.inputPictureBox.Location = new System.Drawing.Point(6, 6);
-            this.inputPictureBox.Margin = new System.Windows.Forms.Padding(5);
-            this.inputPictureBox.Name = "inputPictureBox";
-            this.inputPictureBox.Size = new System.Drawing.Size(555, 480);
-            this.inputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.inputPictureBox.TabIndex = 1;
-            this.inputPictureBox.TabStop = false;
-            this.toolTip1.SetToolTip(this.inputPictureBox, "Нажмите ПКМ для вращения изображения");
-            this.inputPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inputPictureBox_MouseDown);
-            // 
-            // outputPictureBox
-            // 
-            this.outputPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.outputPictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.outputPictureBox.Enabled = false;
-            this.outputPictureBox.Image = global::WindowsFormsApp1.Properties.Resources.placeholder;
-            this.outputPictureBox.InitialImage = global::WindowsFormsApp1.Properties.Resources.placeholder;
-            this.outputPictureBox.Location = new System.Drawing.Point(572, 6);
-            this.outputPictureBox.Margin = new System.Windows.Forms.Padding(5);
-            this.outputPictureBox.Name = "outputPictureBox";
-            this.outputPictureBox.Size = new System.Drawing.Size(555, 480);
-            this.outputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.outputPictureBox.TabIndex = 1;
-            this.outputPictureBox.TabStop = false;
-            this.toolTip1.SetToolTip(this.outputPictureBox, "Нажмите ПКМ для вращения изображения");
-            this.outputPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.outputPictureBox_MouseDown);
             // 
             // saveFileDialog
             // 
@@ -648,7 +643,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 628);
+            this.ClientSize = new System.Drawing.Size(1301, 628);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -657,6 +652,8 @@
             this.Text = "AMF";
             ((System.ComponentModel.ISupportInitialize)(this.minBrightnessInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineLengthInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.maskPictureBox)).EndInit();
             this.guna2GroupBox3.ResumeLayout(false);
@@ -665,8 +662,6 @@
             this.guna2GroupBox4.ResumeLayout(false);
             this.guna2GroupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
