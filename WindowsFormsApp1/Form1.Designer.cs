@@ -39,6 +39,8 @@
             this.saveButton = new Guna.UI2.WinForms.Guna2Button();
             this.openFileBtn = new Guna.UI2.WinForms.Guna2Button();
             this.filterBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.inputPictureBox = new System.Windows.Forms.PictureBox();
+            this.outputPictureBox = new System.Windows.Forms.PictureBox();
             this.elapsedLabel = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.maskPictureBox = new System.Windows.Forms.PictureBox();
@@ -55,11 +57,15 @@
             this.maskSizeTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.maskSizeComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.inputPictureBox = new System.Windows.Forms.PictureBox();
-            this.outputPictureBox = new System.Windows.Forms.PictureBox();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.label5 = new System.Windows.Forms.Label();
+            this.resultPanel = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.qualityLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.minBrightnessInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineLengthInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maskPictureBox)).BeginInit();
             this.guna2GroupBox3.SuspendLayout();
@@ -67,8 +73,7 @@
             this.guna2GroupBox4.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).BeginInit();
+            this.resultPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -83,13 +88,13 @@
             this.minBrightnessInput.BorderRadius = 10;
             this.minBrightnessInput.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.minBrightnessInput.FocusedState.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.minBrightnessInput.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.minBrightnessInput.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.minBrightnessInput.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.minBrightnessInput.Location = new System.Drawing.Point(162, 60);
+            this.minBrightnessInput.Location = new System.Drawing.Point(114, 60);
             this.minBrightnessInput.Maximum = new decimal(new int[] {
             255,
             0,
@@ -118,13 +123,13 @@
             this.lineLengthInput.BorderRadius = 10;
             this.lineLengthInput.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.lineLengthInput.FocusedState.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.lineLengthInput.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lineLengthInput.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lineLengthInput.Increment = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.lineLengthInput.Location = new System.Drawing.Point(162, 24);
+            this.lineLengthInput.Location = new System.Drawing.Point(114, 24);
             this.lineLengthInput.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -170,8 +175,8 @@
             this.multiThreadButton.ForeColor = System.Drawing.Color.White;
             this.multiThreadButton.Image = global::WindowsFormsApp1.Properties.Resources.mulithread;
             this.multiThreadButton.ImageSize = new System.Drawing.Size(40, 40);
-            this.multiThreadButton.Location = new System.Drawing.Point(1087, 31);
-            this.multiThreadButton.Margin = new System.Windows.Forms.Padding(10, 5, 5, 5);
+            this.multiThreadButton.Location = new System.Drawing.Point(964, 5);
+            this.multiThreadButton.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.multiThreadButton.Name = "multiThreadButton";
             this.multiThreadButton.Size = new System.Drawing.Size(50, 50);
             this.multiThreadButton.TabIndex = 0;
@@ -269,26 +274,63 @@
             this.filterBtn.ForeColor = System.Drawing.Color.White;
             this.filterBtn.Image = global::WindowsFormsApp1.Properties.Resources.start;
             this.filterBtn.ImageSize = new System.Drawing.Size(40, 40);
-            this.filterBtn.Location = new System.Drawing.Point(1019, 31);
-            this.filterBtn.Margin = new System.Windows.Forms.Padding(5, 5, 10, 5);
+            this.filterBtn.Location = new System.Drawing.Point(964, 60);
+            this.filterBtn.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.filterBtn.Name = "filterBtn";
             this.filterBtn.Size = new System.Drawing.Size(50, 50);
             this.filterBtn.TabIndex = 0;
             this.toolTip1.SetToolTip(this.filterBtn, "Обработать");
             this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
             // 
+            // inputPictureBox
+            // 
+            this.inputPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputPictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.inputPictureBox.Enabled = false;
+            this.inputPictureBox.Image = global::WindowsFormsApp1.Properties.Resources.placeholder;
+            this.inputPictureBox.InitialImage = global::WindowsFormsApp1.Properties.Resources.placeholder;
+            this.inputPictureBox.Location = new System.Drawing.Point(6, 6);
+            this.inputPictureBox.Margin = new System.Windows.Forms.Padding(5);
+            this.inputPictureBox.Name = "inputPictureBox";
+            this.inputPictureBox.Size = new System.Drawing.Size(617, 480);
+            this.inputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.inputPictureBox.TabIndex = 1;
+            this.inputPictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.inputPictureBox, "Нажмите ПКМ для вращения изображения");
+            this.inputPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inputPictureBox_MouseDown);
+            // 
+            // outputPictureBox
+            // 
+            this.outputPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.outputPictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.outputPictureBox.Enabled = false;
+            this.outputPictureBox.Image = global::WindowsFormsApp1.Properties.Resources.placeholder;
+            this.outputPictureBox.InitialImage = global::WindowsFormsApp1.Properties.Resources.placeholder;
+            this.outputPictureBox.Location = new System.Drawing.Point(634, 6);
+            this.outputPictureBox.Margin = new System.Windows.Forms.Padding(5);
+            this.outputPictureBox.Name = "outputPictureBox";
+            this.outputPictureBox.Size = new System.Drawing.Size(617, 480);
+            this.outputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.outputPictureBox.TabIndex = 1;
+            this.outputPictureBox.TabStop = false;
+            this.toolTip1.SetToolTip(this.outputPictureBox, "Нажмите ПКМ для вращения изображения");
+            this.outputPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.outputPictureBox_MouseDown);
+            // 
             // elapsedLabel
             // 
             this.elapsedLabel.BackColor = System.Drawing.Color.Transparent;
-            this.elapsedLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.elapsedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.elapsedLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.elapsedLabel.Location = new System.Drawing.Point(1019, 9);
+            this.elapsedLabel.ForeColor = System.Drawing.Color.Black;
+            this.elapsedLabel.Location = new System.Drawing.Point(170, 69);
             this.elapsedLabel.Name = "elapsedLabel";
             this.elapsedLabel.Size = new System.Drawing.Size(50, 15);
             this.elapsedLabel.TabIndex = 5;
-            this.elapsedLabel.Text = "                        ";
-            this.elapsedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.elapsedLabel.Text = "100";
+            this.elapsedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // guna2Panel1
             // 
@@ -296,14 +338,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Panel1.BorderColor = System.Drawing.Color.LightGray;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.resultPanel);
             this.guna2Panel1.Controls.Add(this.multiThreadButton);
             this.guna2Panel1.Controls.Add(this.maskPictureBox);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox3);
-            this.guna2Panel1.Controls.Add(this.progressBar);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox2);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox4);
             this.guna2Panel1.Controls.Add(this.guna2GroupBox1);
-            this.guna2Panel1.Controls.Add(this.elapsedLabel);
             this.guna2Panel1.Controls.Add(this.filterBtn);
             this.guna2Panel1.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Panel1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 2);
@@ -313,12 +354,13 @@
             this.guna2Panel1.ShadowDecoration.BorderRadius = 10;
             this.guna2Panel1.ShadowDecoration.Depth = 10;
             this.guna2Panel1.ShadowDecoration.Enabled = true;
-            this.guna2Panel1.Size = new System.Drawing.Size(1155, 116);
+            this.guna2Panel1.Size = new System.Drawing.Size(1279, 120);
             this.guna2Panel1.TabIndex = 12;
             // 
             // maskPictureBox
             // 
-            this.maskPictureBox.Location = new System.Drawing.Point(884, 7);
+            this.maskPictureBox.Location = new System.Drawing.Point(844, 10);
+            this.maskPictureBox.Margin = new System.Windows.Forms.Padding(10);
             this.maskPictureBox.Name = "maskPictureBox";
             this.maskPictureBox.Size = new System.Drawing.Size(100, 100);
             this.maskPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -337,14 +379,15 @@
             this.guna2GroupBox3.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2GroupBox3.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.guna2GroupBox3.FillColor = System.Drawing.SystemColors.Control;
-            this.guna2GroupBox3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.guna2GroupBox3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox3.Location = new System.Drawing.Point(10, 7);
-            this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.guna2GroupBox3.Location = new System.Drawing.Point(10, 9);
+            this.guna2GroupBox3.Margin = new System.Windows.Forms.Padding(10);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
             this.guna2GroupBox3.Size = new System.Drawing.Size(190, 100);
             this.guna2GroupBox3.TabIndex = 18;
             this.guna2GroupBox3.Text = "Работа с файлами";
+            this.guna2GroupBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.guna2GroupBox3.TextOffset = new System.Drawing.Point(0, -10);
             // 
             // progressBar
@@ -356,7 +399,8 @@
             this.progressBar.FillThickness = 13;
             this.progressBar.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.progressBar.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.progressBar.Location = new System.Drawing.Point(1070, 107);
+            this.progressBar.Location = new System.Drawing.Point(1286, 621);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(0);
             this.progressBar.Minimum = 0;
             this.progressBar.Name = "progressBar";
             this.progressBar.ProgressBrushMode = Guna.UI2.WinForms.Enums.BrushMode.SolidTransition;
@@ -383,42 +427,43 @@
             this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2GroupBox2.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.guna2GroupBox2.FillColor = System.Drawing.SystemColors.Control;
-            this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox2.Location = new System.Drawing.Point(220, 7);
-            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(220, 9);
+            this.guna2GroupBox2.Margin = new System.Windows.Forms.Padding(10);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
-            this.guna2GroupBox2.Size = new System.Drawing.Size(248, 100);
+            this.guna2GroupBox2.Size = new System.Drawing.Size(201, 100);
             this.guna2GroupBox2.TabIndex = 18;
             this.guna2GroupBox2.Text = "Параметры линий";
+            this.guna2GroupBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.guna2GroupBox2.TextOffset = new System.Drawing.Point(0, -10);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(20, 30);
+            this.label2.Location = new System.Drawing.Point(9, 30);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 10, 5, 5);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 17);
+            this.label2.Size = new System.Drawing.Size(87, 17);
             this.label2.TabIndex = 14;
-            this.label2.Text = "Минимальная длина:";
+            this.label2.Text = "Мин. длина:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(9, 67);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 17);
+            this.label1.Size = new System.Drawing.Size(97, 17);
             this.label1.TabIndex = 14;
-            this.label1.Text = "Минимальная яркость:";
+            this.label1.Text = "Мин. яркость:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // guna2GroupBox4
@@ -431,14 +476,15 @@
             this.guna2GroupBox4.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2GroupBox4.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.guna2GroupBox4.FillColor = System.Drawing.SystemColors.Control;
-            this.guna2GroupBox4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.guna2GroupBox4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2GroupBox4.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox4.Location = new System.Drawing.Point(488, 7);
-            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.guna2GroupBox4.Location = new System.Drawing.Point(441, 9);
+            this.guna2GroupBox4.Margin = new System.Windows.Forms.Padding(10);
             this.guna2GroupBox4.Name = "guna2GroupBox4";
             this.guna2GroupBox4.Size = new System.Drawing.Size(146, 100);
             this.guna2GroupBox4.TabIndex = 18;
             this.guna2GroupBox4.Text = "Тип маски";
+            this.guna2GroupBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.guna2GroupBox4.TextOffset = new System.Drawing.Point(0, -10);
             // 
             // maskTypeComboBox
@@ -476,14 +522,15 @@
             this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2GroupBox1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
             this.guna2GroupBox1.FillColor = System.Drawing.SystemColors.Control;
-            this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(654, 7);
-            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(10, 5, 10, 5);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(607, 9);
+            this.guna2GroupBox1.Margin = new System.Windows.Forms.Padding(10);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(217, 100);
             this.guna2GroupBox1.TabIndex = 18;
             this.guna2GroupBox1.Text = "Размер маски";
+            this.guna2GroupBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.guna2GroupBox1.TextOffset = new System.Drawing.Point(0, -10);
             // 
             // ownSizeRadio
@@ -499,7 +546,7 @@
             this.ownSizeRadio.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.ownSizeRadio.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.ownSizeRadio.FillColor = System.Drawing.SystemColors.Control;
-            this.ownSizeRadio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ownSizeRadio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ownSizeRadio.ForeColor = System.Drawing.Color.Black;
             this.ownSizeRadio.Location = new System.Drawing.Point(111, 27);
             this.ownSizeRadio.Name = "ownSizeRadio";
@@ -522,7 +569,7 @@
             this.preSizeRadio.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.preSizeRadio.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.preSizeRadio.FillColor = System.Drawing.SystemColors.Control;
-            this.preSizeRadio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.preSizeRadio.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.preSizeRadio.ForeColor = System.Drawing.Color.Black;
             this.preSizeRadio.Location = new System.Drawing.Point(11, 27);
             this.preSizeRadio.Name = "preSizeRadio";
@@ -597,46 +644,8 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1133, 492);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1257, 492);
             this.tableLayoutPanel1.TabIndex = 13;
-            // 
-            // inputPictureBox
-            // 
-            this.inputPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputPictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.inputPictureBox.Enabled = false;
-            this.inputPictureBox.Image = global::WindowsFormsApp1.Properties.Resources.placeholder;
-            this.inputPictureBox.InitialImage = global::WindowsFormsApp1.Properties.Resources.placeholder;
-            this.inputPictureBox.Location = new System.Drawing.Point(6, 6);
-            this.inputPictureBox.Margin = new System.Windows.Forms.Padding(5);
-            this.inputPictureBox.Name = "inputPictureBox";
-            this.inputPictureBox.Size = new System.Drawing.Size(555, 480);
-            this.inputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.inputPictureBox.TabIndex = 1;
-            this.inputPictureBox.TabStop = false;
-            this.toolTip1.SetToolTip(this.inputPictureBox, "Нажмите ПКМ для вращения изображения");
-            this.inputPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.inputPictureBox_MouseDown);
-            // 
-            // outputPictureBox
-            // 
-            this.outputPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.outputPictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.outputPictureBox.Enabled = false;
-            this.outputPictureBox.Image = global::WindowsFormsApp1.Properties.Resources.placeholder;
-            this.outputPictureBox.InitialImage = global::WindowsFormsApp1.Properties.Resources.placeholder;
-            this.outputPictureBox.Location = new System.Drawing.Point(572, 6);
-            this.outputPictureBox.Margin = new System.Windows.Forms.Padding(5);
-            this.outputPictureBox.Name = "outputPictureBox";
-            this.outputPictureBox.Size = new System.Drawing.Size(555, 480);
-            this.outputPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.outputPictureBox.TabIndex = 1;
-            this.outputPictureBox.TabStop = false;
-            this.toolTip1.SetToolTip(this.outputPictureBox, "Нажмите ПКМ для вращения изображения");
-            this.outputPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.outputPictureBox_MouseDown);
             // 
             // saveFileDialog
             // 
@@ -644,19 +653,81 @@
             this.saveFileDialog.RestoreDirectory = true;
             this.saveFileDialog.Title = "Сохранить как";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(15, 33);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(148, 17);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Сохранение качества:";
+            // 
+            // resultPanel
+            // 
+            this.resultPanel.BackColor = System.Drawing.Color.Transparent;
+            this.resultPanel.BorderColor = System.Drawing.Color.DarkGray;
+            this.resultPanel.BorderRadius = 10;
+            this.resultPanel.BorderThickness = 2;
+            this.resultPanel.Controls.Add(this.qualityLabel);
+            this.resultPanel.Controls.Add(this.elapsedLabel);
+            this.resultPanel.Controls.Add(this.label3);
+            this.resultPanel.Controls.Add(this.label5);
+            this.resultPanel.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.resultPanel.CustomBorderThickness = new System.Windows.Forms.Padding(0, 20, 0, 0);
+            this.resultPanel.FillColor = System.Drawing.SystemColors.Control;
+            this.resultPanel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.resultPanel.ForeColor = System.Drawing.Color.White;
+            this.resultPanel.Location = new System.Drawing.Point(1034, 9);
+            this.resultPanel.Margin = new System.Windows.Forms.Padding(10);
+            this.resultPanel.Name = "resultPanel";
+            this.resultPanel.Size = new System.Drawing.Size(222, 100);
+            this.resultPanel.TabIndex = 19;
+            this.resultPanel.Text = "Результат";
+            this.resultPanel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.resultPanel.TextOffset = new System.Drawing.Point(0, -10);
+            this.resultPanel.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(15, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 17);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Время обработки:";
+            // 
+            // qualityLabel
+            // 
+            this.qualityLabel.BackColor = System.Drawing.Color.Transparent;
+            this.qualityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.qualityLabel.ForeColor = System.Drawing.Color.Black;
+            this.qualityLabel.Location = new System.Drawing.Point(169, 35);
+            this.qualityLabel.Name = "qualityLabel";
+            this.qualityLabel.Size = new System.Drawing.Size(50, 15);
+            this.qualityLabel.TabIndex = 5;
+            this.qualityLabel.Text = "100";
+            this.qualityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1155, 628);
+            this.ClientSize = new System.Drawing.Size(1279, 628);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.progressBar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1000, 500);
             this.Name = "Form1";
             this.Text = "AMF";
             ((System.ComponentModel.ISupportInitialize)(this.minBrightnessInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lineLengthInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.maskPictureBox)).EndInit();
             this.guna2GroupBox3.ResumeLayout(false);
@@ -665,8 +736,8 @@
             this.guna2GroupBox4.ResumeLayout(false);
             this.guna2GroupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.inputPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.outputPictureBox)).EndInit();
+            this.resultPanel.ResumeLayout(false);
+            this.resultPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -700,6 +771,10 @@
         private System.Windows.Forms.PictureBox maskPictureBox;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox4;
         private Guna.UI2.WinForms.Guna2ComboBox maskTypeComboBox;
+        private System.Windows.Forms.Label label5;
+        private Guna.UI2.WinForms.Guna2GroupBox resultPanel;
+        private System.Windows.Forms.Label qualityLabel;
+        private System.Windows.Forms.Label label3;
     }
 }
 

@@ -60,6 +60,7 @@
     <Compile Include="entities\medianFilterEnitites\MaskDisplay.cs" />
     <Compile Include="entities\medianFilterEnitites\MedianSelector.cs" />
     <Compile Include="entities\Picture.cs" />
+    <Compile Include="entities\QualityEvaluator.cs" />
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>

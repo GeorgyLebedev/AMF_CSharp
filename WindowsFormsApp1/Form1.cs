@@ -39,6 +39,7 @@ namespace WindowsFormsApp1
         {
             try
             {
+                resultPanel.Visible = false;
                 Benchmark benchmark = new Benchmark(elapsedLabel, filterBtn);
                 benchmark.begin();
 
@@ -55,6 +56,11 @@ namespace WindowsFormsApp1
 
                 saveAsButton.Enabled = true;
                 saveButton.Enabled = true;
+
+                QualityEvaluator qualityEvaluator = new QualityEvaluator((Bitmap)inputPictureBox.Image, (Bitmap)outputPictureBox.Image);
+                double quality = Math.Round(qualityEvaluator.evaluate(), 2) * 100;
+                qualityLabel.Text = quality  + "%";
+                resultPanel.Visible = true;
             }
             catch (Exception ex)
             {
